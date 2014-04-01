@@ -6,7 +6,7 @@ Java game for IPSEN1 project at Hogeschool Leiden.
 
 ###### In opdracht van ######
 ![Alt text](/img/softwarehuis.png "Softwarehuis Elektronische Kunst")
-![Alt text](/img/hsleiden.jpg "Hogeschool Leiden")
+![Alt text](http://www.beeldbank.leidenuniv.nl/ImageDisplay.php?uid=FT090383&thumbed=5 "Hogeschool Leiden")
 
 ### NOTES ###
 
