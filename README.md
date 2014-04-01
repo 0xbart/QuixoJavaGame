@@ -5,7 +5,7 @@ QuixoJavaGame
 Java game for IPSEN1 project at Hogeschool Leiden.
 
 ###### In opdracht van ######
-![Alt text](/img/softwarehuis.png "Softwarehuis Elektronische Kunst")
+![Alt text](http://s13.postimg.org/ffmu9k847/readme_md.png "Softwarehuis Elektronische Kunst")
 ![Alt text](http://www.beeldbank.leidenuniv.nl/ImageDisplay.php?uid=FT090383&thumbed=5 "Hogeschool Leiden")
 
 ### NOTES ###
