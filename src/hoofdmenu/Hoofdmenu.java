@@ -1,7 +1,6 @@
 package hoofdmenu;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,11 +10,8 @@ import java.awt.event.ActionListener;
  */
 public class Hoofdmenu extends JFrame implements ActionListener{
 
-    private JButton jbtNieuwSpel = new JButton(new ImageIcon("src/resources/hoofdmenu/nieuw_spel.png")),
-                    jbtSpelLaden = new JButton(new ImageIcon("src/resources/hoofdmenu/spel_laden.png")),
-                    jbtOpties = new JButton(new ImageIcon("src/resources/hoofdmenu/opties.png")),
-                    jbtHelp = new JButton(new ImageIcon("src/resources/hoofdmenu/help.png")),
-                    jbtExit = new JButton(new ImageIcon("src/resources/hoofdmenu/exit.png"));
+    private JButton jbtNieuwSpel, jbtSpelLaden, jbtOpties, jbtHelp, jbtExit;
+    private JLabel background;
 
     public Hoofdmenu() {
 
@@ -34,18 +30,23 @@ public class Hoofdmenu extends JFrame implements ActionListener{
         this.add(jbtHelp);
         this.add(jbtExit);
 
+        maakAchtergrond();
+
+        this.setLayout(new BorderLayout());
+        this.add(background);
+
         this.setVisible(true);
     }
 
     private void maakJButtons(){
         jbtNieuwSpel = new JButton(new ImageIcon("src/resources/hoofdmenu/nieuw_spel.png"));
         jbtNieuwSpel.setBorder(null);
-        jbtNieuwSpel.setBounds(125, 50, 300, 63);
+        jbtNieuwSpel.setBounds(125, 100, 300, 63);
         jbtNieuwSpel.addActionListener(this);
 
         jbtSpelLaden = new JButton(new ImageIcon("src/resources/hoofdmenu/spel_laden.png"));
         jbtSpelLaden.setBorder(null);
-        jbtSpelLaden.setBounds(125, 150, 300, 63);
+        jbtSpelLaden.setBounds(125, 175, 300, 63);
         jbtSpelLaden.addActionListener(this);
 
         jbtOpties = new JButton(new ImageIcon("src/resources/hoofdmenu/opties.png"));
@@ -55,13 +56,17 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 
         jbtHelp = new JButton(new ImageIcon("src/resources/hoofdmenu/help.png"));
         jbtHelp.setBorder(null);
-        jbtHelp.setBounds(125, 350, 300, 63);
+        jbtHelp.setBounds(125, 325, 300, 63);
         jbtHelp.addActionListener(this);
 
         jbtExit = new JButton(new ImageIcon("src/resources/hoofdmenu/exit.png"));
         jbtExit.setBorder(null);
-        jbtExit.setBounds(125, 450, 300, 63);
+        jbtExit.setBounds(125, 400, 300, 63);
         jbtExit.addActionListener(this);
+    }
+
+    private void maakAchtergrond(){
+        background = new JLabel(new ImageIcon("src/resources/menu_bg.png"));
     }
 
     @Override
