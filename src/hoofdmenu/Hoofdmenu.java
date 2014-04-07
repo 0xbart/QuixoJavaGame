@@ -8,6 +8,12 @@ import java.awt.*;
  */
 public class Hoofdmenu extends JFrame {
 
+    JButton jbtNieuwSpel = new JButton(new ImageIcon("resources/hoofdmenu/nieuw_spel.png")),
+            jbtSpelLaden,
+            jbtOpties,
+            jbtHelp,
+            jbtExit;
+
     public Hoofdmenu(){
 
         this.setTitle("Quixo - IPSEN1 - INF1G Groep 4");
@@ -16,6 +22,11 @@ public class Hoofdmenu extends JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        this.add(jbtNieuwSpel);
+        this.add(jbtSpelLaden);
+        this.add(jbtOpties);
+        this.add(jbtHelp);
+        this.add(jbtExit);
 
         this.setVisible(true);
     }
