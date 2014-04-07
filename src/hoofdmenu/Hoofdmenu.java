@@ -9,10 +9,10 @@ import java.awt.*;
 public class Hoofdmenu extends JFrame {
 
     JButton jbtNieuwSpel = new JButton(new ImageIcon("resources/hoofdmenu/nieuw_spel.png")),
-            jbtSpelLaden,
-            jbtOpties,
-            jbtHelp,
-            jbtExit;
+            jbtSpelLaden = new JButton(new ImageIcon("resources/hoofdmenu/spel_laden.png")),
+            jbtOpties = new JButton(new ImageIcon("resources/hoofdmenu/opties.png")),
+            jbtHelp = new JButton(new ImageIcon("resources/hoofdmenu/help.png")),
+            jbtExit = new JButton(new ImageIcon("resources/hoofdmenu/exit.png"));
 
     public Hoofdmenu(){
 
@@ -22,11 +22,7 @@ public class Hoofdmenu extends JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        this.add(jbtNieuwSpel);
-        this.add(jbtSpelLaden);
-        this.add(jbtOpties);
-        this.add(jbtHelp);
-        this.add(jbtExit);
+
 
         this.setVisible(true);
     }
