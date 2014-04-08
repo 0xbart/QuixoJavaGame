@@ -1,25 +1,21 @@
 package splashscreen;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by Bart on 7-4-2014.
  */
-public class Splashscreen extends JFrame {
+public class Splashscreen extends JPanel {
 
     private JLabel background;
 
-    public Splashscreen(){
-        this.setTitle("Quixo - IPSEN1 - INF1G Groep 4");
-        this.setSize(550, 550);
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public Splashscreen(JFrame gameFrame){
 
-        maakAchtergrond();
+        this.maakAchtergrond();
+        setLayout(new GridLayout(0, 1));
+        add(background);
 
-        this.add(background);
-        this.setVisible(true);
     }
 
     private void maakAchtergrond(){
