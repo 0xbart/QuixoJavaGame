@@ -15,7 +15,6 @@ public class Splashscreen extends JPanel {
         this.maakAchtergrond();
         setLayout(new GridLayout(0, 1));
         add(background);
-
     }
 
     private void maakAchtergrond(){
