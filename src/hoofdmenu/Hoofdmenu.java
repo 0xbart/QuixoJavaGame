@@ -8,34 +8,29 @@ import java.awt.event.ActionListener;
 /**
  * Created by Bart on 7-4-2014.
  */
-public class Hoofdmenu extends JFrame implements ActionListener{
+public class Hoofdmenu extends JPanel implements ActionListener{
 
     private JButton jbtNieuwSpel, jbtSpelLaden, jbtOpties, jbtHelp, jbtExit;
     private JLabel background;
 
-    public Hoofdmenu() {
+    public Hoofdmenu(JFrame spelFrame) {
 
-        this.setTitle("Quixo - IPSEN1 - INF1G Groep 4");
-        this.setSize(550, 550);
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLayout(null);
+        System.out.println("hoofdmenu wordt aangeroepen......");
+
+        setLayout(null);
 
         maakJButtons();
 
-        this.add(jbtNieuwSpel);
-        this.add(jbtSpelLaden);
-        this.add(jbtOpties);
-        this.add(jbtHelp);
-        this.add(jbtExit);
+        add(jbtNieuwSpel);
+        add(jbtSpelLaden);
+        add(jbtOpties);
+        add(jbtHelp);
+        add(jbtExit);
 
         maakAchtergrond();
 
-        this.setLayout(new BorderLayout());
-        this.add(background);
-
-        this.setVisible(true);
+        setLayout(new BorderLayout());
+        add(background);
     }
 
     private void maakJButtons(){
