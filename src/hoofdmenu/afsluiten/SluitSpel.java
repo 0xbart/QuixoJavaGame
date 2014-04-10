@@ -1,4 +1,4 @@
-package afsluiten;
+package hoofdmenu.afsluiten;
 
 import hoofdmenu.ToonHoofdmenu;
 import utils.*;

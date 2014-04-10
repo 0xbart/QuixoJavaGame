@@ -1,4 +1,4 @@
-package help;
+package hoofdmenu.opties;
 
 import hoofdmenu.ToonHoofdmenu;
 
@@ -10,13 +10,13 @@ import java.awt.event.ActionListener;
 /**
  * Created by Bart on 10-4-2014.
  */
-public class Help extends JPanel implements ActionListener {
+public class Opties extends JPanel implements ActionListener{
 
     private JFrame spelFrame;
     private JButton terug;
     private JLabel background;
 
-    public Help(JFrame spelFrame){
+    public Opties(JFrame spelFrame) {
 
         this.spelFrame = spelFrame;
 
@@ -31,7 +31,7 @@ public class Help extends JPanel implements ActionListener {
     }
 
     private void maakAchtergrond(){
-        background = new JLabel(new ImageIcon("src/resources/achtergrond/help_bg.png"));
+        background = new JLabel(new ImageIcon("src/resources/achtergrond/opties_bg.png"));
     }
 
     private void maakButton(){
@@ -39,7 +39,7 @@ public class Help extends JPanel implements ActionListener {
         terug = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
         terug.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
         terug.setBorder(null);
-        terug.setBounds(200, 400, 150, 51);
+        terug.setBounds(200, 420, 150, 51);
         terug.addActionListener(this);
     }
 

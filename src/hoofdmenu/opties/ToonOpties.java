@@ -1,4 +1,4 @@
-package opties;
+package hoofdmenu.opties;
 
 import utils.Task;
 

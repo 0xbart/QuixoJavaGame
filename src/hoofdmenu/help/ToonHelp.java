@@ -1,4 +1,4 @@
-package help;
+package hoofdmenu.help;
 
 import utils.*;
 

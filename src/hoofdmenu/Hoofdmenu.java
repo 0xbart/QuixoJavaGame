@@ -1,8 +1,8 @@
 package hoofdmenu;
 
-import afsluiten.SluitSpel;
-import help.ToonHelp;
-import opties.ToonOpties;
+import hoofdmenu.afsluiten.SluitSpel;
+import hoofdmenu.help.ToonHelp;
+import hoofdmenu.opties.ToonOpties;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
