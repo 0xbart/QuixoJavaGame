@@ -18,7 +18,7 @@ public class Splashscreen extends JPanel {
     }
 
     private void maakAchtergrond(){
-        background = new JLabel(new ImageIcon("src/resources/splashscreen_bg.png"));
+        background = new JLabel(new ImageIcon("src/resources/achtergrond/splashscreen_bg.png"));
     }
 
 }

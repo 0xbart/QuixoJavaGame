@@ -69,7 +69,7 @@ public class Hoofdmenu extends JPanel implements ActionListener{
     }
 
     private void maakAchtergrond(){
-        background = new JLabel(new ImageIcon("src/resources/menu_bg.png"));
+        background = new JLabel(new ImageIcon("src/resources/achtergrond/menu_bg.png"));
     }
 
     @Override
