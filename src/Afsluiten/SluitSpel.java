@@ -45,8 +45,7 @@ public class SluitSpel extends Task {
 
     private void execute() {
 
-        System.out.println("het spel wordt afgesloten!");
-        spelFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        System.exit(0);
     }
 
 }
