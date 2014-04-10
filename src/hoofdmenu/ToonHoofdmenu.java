@@ -10,7 +10,7 @@ import javax.swing.*;
 public class ToonHoofdmenu extends Task {
 
     private JFrame spelFrame;
-    private boolean validate = false;
+    private boolean validate;
 
     public ToonHoofdmenu(JFrame spelFrame, boolean validate){
 

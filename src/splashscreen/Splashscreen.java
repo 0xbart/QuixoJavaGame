@@ -12,7 +12,7 @@ public class Splashscreen extends JPanel {
 
     public Splashscreen(JFrame spelFrame){
 
-        this.maakAchtergrond();
+        maakAchtergrond();
         setLayout(new GridLayout(0, 1));
         add(background);
     }

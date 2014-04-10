@@ -1,6 +1,7 @@
 package hoofdmenu;
 
 import Afsluiten.SluitSpel;
+import Help.ToonHelp;
 
 import javax.swing.*;
 import java.awt.*;
@@ -88,7 +89,8 @@ public class Hoofdmenu extends JPanel implements ActionListener{
 
         } else if (e.getSource() == jbtHelp) {
 
-            System.out.println("help wordt gestart...!");
+            ToonHelp toonHelp = new ToonHelp(spelFrame);
+            toonHelp.run();
 
         } else if (e.getSource() == jbtExit) {
 
