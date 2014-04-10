@@ -1,4 +1,5 @@
-import splashscreen.ToonSplashscreen;
+import splashscreen.*;
+
 import javax.swing.*;
 
 /**
