@@ -1,6 +1,5 @@
 import splashscreen.ToonSplashscreen;
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Created by Bart on 1-4-2014.
