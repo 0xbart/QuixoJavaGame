@@ -32,6 +32,7 @@ public class ToonSplashscreen extends Task {
     }
 
     private boolean validate() {
+
         return true;
     }
 

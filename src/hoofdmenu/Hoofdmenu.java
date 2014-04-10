@@ -2,6 +2,7 @@ package hoofdmenu;
 
 import afsluiten.*;
 import help.*;
+import opties.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -85,7 +86,8 @@ public class Hoofdmenu extends JPanel implements ActionListener{
 
         } else if (e.getSource() == jbtOpties){
 
-            System.out.println("Opties wordt gestart...!");
+            ToonOpties toonOpties = new ToonOpties(spelFrame);
+            toonOpties.run();
 
         } else if (e.getSource() == jbtHelp) {
 
