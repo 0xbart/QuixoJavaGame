@@ -1,7 +1,7 @@
 package hoofdmenu;
 
-import afsluiten.SluitSpel;
-import help.ToonHelp;
+import Afsluiten.SluitSpel;
+import Help.ToonHelp;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,7 +56,7 @@ public class Hoofdmenu extends JPanel implements ActionListener{
         jbtOpties.setBounds(125, 250, 300, 63);
         jbtOpties.addActionListener(this);
 
-        jbtHelp = new JButton(new ImageIcon("src/resources/hoofdmenu/help.png"));
+        jbtHelp = new JButton(new ImageIcon("src/resources/hoofdmenu/Help.png"));
         jbtHelp.setRolloverIcon(new ImageIcon("src/resources/hoofdmenu/help_h.png"));
         jbtHelp.setBorder(null);
         jbtHelp.setBounds(125, 325, 300, 63);
