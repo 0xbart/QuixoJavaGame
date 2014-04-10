@@ -1,7 +1,7 @@
 package hoofdmenu;
 
-import Afsluiten.SluitSpel;
-import Help.ToonHelp;
+import afsluiten.*;
+import help.*;
 
 import javax.swing.*;
 import java.awt.*;
