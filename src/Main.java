@@ -1,6 +1,6 @@
-import splashscreen.ToonSplashscreen;
+import splashscreen.*;
+
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Created by Bart on 1-4-2014.
@@ -21,10 +21,12 @@ public class Main extends JFrame {
 
          */
 
+        ImageIcon img = new ImageIcon("src/resources/logo.png");
         JFrame spelFrame = new JFrame();
 
         spelFrame.setTitle("Quixo - IPSEN1 - INF1G Groep 4");
         spelFrame.setSize(550, 550);
+        spelFrame.setIconImage(img.getImage());
         spelFrame.setResizable(false);
         spelFrame.setLocationRelativeTo(null);
         spelFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
