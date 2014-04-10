@@ -1,5 +1,7 @@
 package hoofdmenu;
 
+import Afsluiten.SluitSpel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,12 +12,13 @@ import java.awt.event.ActionListener;
  */
 public class Hoofdmenu extends JPanel implements ActionListener{
 
+    private JFrame spelFrame;
     private JButton jbtNieuwSpel, jbtSpelLaden, jbtOpties, jbtHelp, jbtExit;
     private JLabel background;
 
     public Hoofdmenu(JFrame spelFrame) {
 
-        System.out.println("hoofdmenu wordt aangeroepen......");
+        this.spelFrame = spelFrame;
 
         setLayout(null);
 
@@ -72,15 +75,25 @@ public class Hoofdmenu extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == jbtNieuwSpel){
+
             System.out.println("nieuw spel wordt gestart!");
+
         } else if (e.getSource() == jbtSpelLaden){
+
             System.out.println("laad Spel wordt gestart...!");
+
         } else if (e.getSource() == jbtOpties){
+
             System.out.println("Opties wordt gestart...!");
+
         } else if (e.getSource() == jbtHelp) {
+
             System.out.println("help wordt gestart...!");
+
         } else if (e.getSource() == jbtExit) {
-            System.out.println("exit is geklikt!!");
+
+            SluitSpel sluitSpel = new SluitSpel(spelFrame);
+            sluitSpel.run();
         }
     }
 }
