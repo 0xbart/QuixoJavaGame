@@ -2,6 +2,8 @@ package hoofdmenu;
 
 import hoofdmenu.afsluiten.SluitSpel;
 import hoofdmenu.help.ToonHelp;
+import hoofdmenu.laadprofiel.ToonLaadProfiel;
+import hoofdmenu.nieuwprofiel.ToonNieuwProfiel;
 import hoofdmenu.opties.ToonOpties;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
@@ -92,15 +94,15 @@ public class Hoofdmenu extends JPanel implements ActionListener{
             b.printStackTrace();
         }
 
-
-
         if(e.getSource() == jbtNieuwSpel){
 
-            System.out.println("nieuw spel wordt gestart!");
+            ToonNieuwProfiel toonNieuwProfiel = new ToonNieuwProfiel(spelFrame);
+            toonNieuwProfiel.run();
 
         } else if (e.getSource() == jbtSpelLaden){
 
-            System.out.println("laad Spel wordt gestart...!");
+            ToonLaadProfiel toonLaadProfiel = new ToonLaadProfiel(spelFrame);
+            toonLaadProfiel.run();
 
         } else if (e.getSource() == jbtOpties){
 
