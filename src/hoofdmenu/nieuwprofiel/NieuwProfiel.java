@@ -14,7 +14,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
 
     private JFrame spelFrame;
     private JTextField naam_1, naam_2;
-    private JButton ok, cancel;
+    private JButton ok, cancel , exit;
     private JLabel background;
 
     public NieuwProfiel(JFrame spelFrame) {
@@ -28,6 +28,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         add(naam_1);
         add(ok);
         add(cancel);
+        add(exit);
 
         setLayout(new BorderLayout());
         add(background);
@@ -38,17 +39,23 @@ public class NieuwProfiel extends JPanel implements ActionListener {
     }
 
     private void maakButtons() {
-        cancel = new JButton(new ImageIcon("src/resources/buttons/cancel.png"));
-        cancel.setRolloverIcon(new ImageIcon("src/resources/buttons/cancel_h.png"));
+        cancel = new JButton(new ImageIcon("src/resources/buttons/terug.jpg"));
+        cancel.setRolloverIcon(new ImageIcon("src/resources/buttons/terug.jpg"));
         cancel.setBorder(null);
-        cancel.setBounds(100, 420, 150, 51);
+        cancel.setBounds(200, 320, 180, 60);
         cancel.addActionListener(this);
 
-        ok = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
-        ok.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
+        ok = new JButton(new ImageIcon("src/resources/buttons/beginspel.png"));
+        ok.setRolloverIcon(new ImageIcon("src/resources/buttons/beginspel.png"));
         ok.setBorder(null);
-        ok.setBounds(300, 420, 150, 51);
+        ok.setBounds(200, 250, 180, 60);
         ok.addActionListener(this);
+
+        exit = new JButton(new ImageIcon("src/resources/hoofdmenu/exit.png"));
+        exit.setRolloverIcon(new ImageIcon("src/resources/hoofdmenu/exit_h.png"));
+        exit.setBorder(null);
+        exit.setBounds(125, 400, 300, 63);
+        exit.addActionListener(this);
     }
 
     private void maakInput() {
