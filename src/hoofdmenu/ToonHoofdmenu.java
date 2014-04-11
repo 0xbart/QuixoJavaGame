@@ -43,3 +43,6 @@ public class ToonHoofdmenu extends Task {
     }
 
 }
+
+/* Fix voor IntelliJ Joey */
+
