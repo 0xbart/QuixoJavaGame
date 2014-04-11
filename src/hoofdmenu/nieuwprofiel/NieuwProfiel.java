@@ -26,6 +26,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         maakInput();
 
         add(naam_1);
+        add(naam_2);
         add(ok);
         add(cancel);
         add(exit);
@@ -39,16 +40,16 @@ public class NieuwProfiel extends JPanel implements ActionListener {
     }
 
     private void maakButtons() {
-        cancel = new JButton(new ImageIcon("src/resources/buttons/terug.jpg"));
-        cancel.setRolloverIcon(new ImageIcon("src/resources/buttons/terug.jpg"));
+        cancel = new JButton(new ImageIcon("src/resources/buttons/terug.png"));
+        cancel.setRolloverIcon(new ImageIcon("src/resources/buttons/terug.png"));
         cancel.setBorder(null);
-        cancel.setBounds(200, 320, 180, 60);
+        cancel.setBounds(200, 330, 180, 60);
         cancel.addActionListener(this);
 
         ok = new JButton(new ImageIcon("src/resources/buttons/beginspel.png"));
         ok.setRolloverIcon(new ImageIcon("src/resources/buttons/beginspel.png"));
         ok.setBorder(null);
-        ok.setBounds(200, 250, 180, 60);
+        ok.setBounds(200, 260, 180, 60);
         ok.addActionListener(this);
 
         exit = new JButton(new ImageIcon("src/resources/hoofdmenu/exit.png"));
@@ -61,7 +62,10 @@ public class NieuwProfiel extends JPanel implements ActionListener {
     private void maakInput() {
 
         naam_1 = new JTextField();
-        naam_1.setBounds(100, 210, 150, 25);
+        naam_1.setBounds(75, 110, 150, 25);
+
+        naam_2 = new JTextField();
+        naam_2.setBounds(350, 110, 150, 25);
     }
 
     @Override
@@ -76,6 +80,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
 
             System.out.println("OK is geklikt.");
             System.out.println(naam_1.getText());
+            System.out.println(naam_2.getText());
 
         }
     }
