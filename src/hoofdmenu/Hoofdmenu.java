@@ -1,13 +1,19 @@
 package hoofdmenu;
 
-import afsluiten.*;
-import help.*;
-import opties.*;
+import hoofdmenu.afsluiten.SluitSpel;
+import hoofdmenu.help.ToonHelp;
+import hoofdmenu.laadprofiel.ToonLaadProfiel;
+import hoofdmenu.nieuwprofiel.ToonNieuwProfiel;
+import hoofdmenu.opties.ToonOpties;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 /**
  * Created by Bart on 7-4-2014.
@@ -76,13 +82,27 @@ public class Hoofdmenu extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        try
+        {
+            InputStream in = new FileInputStream("src/resources/geluiden/klik.wav" );
+            AudioStream as = new AudioStream(in);
+            AudioPlayer.player.start(as);
+        }
+        catch ( Exception b )
+        {
+            b.printStackTrace();
+        }
+
         if(e.getSource() == jbtNieuwSpel){
 
-            System.out.println("nieuw spel wordt gestart!");
+            ToonNieuwProfiel toonNieuwProfiel = new ToonNieuwProfiel(spelFrame);
+            toonNieuwProfiel.run();
 
         } else if (e.getSource() == jbtSpelLaden){
 
-            System.out.println("laad Spel wordt gestart...!");
+            ToonLaadProfiel toonLaadProfiel = new ToonLaadProfiel(spelFrame);
+            toonLaadProfiel.run();
 
         } else if (e.getSource() == jbtOpties){
 

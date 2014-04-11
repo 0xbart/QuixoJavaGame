@@ -1,17 +1,17 @@
-package opties;
+package hoofdmenu.help;
 
-import utils.Task;
+import utils.*;
 
 import javax.swing.*;
 
 /**
  * Created by Bart on 10-4-2014.
  */
-public class ToonOpties extends Task {
+public class ToonHelp extends Task {
 
     private JFrame spelFrame;
 
-    public ToonOpties(JFrame spelFrame) {
+    public ToonHelp(JFrame spelFrame){
 
         this.spelFrame = spelFrame;
     }
@@ -33,7 +33,8 @@ public class ToonOpties extends Task {
 
     private void execute() {
 
-        spelFrame.setContentPane(new Opties(spelFrame));
+        spelFrame.setContentPane(new Help(spelFrame));
         spelFrame.validate();
     }
+
 }

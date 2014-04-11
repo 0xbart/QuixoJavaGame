@@ -1,17 +1,17 @@
-package help;
+package hoofdmenu.laadprofiel;
 
-import utils.*;
+import utils.Task;
 
 import javax.swing.*;
 
 /**
  * Created by Bart on 10-4-2014.
  */
-public class ToonHelp extends Task {
+public class ToonLaadProfiel extends Task {
 
     private JFrame spelFrame;
 
-    public ToonHelp(JFrame spelFrame){
+    public ToonLaadProfiel(JFrame spelFrame) {
 
         this.spelFrame = spelFrame;
     }
@@ -33,7 +33,7 @@ public class ToonHelp extends Task {
 
     private void execute() {
 
-        spelFrame.setContentPane(new Help(spelFrame));
+        spelFrame.setContentPane(new LaadProfiel(spelFrame));
         spelFrame.validate();
     }
 
