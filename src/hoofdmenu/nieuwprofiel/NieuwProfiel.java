@@ -34,7 +34,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
     }
 
     private void maakAchtergrond() {
-        background = new JLabel(new ImageIcon("src/resources/achtergrond/profiel_bg.png"));
+        background = new JLabel(new ImageIcon("src/resources/achtergrond/menu_bg.png"));
     }
 
     private void maakButtons() {
