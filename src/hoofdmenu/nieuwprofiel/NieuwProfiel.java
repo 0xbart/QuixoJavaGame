@@ -14,7 +14,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
 
     private JFrame spelFrame;
     private JTextField naam_1, naam_2;
-    private JButton ok, cancel , exit;
+    private JButton ok, cancel , exit, rood, zwart, rood1, zwart1;
     private JLabel background;
 
     public NieuwProfiel(JFrame spelFrame) {
@@ -30,6 +30,11 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         add(ok);
         add(cancel);
         add(exit);
+        add(rood);
+        add(rood1);
+        add(zwart);
+        add(zwart1);
+
 
         setLayout(new BorderLayout());
         add(background);
@@ -57,14 +62,40 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         exit.setBorder(null);
         exit.setBounds(125, 400, 300, 63);
         exit.addActionListener(this);
+
+        zwart = new JButton(new ImageIcon("src/resources/buttons/kruisjezwart.png"));
+        zwart.setRolloverIcon(new ImageIcon("src/resources/buttons/kruisjezwart.png"));
+        zwart.setBorder(null);
+        zwart.setBounds(75, 120, 300, 63);
+        zwart.addActionListener(this);
+
+        rood = new JButton(new ImageIcon("src/resources/buttons/rondjerood.png"));
+        rood.setRolloverIcon(new ImageIcon("src/resources/buttons/rondjerood.png"));
+        rood.setBorder(null);
+        rood.setBounds(85, 120, 300, 63);
+        rood.addActionListener(this);
+
+
+        rood1 = new JButton(new ImageIcon("src/resources/buttons/kruisjerood.png"));
+        rood1.setRolloverIcon(new ImageIcon("src/resources/buttons/kruisjerood.png"));
+        rood1.setBorder(null);
+        rood1.setBounds(350, 120, 300, 63);
+        rood1.addActionListener(this);
+
+
+        zwart1 = new JButton(new ImageIcon("src/resources/buttons/rondjezwart.png"));
+        zwart1.setRolloverIcon(new ImageIcon("src/resources/buttons/rondjezwart.png"));
+        zwart1.setBorder(null);
+        zwart1.setBounds(350, 120, 300, 63);
+        zwart1.addActionListener(this);
     }
 
     private void maakInput() {
 
-        naam_1 = new JTextField();
+        naam_1 = new JTextField("Voor hier je naam in");
         naam_1.setBounds(75, 110, 150, 25);
 
-        naam_2 = new JTextField();
+        naam_2 = new JTextField("Voor hier je naam in");
         naam_2.setBounds(350, 110, 150, 25);
     }
 
