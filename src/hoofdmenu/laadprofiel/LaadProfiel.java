@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 public class LaadProfiel extends JPanel implements ActionListener {
 
     private JFrame spelFrame;
-    private JButton cancel, ok;
+    private JButton ok, cancel;
     private JLabel background;
 
     public LaadProfiel(JFrame spelFrame) {
@@ -22,6 +22,9 @@ public class LaadProfiel extends JPanel implements ActionListener {
 
         maakAchtergrond();
         maakButtons();
+
+        add(ok);
+        add(cancel);
 
         setLayout(new BorderLayout());
         add(background);
