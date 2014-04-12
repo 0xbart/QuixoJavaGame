@@ -14,7 +14,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
 
     private JFrame spelFrame;
     private JTextField naam_1, naam_2;
-    private JButton ok, cancel , exit, rood, zwart, rood1, zwart1;
+    private JButton ok, cancel , exit, rood, zwart, rood1, zwart1 ;
     private JLabel background;
 
     public NieuwProfiel(JFrame spelFrame) {
@@ -63,30 +63,30 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         exit.setBounds(125, 400, 300, 63);
         exit.addActionListener(this);
 
-        zwart = new JButton(new ImageIcon("src/resources/buttons/kruisjezwart.png"));
-        zwart.setRolloverIcon(new ImageIcon("src/resources/buttons/kruisjezwart.png"));
+        zwart = new JButton(new ImageIcon("src/resources/buttons/kruiszwart.png"));
+        zwart.setRolloverIcon(new ImageIcon("src/resources/buttons/kruiszwart.png"));
         zwart.setBorder(null);
-        zwart.setBounds(75, 120, 300, 63);
+        zwart.setBounds(75, 150, 40, 40);
         zwart.addActionListener(this);
 
         rood = new JButton(new ImageIcon("src/resources/buttons/rondjerood.png"));
         rood.setRolloverIcon(new ImageIcon("src/resources/buttons/rondjerood.png"));
         rood.setBorder(null);
-        rood.setBounds(85, 120, 300, 63);
+        rood.setBounds(125, 150, 40, 40);
         rood.addActionListener(this);
 
 
         rood1 = new JButton(new ImageIcon("src/resources/buttons/kruisjerood.png"));
         rood1.setRolloverIcon(new ImageIcon("src/resources/buttons/kruisjerood.png"));
         rood1.setBorder(null);
-        rood1.setBounds(350, 120, 300, 63);
+        rood1.setBounds(350, 150, 45, 45);
         rood1.addActionListener(this);
 
 
         zwart1 = new JButton(new ImageIcon("src/resources/buttons/rondjezwart.png"));
         zwart1.setRolloverIcon(new ImageIcon("src/resources/buttons/rondjezwart.png"));
         zwart1.setBorder(null);
-        zwart1.setBounds(350, 120, 300, 63);
+        zwart1.setBounds(400, 150, 45, 45);
         zwart1.addActionListener(this);
     }
 
