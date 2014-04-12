@@ -14,7 +14,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
 
     private JFrame spelFrame;
     private JTextField naam_1, naam_2;
-    private JButton ok, cancel , exit, rood, zwart, rood1, zwart1 ;
+    private JButton ok, cancel , exit, rood, zwart, rood1, zwart1, grijs ;
     private JLabel background;
 
     public NieuwProfiel(JFrame spelFrame) {
@@ -34,6 +34,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         add(rood1);
         add(zwart);
         add(zwart1);
+        add(grijs);
 
 
         setLayout(new BorderLayout());
@@ -45,16 +46,22 @@ public class NieuwProfiel extends JPanel implements ActionListener {
     }
 
     private void maakButtons() {
+        grijs = new JButton(new ImageIcon("src/resources/profiel/logo.png"));
+        grijs.setRolloverIcon(new ImageIcon("src/resources/profiel/logo.png"));
+        grijs.setBorder(null);
+        grijs.setBounds(400, 150, 100, 150);
+        grijs.addActionListener(this);
+
         cancel = new JButton(new ImageIcon("src/resources/buttons/terug.png"));
         cancel.setRolloverIcon(new ImageIcon("src/resources/buttons/terug.png"));
         cancel.setBorder(null);
-        cancel.setBounds(200, 330, 180, 60);
+        cancel.setBounds(180, 330, 180, 60);
         cancel.addActionListener(this);
 
         ok = new JButton(new ImageIcon("src/resources/buttons/beginspel.png"));
         ok.setRolloverIcon(new ImageIcon("src/resources/buttons/beginspel.png"));
         ok.setBorder(null);
-        ok.setBounds(200, 260, 180, 60);
+        ok.setBounds(180, 260, 180, 60);
         ok.addActionListener(this);
 
         exit = new JButton(new ImageIcon("src/resources/hoofdmenu/exit.png"));
@@ -90,6 +97,8 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         zwart1.addActionListener(this);
     }
 
+
+
     private void maakInput() {
 
         naam_1 = new JTextField("Voor hier je naam in");
@@ -115,4 +124,5 @@ public class NieuwProfiel extends JPanel implements ActionListener {
 
         }
     }
+
 }
