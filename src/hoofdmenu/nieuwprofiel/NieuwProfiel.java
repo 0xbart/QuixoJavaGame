@@ -46,11 +46,9 @@ public class NieuwProfiel extends JPanel implements ActionListener {
     }
 
     private void maakButtons() {
-        grijs = new JButton(new ImageIcon("src/resources/profiel/logo.png"));
-        grijs.setRolloverIcon(new ImageIcon("src/resources/profiel/logo.png"));
+        grijs = new JButton(new ImageIcon("src/resources/profiel/profielmakengrijsvlak.png"));
         grijs.setBorder(null);
-        grijs.setBounds(400, 150, 100, 150);
-        grijs.addActionListener(this);
+        grijs.setBounds(50, 66, 450, 330);
 
         cancel = new JButton(new ImageIcon("src/resources/buttons/terug.png"));
         cancel.setRolloverIcon(new ImageIcon("src/resources/buttons/terug.png"));
@@ -86,14 +84,14 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         rood1 = new JButton(new ImageIcon("src/resources/buttons/kruisjerood.png"));
         rood1.setRolloverIcon(new ImageIcon("src/resources/buttons/kruisjerood.png"));
         rood1.setBorder(null);
-        rood1.setBounds(350, 150, 45, 45);
+        rood1.setBounds(330, 150, 45, 45);
         rood1.addActionListener(this);
 
 
         zwart1 = new JButton(new ImageIcon("src/resources/buttons/rondjezwart.png"));
         zwart1.setRolloverIcon(new ImageIcon("src/resources/buttons/rondjezwart.png"));
         zwart1.setBorder(null);
-        zwart1.setBounds(400, 150, 45, 45);
+        zwart1.setBounds(380, 150, 45, 45);
         zwart1.addActionListener(this);
     }
 
@@ -105,7 +103,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         naam_1.setBounds(75, 110, 150, 25);
 
         naam_2 = new JTextField("Voor hier je naam in");
-        naam_2.setBounds(350, 110, 150, 25);
+        naam_2.setBounds(330, 110, 150, 25);
     }
 
     @Override
