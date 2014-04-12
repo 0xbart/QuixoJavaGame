@@ -25,16 +25,17 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         maakButtons();
         maakInput();
 
+//        setLayout(null);
         add(naam_1);
         add(naam_2);
         add(ok);
         add(cancel);
-        add(exit);
-        add(rood);
-        add(rood1);
-        add(zwart);
-        add(zwart1);
-        add(grijs);
+//        add(exit);
+//        add(rood);
+//        add(rood1);
+//        add(zwart);
+//        add(zwart1);
+//        add(grijs);
 
 
         setLayout(new BorderLayout());
@@ -42,31 +43,22 @@ public class NieuwProfiel extends JPanel implements ActionListener {
     }
 
     private void maakAchtergrond() {
-        background = new JLabel(new ImageIcon("src/resources/achtergrond/menu_bg.png"));
+        background = new JLabel(new ImageIcon("src/resources/achtergrond/profiel_bg.png"));
     }
 
     private void maakButtons() {
-        grijs = new JButton(new ImageIcon("src/resources/profiel/profielmakengrijsvlak.png"));
-        grijs.setBorder(null);
-        grijs.setBounds(50, 66, 450, 330);
 
-        cancel = new JButton(new ImageIcon("src/resources/buttons/terug.png"));
-        cancel.setRolloverIcon(new ImageIcon("src/resources/buttons/terug.png"));
+        cancel = new JButton(new ImageIcon("src/resources/buttons/cancel.png"));
+        cancel.setRolloverIcon(new ImageIcon("src/resources/buttons/cancel_h.png"));
         cancel.setBorder(null);
-        cancel.setBounds(180, 330, 180, 60);
+        cancel.setBounds(100, 415, 150, 51);
         cancel.addActionListener(this);
 
-        ok = new JButton(new ImageIcon("src/resources/buttons/beginspel.png"));
-        ok.setRolloverIcon(new ImageIcon("src/resources/buttons/beginspel.png"));
+        ok = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
+        ok.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
         ok.setBorder(null);
-        ok.setBounds(180, 260, 180, 60);
+        ok.setBounds(300, 415, 150, 51);
         ok.addActionListener(this);
-
-        exit = new JButton(new ImageIcon("src/resources/hoofdmenu/exit.png"));
-        exit.setRolloverIcon(new ImageIcon("src/resources/hoofdmenu/exit_h.png"));
-        exit.setBorder(null);
-        exit.setBounds(125, 400, 300, 63);
-        exit.addActionListener(this);
 
         zwart = new JButton(new ImageIcon("src/resources/buttons/kruiszwart.png"));
         zwart.setRolloverIcon(new ImageIcon("src/resources/buttons/kruiszwart.png"));
@@ -95,8 +87,6 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         zwart1.addActionListener(this);
     }
 
-
-
     private void maakInput() {
 
         naam_1 = new JTextField("Voor hier je naam in");
@@ -119,7 +109,6 @@ public class NieuwProfiel extends JPanel implements ActionListener {
             System.out.println("OK is geklikt.");
             System.out.println(naam_1.getText());
             System.out.println(naam_2.getText());
-
         }
     }
 
