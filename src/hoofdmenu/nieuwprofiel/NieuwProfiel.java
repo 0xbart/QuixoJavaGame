@@ -1,6 +1,7 @@
 package hoofdmenu.nieuwprofiel;
 
 import hoofdmenu.ToonHoofdmenu;
+import hoofdmenu.opties.ToonOpties;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +17,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
     private JTextField naam_1, naam_2;
     private JButton ok, cancel , exit, rood, zwart, rood1, zwart1, grijs ;
     private JLabel background;
-
+    private JRadioButton kruisje,rondje, kruisje2, rondje2;
     public NieuwProfiel(JFrame spelFrame) {
 
         this.spelFrame = spelFrame;
@@ -30,12 +31,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         add(naam_2);
         add(ok);
         add(cancel);
-//        add(exit);
-//        add(rood);
-//        add(rood1);
-//        add(zwart);
-//        add(zwart1);
-//        add(grijs);
+
 
 
         setLayout(new BorderLayout());
@@ -85,6 +81,48 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         zwart1.setBorder(null);
         zwart1.setBounds(380, 150, 45, 45);
         zwart1.addActionListener(this);
+
+        /* Jradio buttons deze geven de keuzen voor rondje of kruisje  */
+        JRadioButton kruisje = new JRadioButton();
+        kruisje.setText("Kruisje");
+        kruisje.setBounds(75, 140, 65, 35);
+        kruisje.setBackground( new Color(166,166,166) );
+        JRadioButton rondje = new JRadioButton();
+        rondje.setText("Rondje");
+        rondje.setBackground( new Color(166,166,166) );
+        rondje.setBounds(145, 140, 65, 35);
+
+        JRadioButton kruisje2 = new JRadioButton();
+        kruisje2.setText("Kruisje");
+        kruisje2.setBounds(330, 140, 65, 35);
+        kruisje2.setBackground( new Color(166,166,166) );
+        JRadioButton rondje2 = new JRadioButton();
+        rondje2.setText("Rondje");
+        rondje2.setBackground( new Color(166,166,166) );
+        rondje2.setBounds(400, 140, 65, 35);
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(kruisje);
+        group.add(rondje);
+
+        ButtonGroup group2 = new ButtonGroup();
+        group2.add(kruisje2);
+        group2.add(rondje2);
+
+        ButtonGroup group3 = new ButtonGroup();
+        group3.add(kruisje2);
+        group3.add(kruisje);
+
+        ButtonGroup group4 = new ButtonGroup();
+        group4.add(rondje);
+        group4.add(rondje2);
+
+
+
+        add(kruisje);
+        add(rondje);
+        add(kruisje2);
+        add(rondje2);
     }
 
     private void maakInput() {
@@ -106,9 +144,8 @@ public class NieuwProfiel extends JPanel implements ActionListener {
 
         } else if(e.getSource() == ok){
 
-            System.out.println("OK is geklikt.");
-            System.out.println(naam_1.getText());
-            System.out.println(naam_2.getText());
+            ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame);
+            toonSpelbord.run();
         }
     }
 
