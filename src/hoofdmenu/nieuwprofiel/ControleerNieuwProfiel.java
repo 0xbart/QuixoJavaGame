@@ -1,5 +1,6 @@
 package hoofdmenu.nieuwprofiel;
 
+import spel.ToonSpelbord;
 import utils.Task;
 
 import javax.swing.*;
@@ -53,10 +54,8 @@ public class ControleerNieuwProfiel extends Task {
 
     private void execute() {
 
-        System.out.println("Speler 1: " + strSpelerNaam1);
-        System.out.println("Speler 2: " + strSpelerNaam2);
-        System.out.println("Type speler 1: " + strTypeNaam1);
-        System.out.println("Type speler 2: " + strTypeNaam2);
+        ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame);
+        toonSpelbord.run();
     }
 
 }
