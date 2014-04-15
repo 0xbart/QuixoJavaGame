@@ -180,15 +180,15 @@ public class NieuwProfiel extends JPanel implements ActionListener {
                 String strTypeNaam2 = null;
 
                 if (kruisje.isSelected()) {
-                    strTypeNaam1 = "kruisje";
+                    strTypeNaam1 = "kruis";
                 } else if (rondje.isSelected()) {
-                    strTypeNaam1 = "rondje";
+                    strTypeNaam1 = "rond";
                 }
 
                 if (kruisje2.isSelected()) {
-                    strTypeNaam2 = "kruisje";
+                    strTypeNaam2 = "kruis";
                 } else if (rondje2.isSelected()) {
-                    strTypeNaam2 = "rondje";
+                    strTypeNaam2 = "rond";
                 }
 
                 ControleerNieuwProfiel controleerNieuwProfiel = new ControleerNieuwProfiel(spelFrame, strSpelerNaam1, strSpelerNaam2, strTypeNaam1, strTypeNaam2);

@@ -41,7 +41,7 @@ public class ToonSplashscreen extends Task {
         spelFrame.setContentPane(new Splashscreen(spelFrame));
 
         TimeListener tm = new TimeListener();
-        timer = new Timer(3000, tm);
+        timer = new Timer(300, tm);
         timer.start();
 
         validate = true;

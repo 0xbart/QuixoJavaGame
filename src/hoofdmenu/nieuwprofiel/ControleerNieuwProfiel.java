@@ -36,7 +36,19 @@ public class ControleerNieuwProfiel extends Task {
 
     private boolean validate() {
 
-        return true;
+        boolean validate = false;
+
+        if(strSpelerNaam1.isEmpty() || strSpelerNaam2.isEmpty() || strTypeNaam1 == null || strTypeNaam2 == null) {
+            JOptionPane.showMessageDialog(null, "Niet alle velden zijn ingevuld!", "Oops.. een foutje", JOptionPane.INFORMATION_MESSAGE);
+        } else if(strSpelerNaam1.equals(strSpelerNaam2)){
+            JOptionPane.showMessageDialog(null, "De profielnamen moeten verschillend zijn.", "Oops.. een foutje", JOptionPane.INFORMATION_MESSAGE);
+        } else if(strTypeNaam1.equals(strTypeNaam2)){
+            JOptionPane.showMessageDialog(null, "Het is niet mogelijk om biede met een '"+ strTypeNaam1 + "' te spelen", "Oops.. een foutje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            validate = true;
+        }
+
+        return validate;
     }
 
     private void execute() {
