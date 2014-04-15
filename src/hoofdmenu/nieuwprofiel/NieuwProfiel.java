@@ -171,10 +171,29 @@ public class NieuwProfiel extends JPanel implements ActionListener {
             ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(spelFrame, true);
             toonHoofdmenu.run();
 
-        } else if(e.getSource() == ok){
+        } else {
+            if (e.getSource() == ok) {
 
-            ControleerNieuwProfiel controleerNieuwProfiel = new ControleerNieuwProfiel(spelFrame);
-            controleerNieuwProfiel.run();
+                String strSpelerNaam1 = naam_1.getText();
+                String strSpelerNaam2 = naam_2.getText();
+                String strTypeNaam1 = null;
+                String strTypeNaam2 = null;
+
+                if (kruisje.isSelected()) {
+                    strTypeNaam1 = "kruisje";
+                } else if (rondje.isSelected()) {
+                    strTypeNaam1 = "rondje";
+                }
+
+                if (kruisje2.isSelected()) {
+                    strTypeNaam2 = "kruisje";
+                } else if (rondje2.isSelected()) {
+                    strTypeNaam2 = "rondje";
+                }
+
+                ControleerNieuwProfiel controleerNieuwProfiel = new ControleerNieuwProfiel(spelFrame, strSpelerNaam1, strSpelerNaam2, strTypeNaam1, strTypeNaam2);
+                controleerNieuwProfiel.run();
+            }
         }
     }
 
