@@ -1,9 +1,10 @@
 package spel;
 
 import javax.swing.*;
-
+import java.lang.*;
 import java.awt.*;
-import java.applet.Applet;
+/* import java.awt.GridLayout; */
+
 
 /**
  * Created by Bart on 15-4-2014.
@@ -23,7 +24,10 @@ public class SpelBord extends JPanel {
         maakAchtergrond();
 
         setLayout(new BorderLayout());
+
         add(background);
+
+        /* Vlakken voor de stenen*/
         add(vlak1);
         add(vlak2);
         add(vlak3);
@@ -52,13 +56,15 @@ public class SpelBord extends JPanel {
 
         new Blokje();
         repaint();
+
     }
 
     private void maakAchtergrond(){
         background = new JLabel(new ImageIcon("src/resources/achtergrond/spelveld_bg.png"));
     }
 
-    public class spelbordGridLayout extends Object {
+   public class spelbordGridLayout extends Object {
+
         public void init() {
             setLayout(new GridLayout(5,5)); {
                 vlak1 = new Button ();
