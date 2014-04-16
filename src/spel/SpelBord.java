@@ -60,7 +60,7 @@ public class SpelBord extends JPanel {
 
     public class spelbordGridLayout extends Object {
         public void init() {
-            setLayout(new GridLayout(5,2)); {
+            setLayout(new GridLayout(5,5)); {
                 vlak1 = new Button ();
                 vlak2 = new Button ();
                 vlak3 = new Button ();
