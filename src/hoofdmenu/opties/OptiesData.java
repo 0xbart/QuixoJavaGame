@@ -1,9 +1,14 @@
+package hoofdmenu.opties;
+
 /**
  * Created by Bart on 16-4-2014.
  */
 public class OptiesData {
 
-    private String strGeluidAchtergrondMenu, strGeluidAchtergrondSpel, strGeluidMenu, strGeluidSpel;
+    private String strGeluidAchtergrondMenu;
+    private String strGeluidAchtergrondSpel;
+    private String strGeluidMenu;
+    private String strGeluidSpel;
 
     public String getStrGeluidAchtergrondMenu() {
         return strGeluidAchtergrondMenu;
