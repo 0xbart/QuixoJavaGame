@@ -19,7 +19,7 @@ public class SpelBord extends JPanel {
         this.spelFrame = spelFrame;
 
         maakAchtergrond();
-        init();
+        Jbuttons();
         setLayout(new BorderLayout());
         add(background);
         add(vlak1);
@@ -35,19 +35,13 @@ public class SpelBord extends JPanel {
         background = new JLabel(new ImageIcon("src/resources/achtergrond/spelveld_bg.png"));
     }
 
-            public void init() {
-                vlak1 = new JButton();
+            public void Jbuttons() {
+                vlak1 = new JButton("test22222");
                 vlak1.setBorder(null);
-                vlak1.setBounds(100, 415, 150, 51);
-                vlak2 = new JButton();
+
+                vlak2 = new JButton("test");
                 vlak2.setBorder(null);
-                vlak2.setBounds(10, 415, 150, 51);
 
-
-            ok = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
-            ok.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
-            ok.setBorder(null);
-            ok.setBounds(300, 415, 150, 51);
 
             }
 
