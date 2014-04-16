@@ -50,4 +50,6 @@ public class SpelBord extends JPanel {
             add(blokken[i]);
         }
     }
+
+
 }
