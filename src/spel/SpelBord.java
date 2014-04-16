@@ -9,7 +9,7 @@ import java.awt.*;
 public class SpelBord extends JPanel {
 
     private JFrame spelFrame;
-    private JLabel background;
+    private JLabel background, help, menu;
     private JLabel[] blokken = new JLabel[25];
 
     private BorderLayout borderLayout = new BorderLayout(5,5);
@@ -20,7 +20,12 @@ public class SpelBord extends JPanel {
 
         maakAchtergrond();
         maakButtons();
+        maakHelp();
+        maakMenu();
         toevoegenButtons();
+
+        add(help);
+        add(menu);
 
         setLayout(new BorderLayout());
         add(background);
@@ -28,6 +33,18 @@ public class SpelBord extends JPanel {
 
     private void maakAchtergrond(){
         background = new JLabel(new ImageIcon("src/resources/achtergrond/spelveld_bg.png"));
+    }
+
+    private void maakHelp() {
+        help = new JLabel(new ImageIcon("src/resources/buttons/help.png"));
+        help.setBounds(495, 10, 40, 40);
+        help.setBorder(null);
+    }
+
+    private void maakMenu() {
+       menu = new JLabel(new ImageIcon("src/resources/buttons/menu.png"));
+       menu.setBounds(15, 468, 121, 48);
+       menu.setBorder(null);
     }
 
     private void maakButtons() {
