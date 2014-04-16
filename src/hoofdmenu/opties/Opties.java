@@ -1,7 +1,5 @@
 package hoofdmenu.opties;
 
-import utils.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,7 +11,12 @@ import java.awt.event.ActionListener;
 public class Opties extends JPanel implements ActionListener{
 
     private String[] jcbKeuzes = {"ja", "nee"};
-    private String[] jcbKeuzesMuis = {"Linkshandig", "Rechtshandig"};
+    private String[] jcbKeuzesMuis = {"linkshandig", "rechtshandig"};
+    private String strGeluidAchtergrondMenu = "nee";
+    private String strGeluidAchtergrondSpel = "nee";
+    private String strGeluidMenu = "nee";
+    private String strGeluidSpel = "nee";
+    private String strMuis = "linkshandig";
 
     private JFrame spelFrame;
     private JComboBox achtergrond_menu, achtergrond_spel, geluid_menu, geluid_spel, muis;
@@ -90,12 +93,32 @@ public class Opties extends JPanel implements ActionListener{
         muis.setForeground(new Color(107,54,31));
     }
 
+    public String getStrGeluidAchtergrondMenu() {
+        return strGeluidAchtergrondMenu;
+    }
+
+    public String getStrGeluidAchtergrondSpel() {
+        return strGeluidAchtergrondSpel;
+    }
+
+    public String getStrGeluidMenu() {
+        return strGeluidMenu;
+    }
+
+    public String getStrGeluidSpel() {
+        return strGeluidSpel;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        Computer c = new Computer();
-        System.out.println(c.getFILEPATH());
-        //OpslaanOpties opslaanOpties = new OpslaanOpties(spelFrame);
-        //opslaanOpties.run();
+        strGeluidAchtergrondMenu = (String) achtergrond_menu.getSelectedItem();
+        strGeluidAchtergrondSpel = (String) achtergrond_spel.getSelectedItem();
+        strGeluidMenu = (String) geluid_menu.getSelectedItem();
+        strGeluidSpel = (String) geluid_spel.getSelectedItem();
+        strMuis = (String) muis.getSelectedItem();
+
+        OpslaanOpties opslaanOpties = new OpslaanOpties(spelFrame, strGeluidAchtergrondMenu, strGeluidAchtergrondSpel, strGeluidMenu, strGeluidSpel);
+        opslaanOpties.run();
     }
 }
