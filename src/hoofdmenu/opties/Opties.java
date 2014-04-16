@@ -93,20 +93,36 @@ public class Opties extends JPanel implements ActionListener{
         muis.setForeground(new Color(107,54,31));
     }
 
+    public String getStrGeluidAchtergrondSpel() {
+        return strGeluidAchtergrondSpel;
+    }
+
+    public void setStrGeluidAchtergrondSpel(String strGeluidAchtergrondSpel) {
+        this.strGeluidAchtergrondSpel = strGeluidAchtergrondSpel;
+    }
+
     public String getStrGeluidAchtergrondMenu() {
         return strGeluidAchtergrondMenu;
     }
 
-    public String getStrGeluidAchtergrondSpel() {
-        return strGeluidAchtergrondSpel;
+    public void setStrGeluidAchtergrondMenu(String strGeluidAchtergrondMenu) {
+        this.strGeluidAchtergrondMenu = strGeluidAchtergrondMenu;
     }
 
     public String getStrGeluidMenu() {
         return strGeluidMenu;
     }
 
+    public void setStrGeluidMenu(String strGeluidMenu) {
+        this.strGeluidMenu = strGeluidMenu;
+    }
+
     public String getStrGeluidSpel() {
         return strGeluidSpel;
+    }
+
+    public void setStrGeluidSpel(String strGeluidSpel) {
+        this.strGeluidSpel = strGeluidSpel;
     }
 
     @Override
