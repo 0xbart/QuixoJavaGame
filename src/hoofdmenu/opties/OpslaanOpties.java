@@ -44,14 +44,13 @@ public class OpslaanOpties extends Task {
         String filePath = c.getFILEPATH() + "opties.bin";
 
         try {
-            DataOutputStream output = new DataOutputStream(new FileOutputStream(filePath));
-            output.writeUTF(achtergrond_menu);
-            output.writeUTF(achtergrond_spel);
-            output.writeUTF(geluid_menu);
-            output.writeUTF(geluid_spel);
+            PrintWriter output = new PrintWriter(filePath);
+            output.println(achtergrond_menu);
+            output.println(achtergrond_spel);
+            output.println(geluid_menu);
+            output.println(geluid_spel);
+            output.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
 

@@ -1,9 +1,14 @@
 package hoofdmenu.opties;
 
+import utils.Computer;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 /**
  * Created by Bart on 10-4-2014.
@@ -12,8 +17,6 @@ public class Opties extends JPanel implements ActionListener{
 
     private String[] jcbKeuzes = {"ja", "nee"};
     private String[] jcbKeuzesMuis = {"linkshandig", "rechtshandig"};
-
-    OptiesData optiesData = new OptiesData();
 
     private JFrame spelFrame;
     private JComboBox achtergrond_menu, achtergrond_spel, geluid_menu, geluid_spel, muis;
@@ -27,6 +30,7 @@ public class Opties extends JPanel implements ActionListener{
         maakAchtergrond();
         maakCombo();
         maakComboMuis();
+        maakComboFile();
         maakButton();
 
         setLayout(null);
@@ -61,28 +65,24 @@ public class Opties extends JPanel implements ActionListener{
         achtergrond_menu.setBounds(380, 130, 75, 25);
         achtergrond_menu.setBackground(new Color(130,128,122));
         achtergrond_menu.setForeground(new Color(107,54,31));
-        achtergrond_menu.setSelectedItem(optiesData.getStrGeluidAchtergrondMenu());
 
         achtergrond_spel = new JComboBox(jcbKeuzes);
         achtergrond_spel.setBorder(null);
         achtergrond_spel.setBounds(380, 170, 75, 25);
         achtergrond_spel.setBackground(new Color(130,128,122));
         achtergrond_spel.setForeground(new Color(107,54,31));
-        achtergrond_spel.setSelectedItem(optiesData.getStrGeluidAchtergrondSpel());
 
         geluid_menu = new JComboBox(jcbKeuzes);
         geluid_menu.setBorder(null);
         geluid_menu.setBounds(380, 210, 75, 25);
         geluid_menu.setBackground(new Color(130,128,122));
         geluid_menu.setForeground(new Color(107,54,31));
-        geluid_menu.setSelectedItem(optiesData.getStrGeluidMenu());
 
         geluid_spel = new JComboBox(jcbKeuzes);
         geluid_spel.setBorder(null);
         geluid_spel.setBounds(380, 250, 75, 25);
         geluid_spel.setBackground(new Color(130,128,122));
         geluid_spel.setForeground(new Color(107,54,31));
-        geluid_spel.setSelectedItem(optiesData.getStrGeluidSpel());
     }
 
     private void maakComboMuis(){
@@ -94,6 +94,26 @@ public class Opties extends JPanel implements ActionListener{
         muis.setForeground(new Color(107,54,31));
     }
 
+    private void maakComboFile() {
+
+        Computer c = new Computer();
+        String filePath = c.getFILEPATH() + "opties.bin";
+
+
+        File file = new File(filePath);
+        Scanner input = null;
+
+        try {
+            input = new Scanner(file);
+            achtergrond_menu.setSelectedItem(input.next());
+            achtergrond_spel.setSelectedItem(input.next());
+            geluid_menu.setSelectedItem(input.next());
+            geluid_spel.setSelectedItem(input.next());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -102,12 +122,7 @@ public class Opties extends JPanel implements ActionListener{
         String strGeluidMenu = (String) geluid_menu.getSelectedItem();
         String strGeluidSpel = (String) geluid_spel.getSelectedItem();
 
-        optiesData.setStrGeluidAchtergrondMenu(strGeluidAchtergrondMenu);
-        optiesData.setStrGeluidAchtergrondSpel(strGeluidAchtergrondSpel);
-        optiesData.setStrGeluidMenu(strGeluidMenu);
-        optiesData.setStrGeluidSpel(strGeluidSpel);
-
-        OpslaanOpties opslaanOpties = new OpslaanOpties(spelFrame, optiesData.getStrGeluidAchtergrondMenu(), optiesData.getStrGeluidAchtergrondSpel(), optiesData.getStrGeluidMenu(), optiesData.getStrGeluidSpel());
+        OpslaanOpties opslaanOpties = new OpslaanOpties(spelFrame, strGeluidAchtergrondMenu, strGeluidAchtergrondSpel, strGeluidMenu, strGeluidSpel);
         opslaanOpties.run();
     }
 }
