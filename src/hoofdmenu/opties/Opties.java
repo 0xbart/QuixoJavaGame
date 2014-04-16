@@ -94,9 +94,7 @@ public class Opties extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         Computer c = new Computer();
-        String filePath = c.getHOMEDIR() + c.getSP() + "src" + c.getSP() + "file" + c.getSP();
-
-        System.out.println(filePath);
+        System.out.println(c.getFILEPATH());
         //OpslaanOpties opslaanOpties = new OpslaanOpties(spelFrame);
         //opslaanOpties.run();
     }

@@ -12,12 +12,8 @@ public class Computer {
     private String SP = "/";
     private String DISTRUBUTION = "Linux";
 
-    public String getHOMEDIR() {
-        return HOMEDIR;
-    }
-
-    public String getSP() {
-        return SP;
+    public String getFILEPATH() {
+        return HOMEDIR + SP + "src" + SP + "file" + SP;
     }
 
     /**
