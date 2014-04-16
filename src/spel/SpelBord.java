@@ -1,12 +1,17 @@
 package spel;
 
+import hoofdmenu.help.ToonHelp;
+import hoofdmenu.opties.ToonOpties;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * Created by Bart on 15-4-2014.
  */
-public class SpelBord extends JPanel {
+public class SpelBord extends JPanel implements MouseListener {
 
     private JFrame spelFrame;
     private JLabel background, help, menu;
@@ -39,12 +44,14 @@ public class SpelBord extends JPanel {
         help = new JLabel(new ImageIcon("src/resources/buttons/help.png"));
         help.setBounds(495, 10, 40, 40);
         help.setBorder(null);
+        help.addMouseListener(this);
     }
 
     private void maakMenu() {
        menu = new JLabel(new ImageIcon("src/resources/buttons/menu.png"));
        menu.setBounds(15, 468, 121, 48);
        menu.setBorder(null);
+       menu.addMouseListener(this);
     }
 
     private void maakButtons() {
@@ -69,4 +76,31 @@ public class SpelBord extends JPanel {
     }
 
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        ToonHelp toonHelp = new ToonHelp(spelFrame);
+        toonHelp.run();
+        ToonOpties toonOpties = new ToonOpties(spelFrame);
+        toonOpties.run();
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }
