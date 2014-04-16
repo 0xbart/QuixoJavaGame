@@ -9,7 +9,7 @@ public class Profiel {
     private String strSpeler2;
     private String strTypeSpeler1;
     private String strTypeSpeler2;
-    private int spelData[] = {
+    private int [] spelData = {
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
