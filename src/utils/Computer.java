@@ -8,15 +8,20 @@ import java.io.IOException;
  */
 public class Computer {
 
-    private static String HOMEDIR;
-    private static String SP = "/";
+    private String HOMEDIR;
+    private String SP = "/";
+    private String DISTRUBUTION = "Linux";
+
+    public String getHOMEDIR() {
+        return HOMEDIR;
+    }
 
     /**
         Linux => /
         Windows => \
      */
 
-    public static void Computer(){
+    public Computer(){
 
         File currentDirectory = new File(new File(".").getAbsolutePath());
 
@@ -30,10 +35,8 @@ public class Computer {
         {
             //Windows applicatie
             SP = "\\";
+            DISTRUBUTION = "Windows";
         }
-
-        if(SP == "/") { System.out.println("lINUX DISTRIBUTIE GESELECTEERD"); }
-        if(SP == "\\") { System.out.println("WINDOWS DISTRIBUTIE GESELECTEERD"); }
 
     }
 

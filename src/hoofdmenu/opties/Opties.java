@@ -1,7 +1,5 @@
 package hoofdmenu.opties;
 
-import hoofdmenu.ToonHoofdmenu;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -93,7 +91,8 @@ public class Opties extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(spelFrame, true);
-        toonHoofdmenu.run();
+
+        //OpslaanOpties opslaanOpties = new OpslaanOpties(spelFrame);
+        //opslaanOpties.run();
     }
 }

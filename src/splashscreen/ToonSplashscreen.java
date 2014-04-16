@@ -33,6 +33,7 @@ public class ToonSplashscreen extends Task {
 
     private boolean validate() {
 
+        new Computer();
         return true;
     }
 
