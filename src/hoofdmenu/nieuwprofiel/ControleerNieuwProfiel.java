@@ -1,5 +1,6 @@
 package hoofdmenu.nieuwprofiel;
 
+import profiel.Profiel;
 import spel.ToonSpelbord;
 import utils.Task;
 
@@ -53,6 +54,12 @@ public class ControleerNieuwProfiel extends Task {
     }
 
     private void execute() {
+
+        Profiel p = new Profiel();
+        p.setStrSpeler1(strSpelerNaam1);
+        p.setStrSpeler2(strSpelerNaam2);
+        p.setStrTypeSpeler1(strTypeNaam1);
+        p.setStrTypeSpeler2(strTypeNaam2);
 
         ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame);
         toonSpelbord.run();
