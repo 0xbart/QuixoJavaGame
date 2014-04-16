@@ -13,7 +13,7 @@ public class SpelBord extends JPanel {
     protected Graphics g2d;
     private JFrame spelFrame;
     private JLabel background;
-    private JButton ok, vlak1,vlak2;
+    private JButton vlak1,vlak2;
     public SpelBord(JFrame spelFrame) {
 
         this.spelFrame = spelFrame;
@@ -36,11 +36,12 @@ public class SpelBord extends JPanel {
     }
 
             public void Jbuttons() {
+                setLayout(new GridLayout(5,5));
                 vlak1 = new JButton("test22222");
                 vlak1.setBorder(null);
-
-                vlak2 = new JButton("test");
-                vlak2.setBorder(null);
+                vlak1.setBounds(100, 415, 150, 51);
+                vlak2 = new JButton("test11");
+                vlak2.setBounds(100, 415, 50, 51);
 
 
             }
