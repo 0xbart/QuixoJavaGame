@@ -1,4 +1,3 @@
-import hoofdmenu.opties.OptiesData;
 import splashscreen.ToonSplashscreen;
 import utils.Computer;
 import utils.Task;

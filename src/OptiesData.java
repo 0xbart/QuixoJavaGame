@@ -1,5 +1,3 @@
-package hoofdmenu.opties;
-
 /**
  * Created by Bart on 16-4-2014.
  */
