@@ -1,60 +1,72 @@
 package spel;
 
 import javax.swing.*;
-
 import java.awt.*;
-import java.applet.Applet;
 
 /**
  * Created by Bart on 15-4-2014.
  */
 public class SpelBord extends JPanel {
 
-    protected Graphics g2d;
     private JFrame spelFrame;
-    private JLabel background;
-    private JButton vlak1,vlak2;
+    private JLabel background, help, menu;
+    private JLabel[] blokken = new JLabel[25];
+
+    private BorderLayout borderLayout = new BorderLayout(5,5);
+
     public SpelBord(JFrame spelFrame) {
 
         this.spelFrame = spelFrame;
 
         maakAchtergrond();
-        Jbuttons();
+        maakButtons();
+        maakHelp();
+        maakMenu();
+        toevoegenButtons();
+
+        add(help);
+        add(menu);
+
         setLayout(new BorderLayout());
         add(background);
-        add(vlak1);
-        add(vlak2);
-
-        /*
-        new Blokje();
-        repaint();
-        */
     }
 
     private void maakAchtergrond(){
         background = new JLabel(new ImageIcon("src/resources/achtergrond/spelveld_bg.png"));
     }
 
-            public void Jbuttons() {
-                setLayout(new GridLayout(5,5));
-                vlak1 = new JButton("test22222");
-                vlak1.setBorder(null);
-                vlak1.setBounds(100, 415, 150, 51);
-                vlak2 = new JButton("test11");
-                vlak2.setBounds(100, 415, 50, 51);
-
-
-            }
-
-
-
-
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        this.g2d = g;
-
-        repaint();
+    private void maakHelp() {
+        help = new JLabel(new ImageIcon("src/resources/buttons/help.png"));
+        help.setBounds(495, 10, 40, 40);
+        help.setBorder(null);
     }
+
+    private void maakMenu() {
+       menu = new JLabel(new ImageIcon("src/resources/buttons/menu.png"));
+       menu.setBounds(15, 468, 121, 48);
+       menu.setBorder(null);
+    }
+
+    private void maakButtons() {
+
+        int c = 0;
+
+        for(int i = 0; i < 5; i++){
+            for(int j = 0; j < 5; j++){
+                blokken[c] = new JLabel(new ImageIcon("src/resources/spel/1.png"));
+                blokken[c].setBounds(130 + (j*57), 148 + (i*57), 57, 57);
+                blokken[c].setBorder(null);
+                c++;
+            }
+        }
+    }
+
+    private void toevoegenButtons() {
+
+        for(int i = 0; i < 25; i++){
+            add(blokken[i]);
+        }
+    }
+
+
 }
