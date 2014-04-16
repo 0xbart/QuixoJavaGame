@@ -5,6 +5,7 @@ import utils.Computer;
 import utils.Task;
 
 import javax.swing.*;
+import java.io.*;
 
 /**
  * Created by Bart on 16-4-2014.
@@ -13,6 +14,8 @@ public class OpslaanOpties extends Task {
 
     private JFrame spelFrame;
     private String achtergrond_menu, achtergrond_spel, geluid_menu, geluid_spel;
+
+    private String[] optiesData = {achtergrond_menu, achtergrond_spel, geluid_menu, geluid_spel};
 
     public OpslaanOpties(JFrame spelFrame, String achtergrond_menu, String achtergrond_spel, String geluid_menu, String geluid_spel) {
 
@@ -38,9 +41,31 @@ public class OpslaanOpties extends Task {
         boolean validate = false;
 
         Computer c = new Computer();
-        String filePath = c.getFILEPATH() + "opties.db";
+        String filePath = c.getFILEPATH() + "opties.bin";
 
-//        FileOutputStream fos = new FileOutputStream("file.db");
+        try {
+            DataOutputStream output = new DataOutputStream(new FileOutputStream(filePath));
+            output.writeUTF(achtergrond_menu);
+            output.writeUTF(achtergrond_spel);
+            output.writeUTF(geluid_menu);
+            output.writeUTF(geluid_spel);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            DataInputStream input = new DataInputStream(new FileInputStream(filePath));
+            System.out.println(input.readUTF());
+            System.out.println(input.readUTF());
+            System.out.println(input.readUTF());
+            System.out.println(input.readUTF());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return validate;
     }
