@@ -1,5 +1,3 @@
-import splashscreen.*;
-
 import javax.swing.*;
 
 /**
@@ -32,8 +30,8 @@ public class Main extends JFrame {
         spelFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         spelFrame.setLayout(null);
 
-        ToonSplashscreen toonSplashscreen = new ToonSplashscreen(spelFrame);
-        toonSplashscreen.run();
+        Start start = new Start(spelFrame);
+        start.run();
 
         spelFrame.setVisible(true);
 

@@ -55,18 +55,6 @@ public class OpslaanOpties extends Task {
             e.printStackTrace();
         }
 
-        try{
-            DataInputStream input = new DataInputStream(new FileInputStream(filePath));
-            System.out.println(input.readUTF());
-            System.out.println(input.readUTF());
-            System.out.println(input.readUTF());
-            System.out.println(input.readUTF());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         return validate;
     }
 
