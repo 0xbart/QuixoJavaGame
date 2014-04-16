@@ -16,6 +16,10 @@ public class Computer {
         return HOMEDIR;
     }
 
+    public String getSP() {
+        return SP;
+    }
+
     /**
         Linux => /
         Windows => \

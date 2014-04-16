@@ -1,5 +1,7 @@
 package hoofdmenu.opties;
 
+import utils.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -91,7 +93,10 @@ public class Opties extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        Computer c = new Computer();
+        String filePath = c.getHOMEDIR() + c.getSP() + "src" + c.getSP() + "file" + c.getSP();
 
+        System.out.println(filePath);
         //OpslaanOpties opslaanOpties = new OpslaanOpties(spelFrame);
         //opslaanOpties.run();
     }
