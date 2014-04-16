@@ -12,11 +12,8 @@ public class Opties extends JPanel implements ActionListener{
 
     private String[] jcbKeuzes = {"ja", "nee"};
     private String[] jcbKeuzesMuis = {"linkshandig", "rechtshandig"};
-    private String strGeluidAchtergrondMenu = "nee";
-    private String strGeluidAchtergrondSpel = "nee";
-    private String strGeluidMenu = "nee";
-    private String strGeluidSpel = "nee";
-    private String strMuis = "linkshandig";
+
+    OptiesData optiesData = new OptiesData();
 
     private JFrame spelFrame;
     private JComboBox achtergrond_menu, achtergrond_spel, geluid_menu, geluid_spel, muis;
@@ -64,24 +61,28 @@ public class Opties extends JPanel implements ActionListener{
         achtergrond_menu.setBounds(380, 130, 75, 25);
         achtergrond_menu.setBackground(new Color(130,128,122));
         achtergrond_menu.setForeground(new Color(107,54,31));
+        achtergrond_menu.setSelectedItem(optiesData.getStrGeluidAchtergrondMenu());
 
         achtergrond_spel = new JComboBox(jcbKeuzes);
         achtergrond_spel.setBorder(null);
         achtergrond_spel.setBounds(380, 170, 75, 25);
         achtergrond_spel.setBackground(new Color(130,128,122));
         achtergrond_spel.setForeground(new Color(107,54,31));
+        achtergrond_spel.setSelectedItem(optiesData.getStrGeluidAchtergrondSpel());
 
         geluid_menu = new JComboBox(jcbKeuzes);
         geluid_menu.setBorder(null);
         geluid_menu.setBounds(380, 210, 75, 25);
         geluid_menu.setBackground(new Color(130,128,122));
         geluid_menu.setForeground(new Color(107,54,31));
+        geluid_menu.setSelectedItem(optiesData.getStrGeluidMenu());
 
         geluid_spel = new JComboBox(jcbKeuzes);
         geluid_spel.setBorder(null);
         geluid_spel.setBounds(380, 250, 75, 25);
         geluid_spel.setBackground(new Color(130,128,122));
         geluid_spel.setForeground(new Color(107,54,31));
+        geluid_spel.setSelectedItem(optiesData.getStrGeluidSpel());
     }
 
     private void maakComboMuis(){
@@ -93,48 +94,20 @@ public class Opties extends JPanel implements ActionListener{
         muis.setForeground(new Color(107,54,31));
     }
 
-    public String getStrGeluidAchtergrondSpel() {
-        return strGeluidAchtergrondSpel;
-    }
-
-    public void setStrGeluidAchtergrondSpel(String strGeluidAchtergrondSpel) {
-        this.strGeluidAchtergrondSpel = strGeluidAchtergrondSpel;
-    }
-
-    public String getStrGeluidAchtergrondMenu() {
-        return strGeluidAchtergrondMenu;
-    }
-
-    public void setStrGeluidAchtergrondMenu(String strGeluidAchtergrondMenu) {
-        this.strGeluidAchtergrondMenu = strGeluidAchtergrondMenu;
-    }
-
-    public String getStrGeluidMenu() {
-        return strGeluidMenu;
-    }
-
-    public void setStrGeluidMenu(String strGeluidMenu) {
-        this.strGeluidMenu = strGeluidMenu;
-    }
-
-    public String getStrGeluidSpel() {
-        return strGeluidSpel;
-    }
-
-    public void setStrGeluidSpel(String strGeluidSpel) {
-        this.strGeluidSpel = strGeluidSpel;
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        strGeluidAchtergrondMenu = (String) achtergrond_menu.getSelectedItem();
-        strGeluidAchtergrondSpel = (String) achtergrond_spel.getSelectedItem();
-        strGeluidMenu = (String) geluid_menu.getSelectedItem();
-        strGeluidSpel = (String) geluid_spel.getSelectedItem();
-        strMuis = (String) muis.getSelectedItem();
+        String strGeluidAchtergrondMenu = (String) achtergrond_menu.getSelectedItem();
+        String strGeluidAchtergrondSpel = (String) achtergrond_spel.getSelectedItem();
+        String strGeluidMenu = (String) geluid_menu.getSelectedItem();
+        String strGeluidSpel = (String) geluid_spel.getSelectedItem();
 
-        OpslaanOpties opslaanOpties = new OpslaanOpties(spelFrame, strGeluidAchtergrondMenu, strGeluidAchtergrondSpel, strGeluidMenu, strGeluidSpel);
+        optiesData.setStrGeluidAchtergrondMenu(strGeluidAchtergrondMenu);
+        optiesData.setStrGeluidAchtergrondSpel(strGeluidAchtergrondSpel);
+        optiesData.setStrGeluidMenu(strGeluidMenu);
+        optiesData.setStrGeluidSpel(strGeluidSpel);
+
+        OpslaanOpties opslaanOpties = new OpslaanOpties(spelFrame, optiesData.getStrGeluidAchtergrondMenu(), optiesData.getStrGeluidAchtergrondSpel(), optiesData.getStrGeluidMenu(), optiesData.getStrGeluidSpel());
         opslaanOpties.run();
     }
 }

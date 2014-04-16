@@ -1,4 +1,4 @@
-import hoofdmenu.opties.Opties;
+import hoofdmenu.opties.OptiesData;
 import splashscreen.ToonSplashscreen;
 import utils.Computer;
 import utils.Task;
@@ -36,14 +36,14 @@ public class Start extends Task {
         Computer c = new Computer();
         String filePath = c.getFILEPATH() + "opties.bin";
 
-        Opties opties = new Opties(spelFrame);
+        OptiesData optiesData = new OptiesData();
 
         try{
             DataInputStream input = new DataInputStream(new FileInputStream(filePath));
-            opties.setStrGeluidAchtergrondMenu(input.readUTF());
-            opties.setStrGeluidAchtergrondSpel(input.readUTF());
-            opties.setStrGeluidMenu(input.readUTF());
-            opties.setStrGeluidSpel(input.readUTF());
+            optiesData.setStrGeluidAchtergrondMenu(input.readUTF());
+            optiesData.setStrGeluidAchtergrondSpel(input.readUTF());
+            optiesData.setStrGeluidMenu(input.readUTF());
+            optiesData.setStrGeluidSpel(input.readUTF());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

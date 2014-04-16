@@ -38,7 +38,7 @@ public class OpslaanOpties extends Task {
 
     private boolean validate() {
 
-        boolean validate = false;
+        boolean validate = true;
 
         Computer c = new Computer();
         String filePath = c.getFILEPATH() + "opties.bin";
