@@ -19,9 +19,16 @@ public class SpelBord extends JPanel implements MouseListener {
 
     private BorderLayout borderLayout = new BorderLayout(5,5);
 
+    public static boolean checkIngame = true;
+
+    public static boolean getCheckIngame() {
+        return checkIngame;
+    }
+
     public SpelBord(JFrame spelFrame) {
 
         this.spelFrame = spelFrame;
+
 
         maakAchtergrond();
         maakButtons();
@@ -52,6 +59,7 @@ public class SpelBord extends JPanel implements MouseListener {
        menu.setBounds(15, 468, 121, 48);
        menu.setBorder(null);
        menu.addMouseListener(this);
+
     }
 
     private void maakButtons() {
@@ -96,6 +104,7 @@ public class SpelBord extends JPanel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
+
 
     }
 
