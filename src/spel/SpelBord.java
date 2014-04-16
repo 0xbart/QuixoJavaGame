@@ -34,6 +34,6 @@ public class SpelBord extends JPanel {
         super.paintComponent(g);
         this.g2d = g;
 
-        this.repaint();
+        repaint();
     }
 }
