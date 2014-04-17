@@ -1,7 +1,7 @@
 package spel;
 
-import hoofdmenu.help.ToonHelp;
-import hoofdmenu.opties.ToonOpties;
+import spel.ingamehelp.ToonIngameHelp;
+import spel.opties.ToonIngameOpties;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,14 +16,6 @@ public class SpelBord extends JPanel implements MouseListener {
     private JFrame spelFrame;
     private JLabel background, help, menu;
     private JLabel[] blokken = new JLabel[25];
-
-    private BorderLayout borderLayout = new BorderLayout(5,5);
-
-    public static boolean checkIngame = true;
-
-    public static boolean getCheckIngame() {
-        return checkIngame;
-    }
 
     public SpelBord(JFrame spelFrame) {
 
@@ -87,6 +79,16 @@ public class SpelBord extends JPanel implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
 
+        if(e.getSource() == help){
+            ToonIngameHelp toonIngameHelp = new ToonIngameHelp(spelFrame);
+            toonIngameHelp.run();
+        }
+
+        if(e.getSource() == menu){
+            ToonIngameOpties toonIngameOpties = new ToonIngameOpties(spelFrame);
+            toonIngameOpties.run();
+        }
+
     }
 
     @Override
@@ -96,10 +98,8 @@ public class SpelBord extends JPanel implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        ToonHelp toonHelp = new ToonHelp(spelFrame);
-        toonHelp.run();
-        ToonOpties toonOpties = new ToonOpties(spelFrame);
-        toonOpties.run();
+
+
     }
 
     @Override

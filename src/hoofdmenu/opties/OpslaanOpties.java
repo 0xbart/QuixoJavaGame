@@ -1,15 +1,12 @@
 package hoofdmenu.opties;
 
 import hoofdmenu.ToonHoofdmenu;
-import spel.SpelBord;
-import spel.ToonSpelbord;
 import utils.Computer;
 import utils.Task;
 
 import javax.swing.*;
-import java.io.*;
-
-import static java.lang.Integer.*;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 /**
  * Created by Bart on 16-4-2014.
@@ -63,19 +60,9 @@ public class OpslaanOpties extends Task {
     }
 
     private void execute() {
-        if(SpelBord.getCheckIngame()){
-            ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame);
-            toonSpelbord.run();
-        } else {
-            ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(spelFrame, true);
-            toonHoofdmenu.run();
-        }
 
-
-
-
+        ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(spelFrame, true);
+        toonHoofdmenu.run();
 
     }
-
-
 }
