@@ -1,5 +1,7 @@
 package profiel;
 
+import spel.SpelData;
+
 /**
  * Created by Bart on 10-4-2014.
  */
@@ -16,6 +18,8 @@ public class Profiel {
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0
     };
+
+
 
     public String getStrSpeler1() {
         return strSpeler1;
@@ -53,7 +57,5 @@ public class Profiel {
         return spelData;
     }
 
-    public void setSpelData(int[] spelData) {
-        this.spelData = spelData;
-    }
+    public void setSpelData(int[] spelData) {this.spelData = spelData;}
 }
