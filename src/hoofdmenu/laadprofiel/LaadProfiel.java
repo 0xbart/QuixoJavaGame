@@ -19,12 +19,14 @@ public class LaadProfiel extends JPanel implements ActionListener {
 
     private JFrame spelFrame;
     private JButton ok, cancel;
-    private JLabel background, jlTitel, jlSpeler1, jlSpeler2, jlTypeSpeler1, jlTypeSpeler2;
+    private JLabel background, jlTitel, jlSpeler1, jlSpeler2, jlTypeSpeler1, jlTypeSpeler2, jlSpelerZet;
 
     private String strSpeler1;
     private String strSpeler2;
     private String strTypeSpeler1;
     private String strTypeSpeler2;
+    private String strSpelerZet;
+    private String strTypeSpelerZet;
     private int [] spelData = new int[25];
 
     public LaadProfiel(JFrame spelFrame) {
@@ -84,6 +86,9 @@ public class LaadProfiel extends JPanel implements ActionListener {
 
         jlTypeSpeler2 = new JLabel(strSpeler2 + " speelt met: " + strTypeSpeler2);
         jlTypeSpeler2.setBounds(50, 275, 400, 15);
+
+        jlSpelerZet = new JLabel(strSpelerZet + " is aan zet");
+        jlSpelerZet.setBounds(50, 300, 400, 15);
     }
 
     private void leesBestand() {
@@ -100,6 +105,8 @@ public class LaadProfiel extends JPanel implements ActionListener {
             strSpeler2 = input.next();
             strTypeSpeler1 = input.next();
             strTypeSpeler2 = input.next();
+            strSpelerZet = input.next();
+            strTypeSpelerZet = input.next();
 
             for(int i = 0; i < 25; i++){
                 spelData[i] = input.nextInt();

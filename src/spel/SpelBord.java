@@ -404,12 +404,6 @@ public class SpelBord extends JPanel implements MouseListener {
                         strSpelerZet = strSpeler1;
                     }
 
-                    if(strTypeSpelerZet.equals(strSpeler1)){
-                        strTypeSpelerZet = strTypeSpeler2;
-                    } else {
-                        strTypeSpelerZet = strTypeSpeler1;
-                    }
-
                     ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
                     toonSpelbord.run();
                 }
