@@ -16,7 +16,8 @@ public class SpelBord extends JPanel implements MouseListener {
 
     private JFrame spelFrame;
     private JLabel background, help, menu, jlSpeler1, jlSpeler2, jlTypeSpeler1, jlTypeSpeler2;
-    private JButton[] blokken = new JButton[25];
+    //private JButton[] blokken = new JButton[25];
+    private int[][] blokken = new int[5][5];
 
 
     private String strSpeler1;
@@ -31,6 +32,7 @@ public class SpelBord extends JPanel implements MouseListener {
             0, 0, 0, 0, 0,
     };
     private char aanZet = 'X'; //Kruisje begint met de zet
+    private char token = ' ';
     private JLabel status = new JLabel("Kruisje is aan zet."); //Maakt aanzet label
 
     public SpelBord (JFrame spelFrame, String strSpeler1, String strSpeler2, String strTypeSpeler1, String strTypeSpeler2, int[] spelData) {
@@ -43,7 +45,7 @@ public class SpelBord extends JPanel implements MouseListener {
         this.spelData = spelData;
 
         maakAchtergrond();
-        maakButtons();
+       // maakButtons();
         maakHelp();
         maakMenu();
         toevoegenButtons();
@@ -93,7 +95,7 @@ public class SpelBord extends JPanel implements MouseListener {
         jlTypeSpeler2 = new JLabel(strSpeler2 + " speelt met: " + strTypeSpeler2);
         jlTypeSpeler2.setBounds(15, 75, 400, 15);
     }
-
+/*
     private void maakButtons() {
 
         int c = 0;
@@ -111,7 +113,7 @@ public class SpelBord extends JPanel implements MouseListener {
                 c++;
             }
         }
-    }
+    } */
 
     //Nagaan of het grid vol is.
     public boolean isVol() {
@@ -167,6 +169,7 @@ public class SpelBord extends JPanel implements MouseListener {
     public SpelBord() {
         addMouseListener(new MyMouseListener());
     }
+
 
     //Geef token terug
     public char getToken() {
