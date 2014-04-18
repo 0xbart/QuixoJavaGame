@@ -16,6 +16,7 @@ public class SpelBord extends JPanel implements MouseListener {
     private JFrame spelFrame;
     private JLabel background, help, menu;
     private JButton[] blokken = new JButton[25];
+    private char aanZet = 'X'; //Speler kruisje begint met zet
 
     private String strSpeler1;
     private String strSpeler2;
@@ -120,6 +121,12 @@ public class SpelBord extends JPanel implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        for(int i = 0; i < 25; i++) {
+             if (e.getSource() == blokken[i]) {
+                 blokken[i].setIcon(new ImageIcon("src/resources/spel/4.png"));
+
+            }
+        }
 
 
     }
