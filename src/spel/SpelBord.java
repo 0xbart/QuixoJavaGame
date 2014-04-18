@@ -5,7 +5,6 @@ import spel.opties.ToonIngameOpties;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -16,9 +15,8 @@ public class SpelBord extends JPanel implements MouseListener {
 
     private JFrame spelFrame;
     private JLabel background, help, menu, jlSpeler1, jlSpeler2, jlTypeSpeler1, jlTypeSpeler2;
-    //private JButton[] blokken = new JButton[25];
-    private int[][] blokken = new int[5][5];
-
+    private JButton[] blokken = new JButton[25];
+    private char aanZet = 'X'; //Speler kruisje begint met zet
 
     private String strSpeler1;
     private String strSpeler2;
@@ -31,9 +29,6 @@ public class SpelBord extends JPanel implements MouseListener {
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
     };
-    private char aanZet = 'X'; //Kruisje begint met de zet
-    private char token = ' ';
-    private JLabel status = new JLabel("Kruisje is aan zet."); //Maakt aanzet label
 
     public SpelBord (JFrame spelFrame, String strSpeler1, String strSpeler2, String strTypeSpeler1, String strTypeSpeler2, int[] spelData) {
 
@@ -45,7 +40,7 @@ public class SpelBord extends JPanel implements MouseListener {
         this.spelData = spelData;
 
         maakAchtergrond();
-       // maakButtons();
+        maakButtons();
         maakHelp();
         maakMenu();
         toevoegenButtons();
@@ -95,7 +90,8 @@ public class SpelBord extends JPanel implements MouseListener {
         jlTypeSpeler2 = new JLabel(strSpeler2 + " speelt met: " + strTypeSpeler2);
         jlTypeSpeler2.setBounds(15, 75, 400, 15);
     }
-/*
+
+    //Voorzien van JToggleButton zodat er geen aparte listeners gebruikt hoeven te worden.
     private void maakButtons() {
 
         int c = 0;
@@ -113,109 +109,6 @@ public class SpelBord extends JPanel implements MouseListener {
                 c++;
             }
         }
-    } */
-
-    //Nagaan of het grid vol is.
-    public boolean isVol() {
-        int c = 0;
-        for (int i = 0; i < 5; i++)
-            for (int j = 0; j < 5; i++)
-                if (blokken[c].getToken() == ' ')
-                    return false;
-
-        return true;
-    }
-
-    //Nagaan of er een winnaar is.
-    public boolean isWinnaar(char token) {
-        int c = 0;
-        for (int i = 0; i < 5; i++)
-            if ((blokken[c][0].getToken() == token)
-                    && (blokken[c][1].getToken() == token)
-                    && (blokken[c][2].getToken() == token)
-                    && (blokken[c][3].getToken() == token)
-                    && (blokken[c][4].getToken() == token)) {
-                return true;
-            }
-        for (int j = 0; j < 5; j++)
-            if ((blokken[0][j].getToken() == token)
-                    && (blokken[1][j].getToken() == token)
-                    && (blokken[2][j].getToken() == token)
-                    && (blokken[3][j].getToken() == token)
-                    && (blokken[4][j].getToken() == token)) {
-                return true;
-            }
-        if ((blokken[0][0].getToken() == token)
-                && (blokken[1][1].getToken() == token)
-                && (blokken[2][2].getToken() == token)
-                && (blokken[3][3].getToken() == token)
-                && (blokken[4][4].getToken() == token)) {
-            return true;
-        }
-        if ((blokken[0][4].getToken() == token)
-                && (blokken[1][1].getToken() == token)
-                && (blokken[2][2].getToken() == token)
-                && (blokken[3][3].getToken() == token)
-                && (blokken[4][0].getToken() == token)) {
-            return false;
-        }
-
-    }
-
-    public class Button extends JButton {
-        private char token = ' ';
-    }
-
-    public SpelBord() {
-        addMouseListener(new MyMouseListener());
-    }
-
-
-    //Geef token terug
-    public char getToken() {
-        return token;
-    }
-
-    //Nieuwe token
-    public void setToken(char c) {
-        token = c;
-        repaint();
-    }
-
-    //Verander Button
-    protected void veranderButton(ImageIcon i) {
-        super.veranderButton(i);
-
-        if (token == 'X') {
-            ImageIcon blokken = new ImageIcon("src/resources/spel/4.png");
-        } else if (token == 'O') {
-            ImageIcon blokken = new ImageIcon("src/resources/spel/5.png");
-        }
-    }
-
-    private class MyMouseListener extends MouseAdapter {
-        //Afhandelen muisklik
-        public void mouseClicked(MouseEvent e) {
-            //Als Button leeg is en spel nog niet voorbij
-            if (token == ' ' && aanZet != ' ') {
-                setToken(aanZet);
-
-                if (isWinnaar(aanZet)) {
-                    status.setText(aanZet + " heeft gewonnen!");
-                    aanZet = ' ';
-                } else if (isVol()) {
-                    status.setText("Het spel is voorbij!");
-                } else {
-                    //Verwissel wie er aan zet is
-                    aanZet = (aanZet == 'X') ? 'O': 'X';
-                    //Toon wie er aan de beurt is
-                    status.setText(aanZet + " is aan de beurt!");
-                }
-
-
-            }
-        }
-
     }
 
     private void toevoegenButtons() {
@@ -249,8 +142,8 @@ public class SpelBord extends JPanel implements MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         for(int i = 0; i < 25; i++) {
-             if (e.getSource() == blokken[i]) {
-                 blokken[i].setIcon(new ImageIcon("src/resources/spel/4.png"));
+            if (e.getSource() == blokken[i]) {
+                blokken[i].setIcon(new ImageIcon("src/resources/spel/4.png"));
 
             }
         }
