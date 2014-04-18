@@ -16,8 +16,8 @@ public class SpelBord extends JPanel implements MouseListener {
     private JFrame spelFrame;
     private JLabel background, help, menu, jlSpeler1, jlSpeler2, jlTypeSpeler1, jlTypeSpeler2;
     private JButton[] blokken = new JButton[25];
-    private char aanZet = 'X'; //Speler kruisje begint met zet
 
+    private String strSpelerZet;
     private String strSpeler1;
     private String strSpeler2;
     private String strTypeSpeler1;
@@ -98,7 +98,15 @@ public class SpelBord extends JPanel implements MouseListener {
 
         for(int i = 0; i < 5; i++){
             for(int j = 0; j < 5; j++){
-                blokken[c] = new JButton(new ImageIcon("src/resources/spel/1.png"));
+
+                if(spelData[c] == 0) {
+                    blokken[c] = new JButton(new ImageIcon("src/resources/spel/1.png"));
+                } else if(spelData[c] == 1) {
+                    blokken[c] = new JButton(new ImageIcon("src/resources/spel/3.png"));
+                } else if(spelData[c] == 2) {
+                    blokken[c] = new JButton(new ImageIcon("src/resources/spel/4.png"));
+                }
+
                 blokken[c].setBounds(130 + (j*57), 148 + (i*57), 57, 57);
                 blokken[c].setBorder(null);
                 blokken[c].addMouseListener(this);
@@ -130,24 +138,15 @@ public class SpelBord extends JPanel implements MouseListener {
             ToonIngameOpties toonIngameOpties = new ToonIngameOpties(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData);
             toonIngameOpties.run();
         }
-
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
 
-
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        for(int i = 0; i < 25; i++) {
-            if (e.getSource() == blokken[i]) {
-                blokken[i].setIcon(new ImageIcon("src/resources/spel/4.png"));
-
-            }
-        }
-
 
     }
 
@@ -174,7 +173,6 @@ public class SpelBord extends JPanel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-
 
     }
 }
