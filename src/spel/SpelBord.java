@@ -14,7 +14,7 @@ import java.awt.event.MouseListener;
 public class SpelBord extends JPanel implements MouseListener {
 
     private JFrame spelFrame;
-    private JLabel background, help, menu;
+    private JLabel background, help, menu, jlSpeler1, jlSpeler2, jlTypeSpeler1, jlTypeSpeler2;
     private JButton[] blokken = new JButton[25];
 
     private String strSpeler1;
@@ -43,9 +43,14 @@ public class SpelBord extends JPanel implements MouseListener {
         maakHelp();
         maakMenu();
         toevoegenButtons();
+        maakLabels();
 
         add(help);
         add(menu);
+        add(jlSpeler1);
+        add(jlSpeler2);
+        add(jlTypeSpeler1);
+        add(jlTypeSpeler2);
 
         setLayout(new BorderLayout());
         add(background);
@@ -68,6 +73,21 @@ public class SpelBord extends JPanel implements MouseListener {
         menu.setBorder(null);
         menu.addMouseListener(this);
 
+    }
+
+    private void maakLabels() {
+
+        jlSpeler1 = new JLabel("Naam 1: " + strSpeler1);
+        jlSpeler1.setBounds(15, 15, 400, 15);
+
+        jlSpeler2 = new JLabel("Naam 2: " + strSpeler2);
+        jlSpeler2.setBounds(15, 35, 400, 15);
+
+        jlTypeSpeler1 = new JLabel(strSpeler1 + " speelt met: " + strTypeSpeler1);
+        jlTypeSpeler1.setBounds(15, 55, 400, 15);
+
+        jlTypeSpeler2 = new JLabel(strSpeler2 + " speelt met: " + strTypeSpeler2);
+        jlTypeSpeler2.setBounds(15, 75, 400, 15);
     }
 
     //Voorzien van JToggleButton zodat er geen aparte listeners gebruikt hoeven te worden.
