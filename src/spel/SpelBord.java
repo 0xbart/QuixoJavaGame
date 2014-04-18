@@ -105,6 +105,8 @@ public class SpelBord extends JPanel implements MouseListener {
                     blokken[c] = new JButton(new ImageIcon("src/resources/spel/3.png"));
                 } else if(spelData[c] == 2) {
                     blokken[c] = new JButton(new ImageIcon("src/resources/spel/4.png"));
+                } else if(spelData[c] == 3) {
+                    blokken[c] = new JButton(new ImageIcon("src/resources/spel/2.png"));
                 }
 
                 blokken[c].setBounds(130 + (j*57), 148 + (i*57), 57, 57);
@@ -137,6 +139,24 @@ public class SpelBord extends JPanel implements MouseListener {
         if(e.getSource() == menu){
             ToonIngameOpties toonIngameOpties = new ToonIngameOpties(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData);
             toonIngameOpties.run();
+        }
+
+        for(int i = 0; i < 25; i++){
+
+            if(e.getSource() == blokken[i]){
+
+                String buttonNaam = ((JComponent) e.getSource()).getName();
+                int nr = Integer.parseInt(buttonNaam);
+
+                if(spelData[i] == 0) {
+                    if(i == 6 || i == 7 || i == 8 || i == 11 || i == 12 || i == 13 || i == 16 || i == 17 || i == 18){
+                        System.out.println("Deze wordt niet veranderd....");
+                    } else {
+                        spelData[i] = 3;
+                        System.out.println("Deze wordt veranderd....");
+                    }
+                }
+            }
         }
     }
 

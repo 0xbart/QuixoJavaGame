@@ -36,15 +36,6 @@ public class LaadProfiel extends JPanel implements ActionListener {
         leesBestand();
         maakLabels();
 
-        System.out.println("Naam 1: " + strSpeler1);
-        System.out.println("Naam 2: " + strSpeler2);
-        System.out.println("Type 1: " + strTypeSpeler1);
-        System.out.println("Type 1: " + strTypeSpeler2);
-
-        for(int i = 0; i < 25; i++){
-            System.out.println("Blokje " + i + " > " + spelData[i]);
-        }
-
         add(jlTitel);
         add(jlSpeler1);
         add(jlSpeler2);

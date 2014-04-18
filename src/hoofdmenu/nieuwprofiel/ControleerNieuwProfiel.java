@@ -16,11 +16,11 @@ public class ControleerNieuwProfiel extends Task {
     private String strTypeNaam1;
     private String strTypeNaam2;
     private int [] spelData = {
-            0, 0, 1, 2, 0,
             0, 0, 0, 0, 0,
-            0, 0, 0, 0, 2,
-            1, 1, 2, 0, 0,
-            0, 0, 1, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1,
+            0, 0, 2, 1, 2,
     };
 
     public ControleerNieuwProfiel(JFrame spelFrame, String strSpelerNaam1, String strSpelerNaam2, String strTypeNaam1, String strTypeNaam2) {
