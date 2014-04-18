@@ -31,6 +31,7 @@ public class SpelBord extends JPanel implements MouseListener {
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
     };
+    private int selected;
 
     public SpelBord (JFrame spelFrame, String strSpeler1, String strSpeler2, String strTypeSpeler1, String strTypeSpeler2, int[] spelData, String strSpelerZet, String strTypeSpelerZet) {
 
@@ -198,14 +199,12 @@ public class SpelBord extends JPanel implements MouseListener {
     public void schoonVelden() {
 
         for(int k = 0; k < spelData.length; k++){
-            if(spelData[k] == 3){
+            if(spelData[k] == 3 || spelData[k] == 4){
                 spelData[k] = 0;
-            }
-        }
-
-        for(int l = 0; l < spelData.length; l++){
-            if(spelData[l] == 4){
-                spelData[l] = 0;
+            } else if(spelData[k] == 5){
+                spelData[k] = 1;
+            } else if(spelData[k] == 6){
+                spelData[k] = 2;
             }
         }
     }
@@ -239,6 +238,7 @@ public class SpelBord extends JPanel implements MouseListener {
 
                         berekenOptie(i);
                         spelData[i] = 4;
+                        selected = i;
 
                         ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
                         toonSpelbord.run();
@@ -271,6 +271,16 @@ public class SpelBord extends JPanel implements MouseListener {
 
                     ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
                     toonSpelbord.run();
+                } else if(spelData[i] == 5) {
+
+                    // verplaats blokje naar links of rechts en doe er nog 1 bij.
+                    // of verplaats hem een verdieping lager
+
+                } else if(spelData[i] == 6) {
+
+                    // verplaats blokje naar links of rechts en doe er nog 1 bij.
+                    // of verplaats hem een verdieping lager
+
                 }
             }
         }
