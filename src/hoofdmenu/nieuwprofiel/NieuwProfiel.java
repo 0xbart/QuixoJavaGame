@@ -96,10 +96,10 @@ public class NieuwProfiel extends JPanel implements ActionListener {
 
     private void maakInput() {
 
-        naam_1 = new JTextField("Speler 1");
+        naam_1 = new JTextField("Axel");
         naam_1.setBounds(75, 170, 150, 25);
 
-        naam_2 = new JTextField("Speler 2");
+        naam_2 = new JTextField("Bart");
         naam_2.setBounds(330, 170, 150, 25);
     }
 

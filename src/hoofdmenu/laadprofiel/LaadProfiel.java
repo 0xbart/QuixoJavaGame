@@ -1,11 +1,16 @@
 package hoofdmenu.laadprofiel;
 
 import hoofdmenu.ToonHoofdmenu;
+import spel.ToonSpelbord;
+import utils.Computer;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 /**
  * Created by Bart on 10-4-2014.
@@ -14,7 +19,13 @@ public class LaadProfiel extends JPanel implements ActionListener {
 
     private JFrame spelFrame;
     private JButton ok, cancel;
-    private JLabel background;
+    private JLabel background, jlTitel, jlSpeler1, jlSpeler2, jlTypeSpeler1, jlTypeSpeler2;
+
+    private String strSpeler1;
+    private String strSpeler2;
+    private String strTypeSpeler1;
+    private String strTypeSpeler2;
+    private int [] spelData = new int[25];
 
     public LaadProfiel(JFrame spelFrame) {
 
@@ -22,6 +33,23 @@ public class LaadProfiel extends JPanel implements ActionListener {
 
         maakAchtergrond();
         maakButtons();
+        leesBestand();
+        maakLabels();
+
+        System.out.println("Naam 1: " + strSpeler1);
+        System.out.println("Naam 2: " + strSpeler2);
+        System.out.println("Type 1: " + strTypeSpeler1);
+        System.out.println("Type 1: " + strTypeSpeler2);
+
+        for(int i = 0; i < 25; i++){
+            System.out.println("Blokje " + i + " > " + spelData[i]);
+        }
+
+        add(jlTitel);
+        add(jlSpeler1);
+        add(jlSpeler2);
+        add(jlTypeSpeler1);
+        add(jlTypeSpeler2);
 
         add(ok);
         add(cancel);
@@ -49,6 +77,48 @@ public class LaadProfiel extends JPanel implements ActionListener {
         ok.addActionListener(this);
     }
 
+    private void maakLabels() {
+
+        jlTitel = new JLabel("De volgende instellingen zijn gevonden. Controleer deze.");
+        jlTitel.setBounds(50, 100, 400, 15);
+
+        jlSpeler1 = new JLabel("Naam speler 1: " + strSpeler1);
+        jlSpeler1.setBounds(50, 200, 400, 15);
+
+        jlSpeler2 = new JLabel("Naam speler 2: " + strSpeler2);
+        jlSpeler2.setBounds(50, 225, 400, 15);
+
+        jlTypeSpeler1 = new JLabel(strSpeler1 + " speelt met: " + strTypeSpeler1);
+        jlTypeSpeler1.setBounds(50, 250, 400, 15);
+
+        jlTypeSpeler2 = new JLabel(strSpeler2 + " speelt met: " + strTypeSpeler2);
+        jlTypeSpeler2.setBounds(50, 275, 400, 15);
+    }
+
+    private void leesBestand() {
+
+        Computer c = new Computer();
+        String filePath = c.getFILEPATH() + "profiel.bin";
+
+        File file = new File(filePath);
+        Scanner input = null;
+
+        try {
+            input = new Scanner(file);
+            strSpeler1 = input.next();
+            strSpeler2 = input.next();
+            strTypeSpeler1 = input.next();
+            strTypeSpeler2 = input.next();
+
+            for(int i = 0; i < 25; i++){
+                spelData[i] = input.nextInt();
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -59,7 +129,8 @@ public class LaadProfiel extends JPanel implements ActionListener {
 
         } else if(e.getSource() == ok){
 
-            System.out.println("OK is geklikt.");
+            ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData);
+            toonSpelbord.run();
         }
     }
 }

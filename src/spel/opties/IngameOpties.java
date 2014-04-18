@@ -2,11 +2,14 @@ package spel.opties;
 
 import hoofdmenu.ToonHoofdmenu;
 import spel.ToonSpelbord;
+import utils.Computer;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 /**
  * Created by Bart on 17-4-2014.
@@ -79,8 +82,31 @@ public class IngameOpties extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == opslaan){
-            System.out.println("Spel wordt opgeslagen!");
-            JOptionPane.showMessageDialog(null, "Het spel kan niet worden opgeslagen.", "Spel opslaan mislukt!", JOptionPane.INFORMATION_MESSAGE);
+
+            Computer c = new Computer();
+            String filePath = c.getFILEPATH() + "profiel.bin";
+
+            try {
+                PrintWriter output = new PrintWriter(filePath);
+                output.println(strSpeler1);
+                output.println(strSpeler2);
+                output.println(strTypeSpeler1);
+                output.println(strTypeSpeler2);
+
+                for(int i = 0; i < spelData.length; i++){
+                    output.println(spelData[i]);
+                }
+
+                output.close();
+
+                JOptionPane.showMessageDialog(null, "Het spel is met succes opgeslagen!.", "Spel opslaan gelukt!", JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (FileNotFoundException a) {
+                a.printStackTrace();
+
+                JOptionPane.showMessageDialog(null, "Het spel kan niet worden opgeslagen.", "Spel opslaan mislukt!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
         } else if(e.getSource() == afsluiten){
 
             String message = "Weet u zeker dat deze Quixo pot wilt Afsluiten?";
