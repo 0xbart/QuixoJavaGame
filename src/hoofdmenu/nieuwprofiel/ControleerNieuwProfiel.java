@@ -19,8 +19,8 @@ public class ControleerNieuwProfiel extends Task {
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
-            0, 0, 0, 0, 1,
-            0, 0, 2, 1, 2,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
     };
 
     public ControleerNieuwProfiel(JFrame spelFrame, String strSpelerNaam1, String strSpelerNaam2, String strTypeNaam1, String strTypeNaam2) {

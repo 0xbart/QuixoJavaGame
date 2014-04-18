@@ -18,6 +18,10 @@ public class SpelBord extends JPanel implements MouseListener {
     private JButton[] blokken = new JButton[25];
 
     private String strSpelerZet;
+    private String strTypeSpelerZet;
+
+    private int[] intWijzigZet;
+
     private String strSpeler1;
     private String strSpeler2;
     private String strTypeSpeler1;
@@ -107,6 +111,8 @@ public class SpelBord extends JPanel implements MouseListener {
                     blokken[c] = new JButton(new ImageIcon("src/resources/spel/4.png"));
                 } else if(spelData[c] == 3) {
                     blokken[c] = new JButton(new ImageIcon("src/resources/spel/2.png"));
+                } else if(spelData[c] == 4) {
+                    blokken[c] = new JButton(new ImageIcon("src/resources/spel/5.png"));
                 }
 
                 blokken[c].setBounds(130 + (j*57), 148 + (i*57), 57, 57);
@@ -125,6 +131,218 @@ public class SpelBord extends JPanel implements MouseListener {
 
         for(int i = 0; i < 25; i++){
             add(blokken[i]);
+        }
+    }
+
+    private void berekenVelden(int i){
+        switch (i){
+            case 0:
+                if(spelData[4] == 0){
+                    spelData[4] = 3;
+                }
+
+                if(spelData[20] == 0){
+                    spelData[20] = 3;
+                }
+                break;
+            case 1:
+                if(spelData[0] == 0){
+                    spelData[0] = 3;
+                }
+
+                if(spelData[4] == 0){
+                    spelData[4] = 3;
+                }
+
+                if(spelData[21] == 0){
+                    spelData[21] = 3;
+                }
+                break;
+            case 2:
+                if(spelData[4] == 0){
+                    spelData[4] = 3;
+                }
+
+                if(spelData[0] == 0){
+                    spelData[0] = 3;
+                }
+
+                if(spelData[22] == 0){
+                    spelData[22] = 3;
+                }
+                break;
+            case 3:
+                if(spelData[4] == 0){
+                    spelData[4] = 3;
+                }
+
+                if(spelData[4] == 0){
+                    spelData[4] = 3;
+                }
+
+                if(spelData[23] == 0){
+                    spelData[23] = 3;
+                }
+                break;
+            case 4:
+                if(spelData[0] == 0){
+                    spelData[0] = 3;
+                }
+
+                if(spelData[24] == 0){
+                    spelData[24] = 3;
+                }
+                break;
+            case 5:
+                if(spelData[0] == 0){
+                    spelData[0] = 3;
+                }
+
+                if(spelData[20] == 0){
+                    spelData[20] = 3;
+                }
+
+                if(spelData[9] == 0){
+                    spelData[9] = 3;
+                }
+                break;
+            case 9:
+                if(spelData[4] == 0){
+                    spelData[4] = 3;
+                }
+
+                if(spelData[5] == 0){
+                    spelData[5] = 3;
+                }
+
+                if(spelData[24] == 0){
+                    spelData[24] = 3;
+                }
+                break;
+            case 10:
+                if(spelData[0] == 0){
+                    spelData[0] = 3;
+                }
+
+                if(spelData[20] == 0){
+                    spelData[20] = 3;
+                }
+
+                if(spelData[14] == 0){
+                    spelData[14] = 3;
+                }
+                break;
+            case 14:
+                if(spelData[10] == 0){
+                    spelData[10] = 3;
+                }
+
+                if(spelData[4] == 0){
+                    spelData[4] = 3;
+                }
+
+                if(spelData[24] == 0){
+                    spelData[24] = 3;
+                }
+                break;
+            case 15:
+                if(spelData[0] == 0){
+                    spelData[0] = 3;
+                }
+
+                if(spelData[20] == 0){
+                    spelData[20] = 3;
+                }
+
+                if(spelData[19] == 0){
+                    spelData[19] = 3;
+                }
+                break;
+            case 19:
+                if(spelData[15] == 0){
+                    spelData[15] = 3;
+                }
+
+                if(spelData[24] == 0){
+                    spelData[24] = 3;
+                }
+
+                if(spelData[4] == 0){
+                    spelData[4] = 3;
+                }
+                break;
+            case 20:
+                if(spelData[0] == 0){
+                    spelData[0] = 3;
+                }
+
+                if(spelData[24] == 0){
+                    spelData[24] = 3;
+                }
+                break;
+            case 21:
+                if(spelData[20] == 0){
+                    spelData[20] = 3;
+                }
+
+                if(spelData[24] == 0){
+                    spelData[24] = 3;
+                }
+
+                if(spelData[1] == 0){
+                    spelData[1] = 3;
+                }
+                break;
+            case 22:
+                if(spelData[2] == 0){
+                    spelData[2] = 3;
+                }
+
+                if(spelData[24] == 0){
+                    spelData[24] = 3;
+                }
+
+                if(spelData[20] == 0){
+                    spelData[20] = 3;
+                }
+                break;
+            case 23:
+                if(spelData[3] == 0){
+                    spelData[3] = 3;
+                }
+
+                if(spelData[20] == 0){
+                    spelData[20] = 3;
+                }
+
+                if(spelData[24] == 0){
+                    spelData[24] = 3;
+                }
+                break;
+            case 24:
+                if(spelData[20] == 0){
+                    spelData[20] = 3;
+                }
+
+                if(spelData[4] == 0){
+                    spelData[4] = 3;
+                }
+                break;
+        }
+    }
+
+    public void schoonVelden() {
+
+        for(int k = 0; k < spelData.length; k++){
+            if(spelData[k] == 3){
+                spelData[k] = 0;
+            }
+        }
+
+        for(int l = 0; l < spelData.length; l++){
+            if(spelData[l] == 4){
+                spelData[l] = 0;
+            }
         }
     }
 
@@ -150,10 +368,21 @@ public class SpelBord extends JPanel implements MouseListener {
 
                 if(spelData[i] == 0) {
                     if(i == 6 || i == 7 || i == 8 || i == 11 || i == 12 || i == 13 || i == 16 || i == 17 || i == 18){
-                        System.out.println("Deze wordt niet veranderd....");
+
                     } else {
-                        spelData[i] = 3;
-                        System.out.println("Deze wordt veranderd....");
+                        if(spelData[i] == 3){
+                            //blokje was geel en wordt nu anders... -_-!
+                        } else {
+
+                            schoonVelden();
+
+                            spelData[i] = 4;
+
+                            berekenVelden(i);
+
+                            ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData);
+                            toonSpelbord.run();
+                        }
                     }
                 }
             }
