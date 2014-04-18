@@ -17,9 +17,26 @@ public class IngameOpties extends JPanel implements ActionListener {
     private JButton opslaan, afsluiten, cancel;
     private JLabel background;
 
-    public IngameOpties(JFrame spelFrame) {
+    private String strSpeler1;
+    private String strSpeler2;
+    private String strTypeSpeler1;
+    private String strTypeSpeler2;
+    private int [] spelData = {
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+    };
+
+    public IngameOpties(JFrame spelFrame, String strSpeler1, String strSpeler2, String strTypeSpeler1, String strTypeSpeler2, int[] spelData) {
 
         this.spelFrame = spelFrame;
+        this.strSpeler1 = strSpeler1;
+        this.strSpeler2 = strSpeler2;
+        this.strTypeSpeler1 = strTypeSpeler1;
+        this.strTypeSpeler2 = strTypeSpeler2;
+        this.spelData = spelData;
 
         maakAchtergrond();
         maakButtons();
@@ -77,7 +94,7 @@ public class IngameOpties extends JPanel implements ActionListener {
             }
 
         } else if(e.getSource() == cancel){
-            ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame);
+            ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData);
             toonSpelbord.run();
         }
     }

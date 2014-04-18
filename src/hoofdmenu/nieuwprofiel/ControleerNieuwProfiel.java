@@ -1,6 +1,5 @@
 package hoofdmenu.nieuwprofiel;
 
-import profiel.Profiel;
 import spel.ToonSpelbord;
 import utils.Task;
 
@@ -16,6 +15,13 @@ public class ControleerNieuwProfiel extends Task {
     private String strSpelerNaam2;
     private String strTypeNaam1;
     private String strTypeNaam2;
+    private int [] spelData = {
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+    };
 
     public ControleerNieuwProfiel(JFrame spelFrame, String strSpelerNaam1, String strSpelerNaam2, String strTypeNaam1, String strTypeNaam2) {
 
@@ -55,13 +61,7 @@ public class ControleerNieuwProfiel extends Task {
 
     private void execute() {
 
-        Profiel p = new Profiel();
-        p.setStrSpeler1(strSpelerNaam1);
-        p.setStrSpeler2(strSpelerNaam2);
-        p.setStrTypeSpeler1(strTypeNaam1);
-        p.setStrTypeSpeler2(strTypeNaam2);
-
-        ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame);
+        ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpelerNaam1, strSpelerNaam2, strTypeNaam1, strTypeNaam2, spelData);
         toonSpelbord.run();
     }
 

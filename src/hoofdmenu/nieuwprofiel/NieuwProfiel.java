@@ -96,10 +96,10 @@ public class NieuwProfiel extends JPanel implements ActionListener {
 
     private void maakInput() {
 
-        naam_1 = new JTextField();
+        naam_1 = new JTextField("Speler 1");
         naam_1.setBounds(75, 170, 150, 25);
 
-        naam_2 = new JTextField();
+        naam_2 = new JTextField("Speler 2");
         naam_2.setBounds(330, 170, 150, 25);
     }
 
@@ -138,6 +138,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         kruisje.setText("Kruisje");
         kruisje.setBackground(new Color(166, 166, 166));
         kruisje.setBounds(75, 200, 65, 35);
+        kruisje.setSelected(true);
 
         rondje = new JRadioButton();
         rondje.setText("Rondje");
@@ -153,6 +154,7 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         rondje2.setText("Rondje");
         rondje2.setBackground( new Color(166,166,166));
         rondje2.setBounds(410,200,65,35);
+        rondje2.setSelected(true);
 
         group_speler_1 = new ButtonGroup();
         group_speler_1.add(kruisje);
