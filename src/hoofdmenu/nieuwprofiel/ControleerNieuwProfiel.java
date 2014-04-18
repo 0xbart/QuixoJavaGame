@@ -61,7 +61,7 @@ public class ControleerNieuwProfiel extends Task {
 
     private void execute() {
 
-        ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpelerNaam1, strSpelerNaam2, strTypeNaam1, strTypeNaam2, spelData);
+        ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpelerNaam1, strSpelerNaam2, strTypeNaam1, strTypeNaam2, spelData, strSpelerNaam1, strTypeNaam1);
         toonSpelbord.run();
     }
 

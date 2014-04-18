@@ -14,13 +14,11 @@ import java.awt.event.MouseListener;
 public class SpelBord extends JPanel implements MouseListener {
 
     private JFrame spelFrame;
-    private JLabel background, help, menu, jlSpeler1, jlSpeler2, jlTypeSpeler1, jlTypeSpeler2;
+    private JLabel background, help, menu, jlSpeler1, jlSpeler2, jlTypeSpeler1, jlTypeSpeler2, jlSpelerZet;
     private JButton[] blokken = new JButton[25];
 
     private String strSpelerZet;
     private String strTypeSpelerZet;
-
-    private int[] intWijzigZet;
 
     private String strSpeler1;
     private String strSpeler2;
@@ -34,7 +32,7 @@ public class SpelBord extends JPanel implements MouseListener {
             0, 0, 0, 0, 0,
     };
 
-    public SpelBord (JFrame spelFrame, String strSpeler1, String strSpeler2, String strTypeSpeler1, String strTypeSpeler2, int[] spelData) {
+    public SpelBord (JFrame spelFrame, String strSpeler1, String strSpeler2, String strTypeSpeler1, String strTypeSpeler2, int[] spelData, String strSpelerZet, String strTypeSpelerZet) {
 
         this.spelFrame = spelFrame;
         this.strSpeler1 = strSpeler1;
@@ -42,6 +40,8 @@ public class SpelBord extends JPanel implements MouseListener {
         this.strTypeSpeler1 = strTypeSpeler1;
         this.strTypeSpeler2 = strTypeSpeler2;
         this.spelData = spelData;
+        this.strSpelerZet = strSpelerZet;
+        this.strTypeSpelerZet = strTypeSpelerZet;
 
         maakAchtergrond();
         maakButtons();
@@ -56,6 +56,7 @@ public class SpelBord extends JPanel implements MouseListener {
         add(jlSpeler2);
         add(jlTypeSpeler1);
         add(jlTypeSpeler2);
+        add(jlSpelerZet);
 
         setLayout(new BorderLayout());
         add(background);
@@ -93,6 +94,9 @@ public class SpelBord extends JPanel implements MouseListener {
 
         jlTypeSpeler2 = new JLabel(strSpeler2 + " speelt met: " + strTypeSpeler2);
         jlTypeSpeler2.setBounds(15, 75, 400, 15);
+
+        jlSpelerZet = new JLabel(strSpelerZet + " is aan zet");
+        jlSpelerZet.setBounds(15, 95, 400, 15);
     }
 
     //Voorzien van JToggleButton zodat er geen aparte listeners gebruikt hoeven te worden.
@@ -172,8 +176,8 @@ public class SpelBord extends JPanel implements MouseListener {
                 }
                 break;
             case 3:
-                if(spelData[4] == 0){
-                    spelData[4] = 3;
+                if(spelData[0] == 0){
+                    spelData[0] = 3;
                 }
 
                 if(spelData[4] == 0){
@@ -350,12 +354,12 @@ public class SpelBord extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
         if(e.getSource() == help){
-            ToonIngameHelp toonIngameHelp = new ToonIngameHelp(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData);
+            ToonIngameHelp toonIngameHelp = new ToonIngameHelp(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
             toonIngameHelp.run();
         }
 
         if(e.getSource() == menu){
-            ToonIngameOpties toonIngameOpties = new ToonIngameOpties(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData);
+            ToonIngameOpties toonIngameOpties = new ToonIngameOpties(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
             toonIngameOpties.run();
         }
 
@@ -370,20 +374,44 @@ public class SpelBord extends JPanel implements MouseListener {
                     if(i == 6 || i == 7 || i == 8 || i == 11 || i == 12 || i == 13 || i == 16 || i == 17 || i == 18){
 
                     } else {
-                        if(spelData[i] == 3){
-                            //blokje was geel en wordt nu anders... -_-!
-                        } else {
 
-                            schoonVelden();
+                        schoonVelden();
 
-                            spelData[i] = 4;
+                        spelData[i] = 4;
 
-                            berekenVelden(i);
+                        berekenVelden(i);
 
-                            ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData);
-                            toonSpelbord.run();
-                        }
+                        ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
+                        toonSpelbord.run();
+
                     }
+                } else if(spelData[i] == 3) {
+
+                    int temp;
+
+                    if(strTypeSpelerZet == "kruis"){
+                        temp = 1;
+                    } else {
+                        temp = 2;
+                    }
+
+                    schoonVelden();
+                    spelData[i] = temp;
+
+                    if(strSpelerZet.equals(strSpeler1)){
+                        strSpelerZet = strSpeler2;
+                    } else {
+                        strSpelerZet = strSpeler1;
+                    }
+
+                    if(strTypeSpelerZet.equals(strSpeler1)){
+                        strTypeSpelerZet = strTypeSpeler2;
+                    } else {
+                        strTypeSpelerZet = strTypeSpeler1;
+                    }
+
+                    ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
+                    toonSpelbord.run();
                 }
             }
         }

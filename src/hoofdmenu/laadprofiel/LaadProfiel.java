@@ -120,7 +120,7 @@ public class LaadProfiel extends JPanel implements ActionListener {
 
         } else if(e.getSource() == ok){
 
-            ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData);
+            ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpeler1, strTypeSpeler1);
             toonSpelbord.run();
         }
     }
