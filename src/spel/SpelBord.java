@@ -3,6 +3,7 @@ package spel;
 import spel.ingamehelp.ToonIngameHelp;
 import spel.opties.ToonIngameOpties;
 
+import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -16,6 +17,11 @@ public class SpelBord extends JPanel implements MouseListener {
     private JFrame spelFrame;
     private JLabel background, help, menu, jlSpeler1, jlSpeler2, jlTypeSpeler1, jlTypeSpeler2, jlSpelerZet;
     private JButton[] blokken = new JButton[25];
+
+   // private ArrayList<SteenRij> bord;
+    private Thread draadje; 							// Lijn is het draadje
+    //private SteenRij[] schuifstenen = new SteenRij[5]; 	// Selectie. Deze 5 stenen gaan verschuiven.
+    private boolean verschuiven;						// Gaan ze verschuiven? Ja of nee.
 
     private String strSpelerZet;
     private String strTypeSpelerZet;
