@@ -83,20 +83,19 @@ public class Winnaar extends JPanel implements ActionListener {
         jlTypeSpeler2.setBounds(200, 285, 400, 15);
 
 
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if(e.getSource() == opnieuw){
-            ToonNieuwProfiel toonNieuwProfiel = new ToonNieuwProfiel(spelFrame);
-            toonNieuwProfiel.run();
         }
 
-        if(e.getSource() == ok){
-            System.out.println("We gaan terug naar het hoofdmenu");
-//            ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(spelFrame, true);
-//            toonHoofdmenu.run();
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            if(e.getSource() == opnieuw){
+                ToonNieuwProfiel toonNieuwProfiel = new ToonNieuwProfiel(spelFrame);
+                toonNieuwProfiel.run();
+            }
+
+            if(e.getSource() == ok){
+          ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(spelFrame, true);
+           toonHoofdmenu.run();
         }
     }
 
