@@ -9,13 +9,13 @@ import javax.swing.*;
  */
 public class ToonHoofdmenu extends Task {
 
-    private JFrame spelFrame;
-    private boolean validate;
+    private JFrame jfSpelFrame;
+    private boolean blValidate;
 
-    public ToonHoofdmenu(JFrame spelFrame, boolean validate){
+    public ToonHoofdmenu(JFrame jfSpelFrame, boolean blValidate){
 
-        this.spelFrame = spelFrame;
-        this.validate = validate;
+        this.jfSpelFrame = jfSpelFrame;
+        this.blValidate = blValidate;
     }
 
     public void run() {
@@ -29,7 +29,8 @@ public class ToonHoofdmenu extends Task {
 
     private boolean validate() {
 
-        if(validate == true) {
+        //controleer of het splashscreen true retourneerde
+        if(blValidate == true) {
             return true;
         } else {
             return true;
@@ -38,11 +39,9 @@ public class ToonHoofdmenu extends Task {
 
     private void execute() {
 
-        spelFrame.setContentPane(new Hoofdmenu(spelFrame));
-        spelFrame.validate();
+        //het hoofdmenu wordt aangeroepen.
+        jfSpelFrame.setContentPane(new Hoofdmenu(jfSpelFrame));
+        jfSpelFrame.validate();
     }
 
 }
-
-/* Fix voor IntelliJ Joey */
-

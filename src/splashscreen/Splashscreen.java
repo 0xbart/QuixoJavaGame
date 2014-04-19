@@ -8,17 +8,20 @@ import java.awt.*;
  */
 public class Splashscreen extends JPanel {
 
-    private JLabel background;
+    private JFrame jfSpelFrame;
+    private JLabel jlAchtergrond;
 
-    public Splashscreen(JFrame spelFrame){
+    public Splashscreen(JFrame jfSpelFrame){
+
+        this.jfSpelFrame = jfSpelFrame;
 
         maakAchtergrond();
         setLayout(new GridLayout(0, 1));
-        add(background);
+        add(jlAchtergrond);
     }
 
     private void maakAchtergrond(){
-        background = new JLabel(new ImageIcon("src/resources/achtergrond/splashscreen_bg.png"));
+        jlAchtergrond = new JLabel(new ImageIcon("src/resources/achtergrond/splashscreen_bg.png"));
     }
 
 }
