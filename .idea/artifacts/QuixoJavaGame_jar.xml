@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="QuixoJavaGame:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/QuixoJavaGame_jar</output-path>
+    <root id="archive" name="QuixoJavaGame.jar">
+      <element id="module-output" name="QuixoJavaGame" />
+    </root>
+  </artifact>
+</component>
