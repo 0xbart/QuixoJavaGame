@@ -9,11 +9,11 @@ import javax.swing.*;
  */
 public class ToonOpties extends Task {
 
-    private JFrame spelFrame;
+    private JFrame jfSpelFrame;
 
-    public ToonOpties(JFrame spelFrame) {
+    public ToonOpties(JFrame jfSpelFrame) {
 
-        this.spelFrame = spelFrame;
+        this.jfSpelFrame = jfSpelFrame;
     }
 
     public void run() {
@@ -33,7 +33,8 @@ public class ToonOpties extends Task {
 
     private void execute() {
 
-        spelFrame.setContentPane(new Opties(spelFrame));
-        spelFrame.validate();
+        //roep het optie scherm aan
+        jfSpelFrame.setContentPane(new Opties(jfSpelFrame));
+        jfSpelFrame.validate();
     }
 }

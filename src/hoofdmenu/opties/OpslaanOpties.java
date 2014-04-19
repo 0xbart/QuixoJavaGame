@@ -13,18 +13,18 @@ import java.io.PrintWriter;
  */
 public class OpslaanOpties extends Task {
 
-    private JFrame spelFrame;
-    private String achtergrond_menu, achtergrond_spel, geluid_menu, geluid_spel;
+    private JFrame jfSpelFrame;
+    private String strAchtergrondMenu, strAchtergrondSpel, strGeluidMenu, strGeluidSpel;
 
-    private String[] optiesData = {achtergrond_menu, achtergrond_spel, geluid_menu, geluid_spel};
+    private String[] optiesData = {strAchtergrondMenu, strAchtergrondSpel, strGeluidMenu, strGeluidSpel};
 
-    public OpslaanOpties(JFrame spelFrame, String achtergrond_menu, String achtergrond_spel, String geluid_menu, String geluid_spel) {
+    public OpslaanOpties(JFrame jfSpelFrame, String strAchtergrondMenu, String strAchtergrondSpel, String strGeluidMenu, String strGeluidSpel) {
 
-        this.achtergrond_menu = achtergrond_menu;
-        this.achtergrond_spel = achtergrond_spel;
-        this.geluid_menu = geluid_menu;
-        this.geluid_spel = geluid_spel;
-        this.spelFrame = spelFrame;
+        this.strAchtergrondMenu = strAchtergrondMenu;
+        this.strAchtergrondSpel = strAchtergrondSpel;
+        this.strGeluidMenu = strGeluidMenu;
+        this.strGeluidSpel = strGeluidSpel;
+        this.jfSpelFrame = jfSpelFrame;
 
     }
 
@@ -42,15 +42,21 @@ public class OpslaanOpties extends Task {
 
         boolean validate = true;
 
+        //filepash wordt geladen vanuit de utils klasse.
         Computer c = new Computer();
         String filePath = c.getFILEPATH() + "opties.bin";
 
         try {
+
+            /*
+                Gegevens worden opgeslagen in het bestand.
+             */
+
             PrintWriter output = new PrintWriter(filePath);
-            output.println(achtergrond_menu);
-            output.println(achtergrond_spel);
-            output.println(geluid_menu);
-            output.println(geluid_spel);
+            output.println(strAchtergrondMenu);
+            output.println(strAchtergrondSpel);
+            output.println(strGeluidMenu);
+            output.println(strGeluidSpel);
             output.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -61,7 +67,8 @@ public class OpslaanOpties extends Task {
 
     private void execute() {
 
-        ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(spelFrame, true);
+        //hoofdmenu wordt aangeroepen.
+        ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(jfSpelFrame, true);
         toonHoofdmenu.run();
 
     }

@@ -16,17 +16,17 @@ import java.io.IOException;
  */
 public class NieuwProfiel extends JPanel implements ActionListener {
 
-    private JFrame spelFrame;
-    private JTextField naam_1, naam_2;
-    private JButton ok, cancel, rood, zwart, rood1, zwart1;
-    private JLabel background;
-    private JRadioButton kruisje, rondje, kruisje2, rondje2;
+    private JFrame jfSpelFrame;
+    private JTextField jtxNaamEen, jtxNaamTwee;
+    private JButton jbtOK, jbtCancel, jbtRoodEen, jbtZwartEen, jbtRoodTwee, jbtZwartTwee;
+    private JLabel jlAchtergrond;
+    private JRadioButton jrbKruisjeEen, jrbRondjeEen, jrbKruisjeTwee, jrbRondjeTwee;
     private JLabel jlKruisjeLinks, jlKruisjeRechts, jlRondjeLinks, jlRondjeRechts;
-    private ButtonGroup group_speler_1, group_speler_2;
+    private ButtonGroup bgGroepEen, bgGroepTwee;
 
-    public NieuwProfiel(JFrame spelFrame) {
+    public NieuwProfiel(JFrame jfSpelFrame) {
 
-        this.spelFrame = spelFrame;
+        this.jfSpelFrame = jfSpelFrame;
 
         maakAchtergrond();
         maakButtons();
@@ -34,76 +34,92 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         maakRadio();
         maakAfbeeldingen();
 
-        add(naam_1);
-        add(naam_2);
-        add(ok);
-        add(cancel);
-        add(rondje);
-        add(kruisje);
-        add(rondje2);
-        add(kruisje2);
+        add(jtxNaamEen);
+        add(jtxNaamTwee);
+        add(jbtOK);
+        add(jbtCancel);
+        add(jrbRondjeEen);
+        add(jrbKruisjeEen);
+        add(jrbRondjeTwee);
+        add(jrbKruisjeTwee);
         add(jlKruisjeLinks);
         add(jlKruisjeRechts);
         add(jlRondjeLinks);
         add(jlRondjeRechts);
 
         setLayout(new BorderLayout());
-        add(background);
+        add(jlAchtergrond);
     }
 
     private void maakAchtergrond() {
-        background = new JLabel(new ImageIcon("src/resources/achtergrond/profiel_n_bg.png"));
+        jlAchtergrond = new JLabel(new ImageIcon("src/resources/achtergrond/profiel_n_bg.png"));
     }
 
     private void maakButtons() {
 
-        cancel = new JButton(new ImageIcon("src/resources/buttons/cancel.png"));
-        cancel.setRolloverIcon(new ImageIcon("src/resources/buttons/cancel_h.png"));
-        cancel.setBorder(null);
-        cancel.setBounds(100, 415, 150, 51);
-        cancel.addActionListener(this);
+        /*
+            Buttons worden aangemaakt.
+            Deze krijgen een vaste X / Y as waarde mee.
+            De buttons krijgen een mouse over afbeelding
+         */
 
-        ok = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
-        ok.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
-        ok.setBorder(null);
-        ok.setBounds(300, 415, 150, 51);
-        ok.addActionListener(this);
+        jbtCancel = new JButton(new ImageIcon("src/resources/buttons/cancel.png"));
+        jbtCancel.setRolloverIcon(new ImageIcon("src/resources/buttons/cancel_h.png"));
+        jbtCancel.setBorder(null);
+        jbtCancel.setBounds(100, 415, 150, 51);
+        jbtCancel.addActionListener(this);
 
-        zwart = new JButton(new ImageIcon("src/resources/buttons/kruiszwart.png"));
-        zwart.setRolloverIcon(new ImageIcon("src/resources/buttons/kruiszwart.png"));
-        zwart.setBorder(null);
-        zwart.setBounds(75, 150, 40, 40);
-        zwart.addActionListener(this);
+        jbtOK = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
+        jbtOK.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
+        jbtOK.setBorder(null);
+        jbtOK.setBounds(300, 415, 150, 51);
+        jbtOK.addActionListener(this);
 
-        rood = new JButton(new ImageIcon("src/resources/buttons/rondjerood.png"));
-        rood.setRolloverIcon(new ImageIcon("src/resources/buttons/rondjerood.png"));
-        rood.setBorder(null);
-        rood.setBounds(125, 150, 40, 40);
-        rood.addActionListener(this);
+        jbtZwartEen = new JButton(new ImageIcon("src/resources/buttons/kruiszwart.png"));
+        jbtZwartEen.setRolloverIcon(new ImageIcon("src/resources/buttons/kruiszwart.png"));
+        jbtZwartEen.setBorder(null);
+        jbtZwartEen.setBounds(75, 150, 40, 40);
+        jbtZwartEen.addActionListener(this);
 
-        rood1 = new JButton(new ImageIcon("src/resources/buttons/kruisjerood.png"));
-        rood1.setRolloverIcon(new ImageIcon("src/resources/buttons/kruisjerood.png"));
-        rood1.setBorder(null);
-        rood1.setBounds(330, 150, 45, 45);
-        rood1.addActionListener(this);
+        jbtRoodEen = new JButton(new ImageIcon("src/resources/buttons/rondjerood.png"));
+        jbtRoodEen.setRolloverIcon(new ImageIcon("src/resources/buttons/rondjerood.png"));
+        jbtRoodEen.setBorder(null);
+        jbtRoodEen.setBounds(125, 150, 40, 40);
+        jbtRoodEen.addActionListener(this);
 
-        zwart1 = new JButton(new ImageIcon("src/resources/buttons/rondjezwart.png"));
-        zwart1.setRolloverIcon(new ImageIcon("src/resources/buttons/rondjezwart.png"));
-        zwart1.setBorder(null);
-        zwart1.setBounds(380, 150, 45, 45);
-        zwart1.addActionListener(this);
+        jbtRoodTwee = new JButton(new ImageIcon("src/resources/buttons/kruisjerood.png"));
+        jbtRoodTwee.setRolloverIcon(new ImageIcon("src/resources/buttons/kruisjerood.png"));
+        jbtRoodTwee.setBorder(null);
+        jbtRoodTwee.setBounds(330, 150, 45, 45);
+        jbtRoodTwee.addActionListener(this);
+
+        jbtZwartTwee = new JButton(new ImageIcon("src/resources/buttons/rondjezwart.png"));
+        jbtZwartTwee.setRolloverIcon(new ImageIcon("src/resources/buttons/rondjezwart.png"));
+        jbtZwartTwee.setBorder(null);
+        jbtZwartTwee.setBounds(380, 150, 45, 45);
+        jbtZwartTwee.addActionListener(this);
     }
 
     private void maakInput() {
 
-        naam_1 = new JTextField("Axel");
-        naam_1.setBounds(75, 170, 150, 25);
+        /*
+            Er worden twee input velden aangemaakt.
+            Deze hebben ook beide vaste waarden.
+         */
 
-        naam_2 = new JTextField("Bart");
-        naam_2.setBounds(330, 170, 150, 25);
+        jtxNaamEen = new JTextField("Axel");
+        jtxNaamEen.setBounds(75, 170, 150, 25);
+
+        jtxNaamTwee = new JTextField("Bart");
+        jtxNaamTwee.setBounds(330, 170, 150, 25);
     }
 
     private void maakAfbeeldingen() {
+
+        /*
+            De afbeeldingen van kruisje en rondje worden ingeladen.
+            Deze komen onder de radio select buttons te staan.
+         */
 
         BufferedImage imgKruisje = null;
         try {
@@ -133,67 +149,70 @@ public class NieuwProfiel extends JPanel implements ActionListener {
 
     private void maakRadio() {
 
-        /* Jradio buttons deze geven de keuzen voor rondje of kruisje */
-        kruisje = new JRadioButton();
-        kruisje.setText("Kruisje");
-        kruisje.setBackground(new Color(166, 166, 166));
-        kruisje.setBounds(75, 200, 65, 35);
-        kruisje.setSelected(true);
+        /* Jradio buttons deze geven de keuzen voor jrbRondjeEen of jrbKruisjeEen */
+        jrbKruisjeEen = new JRadioButton();
+        jrbKruisjeEen.setText("Kruisje");
+        jrbKruisjeEen.setBackground(new Color(166, 166, 166));
+        jrbKruisjeEen.setBounds(75, 200, 65, 35);
+        jrbKruisjeEen.setSelected(true);
 
-        rondje = new JRadioButton();
-        rondje.setText("Rondje");
-        rondje.setBackground( new Color(166,166,166));
-        rondje.setBounds(155,200,65,35);
+        jrbRondjeEen = new JRadioButton();
+        jrbRondjeEen.setText("Rondje");
+        jrbRondjeEen.setBackground(new Color(166, 166, 166));
+        jrbRondjeEen.setBounds(155, 200, 65, 35);
 
-        kruisje2 = new JRadioButton();
-        kruisje2.setText("Kruisje");
-        kruisje2.setBackground(new Color(166, 166, 166));
-        kruisje2.setBounds(330, 200, 65, 35);
+        jrbKruisjeTwee = new JRadioButton();
+        jrbKruisjeTwee.setText("Kruisje");
+        jrbKruisjeTwee.setBackground(new Color(166, 166, 166));
+        jrbKruisjeTwee.setBounds(330, 200, 65, 35);
 
-        rondje2 = new JRadioButton();
-        rondje2.setText("Rondje");
-        rondje2.setBackground( new Color(166,166,166));
-        rondje2.setBounds(410,200,65,35);
-        rondje2.setSelected(true);
+        jrbRondjeTwee = new JRadioButton();
+        jrbRondjeTwee.setText("Rondje");
+        jrbRondjeTwee.setBackground(new Color(166, 166, 166));
+        jrbRondjeTwee.setBounds(410, 200, 65, 35);
+        jrbRondjeTwee.setSelected(true);
 
-        group_speler_1 = new ButtonGroup();
-        group_speler_1.add(kruisje);
-        group_speler_1.add(rondje);
+        bgGroepEen = new ButtonGroup();
+        bgGroepEen.add(jrbKruisjeEen);
+        bgGroepEen.add(jrbRondjeEen);
 
-        group_speler_2 = new ButtonGroup();
-        group_speler_2.add(kruisje2);
-        group_speler_2.add(rondje2);
+        bgGroepTwee = new ButtonGroup();
+        bgGroepTwee.add(jrbKruisjeTwee);
+        bgGroepTwee.add(jrbRondjeTwee);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if(e.getSource() == cancel){
+        if(e.getSource() == jbtCancel){
 
-            ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(spelFrame, true);
+            //Wanneer er op cancel wordt geklikt gaan we terug naar het hoofdmenu
+            ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(jfSpelFrame, true);
             toonHoofdmenu.run();
 
         } else {
-            if (e.getSource() == ok) {
+            if (e.getSource() == jbtOK) {
 
-                String strSpelerNaam1 = naam_1.getText();
-                String strSpelerNaam2 = naam_2.getText();
+                //Textveld input wordt opgeslagen als string en meegegeven aan de constructor controleerNieuwProfiel.
+                String strSpelerNaam1 = jtxNaamEen.getText();
+                String strSpelerNaam2 = jtxNaamTwee.getText();
                 String strTypeNaam1 = null;
                 String strTypeNaam2 = null;
 
-                if (kruisje.isSelected()) {
+                if (jrbKruisjeEen.isSelected()) {
                     strTypeNaam1 = "kruis";
-                } else if (rondje.isSelected()) {
+                } else if (jrbRondjeEen.isSelected()) {
                     strTypeNaam1 = "rond";
                 }
 
-                if (kruisje2.isSelected()) {
+                if (jrbKruisjeTwee.isSelected()) {
                     strTypeNaam2 = "kruis";
-                } else if (rondje2.isSelected()) {
+                } else if (jrbRondjeTwee.isSelected()) {
                     strTypeNaam2 = "rond";
                 }
 
-                ControleerNieuwProfiel controleerNieuwProfiel = new ControleerNieuwProfiel(spelFrame, strSpelerNaam1, strSpelerNaam2, strTypeNaam1, strTypeNaam2);
+                //nieuw profiel wordt doorgestuurd om te worden gecontroleerd.
+                ControleerNieuwProfiel controleerNieuwProfiel = new ControleerNieuwProfiel(jfSpelFrame, strSpelerNaam1, strSpelerNaam2, strTypeNaam1, strTypeNaam2);
                 controleerNieuwProfiel.run();
             }
         }

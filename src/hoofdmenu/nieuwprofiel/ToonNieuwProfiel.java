@@ -9,11 +9,11 @@ import javax.swing.*;
  */
 public class ToonNieuwProfiel extends Task {
 
-    private JFrame spelFrame;
+    private JFrame jfSpelFrame;
 
-    public ToonNieuwProfiel(JFrame spelFrame) {
+    public ToonNieuwProfiel(JFrame jfSpelFrame) {
 
-        this.spelFrame = spelFrame;
+        this.jfSpelFrame = jfSpelFrame;
     }
 
     public void run() {
@@ -33,8 +33,8 @@ public class ToonNieuwProfiel extends Task {
 
     private void execute() {
 
-        spelFrame.setContentPane(new NieuwProfiel(spelFrame));
-        spelFrame.validate();
+        jfSpelFrame.setContentPane(new NieuwProfiel(jfSpelFrame));
+        jfSpelFrame.validate();
     }
 
 }

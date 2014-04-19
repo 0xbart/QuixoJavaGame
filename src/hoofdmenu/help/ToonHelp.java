@@ -9,11 +9,11 @@ import javax.swing.*;
  */
 public class ToonHelp extends Task {
 
-    private JFrame spelFrame;
+    private JFrame jfSpelFrame;
 
-    public ToonHelp(JFrame spelFrame){
+    public ToonHelp(JFrame jfSpelFrame){
 
-        this.spelFrame = spelFrame;
+        this.jfSpelFrame = jfSpelFrame;
     }
 
     public void run() {
@@ -33,8 +33,8 @@ public class ToonHelp extends Task {
 
     private void execute() {
 
-        spelFrame.setContentPane(new Help(spelFrame));
-        spelFrame.validate();
+        jfSpelFrame.setContentPane(new Help(jfSpelFrame));
+        jfSpelFrame.validate();
     }
 
 }

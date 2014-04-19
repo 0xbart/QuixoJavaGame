@@ -12,41 +12,46 @@ import java.awt.event.ActionListener;
  */
 public class Help extends JPanel implements ActionListener {
 
-    private JFrame spelFrame;
-    private JButton terug;
-    private JLabel background;
+    private JFrame jfSpelFrame;
+    private JButton jbnTerug;
+    private JLabel jlAchtergrond;
 
-    public Help(JFrame spelFrame){
+    public Help(JFrame jfSpelFrame){
 
-        this.spelFrame = spelFrame;
+        this.jfSpelFrame = jfSpelFrame;
 
         maakAchtergrond();
         maakButton();
 
         setLayout(null);
-        add(terug);
+        add(jbnTerug);
 
         setLayout(new BorderLayout());
-        add(background);
+        add(jlAchtergrond);
     }
 
     private void maakAchtergrond(){
-        background = new JLabel(new ImageIcon("src/resources/achtergrond/help_bg.png"));
+        jlAchtergrond = new JLabel(new ImageIcon("src/resources/achtergrond/help_bg.png"));
     }
 
     private void maakButton(){
 
-        terug = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
-        terug.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
-        terug.setBorder(null);
-        terug.setBounds(200, 400, 150, 51);
-        terug.addActionListener(this);
+        /*
+            Maak de button aan.
+            Deze heeft een vaste X / Y as waarde.
+         */
+
+        jbnTerug = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
+        jbnTerug.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
+        jbnTerug.setBorder(null);
+        jbnTerug.setBounds(200, 400, 150, 51);
+        jbnTerug.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(spelFrame, true);
+        ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(jfSpelFrame, true);
         toonHoofdmenu.run();
     }
 }

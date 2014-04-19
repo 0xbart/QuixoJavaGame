@@ -15,17 +15,17 @@ import java.util.Scanner;
  */
 public class Opties extends JPanel implements ActionListener{
 
-    private String[] jcbKeuzes = {"ja", "nee"};
-    private String[] jcbKeuzesMuis = {"linkshandig", "rechtshandig"};
+    private String[] strArrKeuze = {"ja", "nee"};
+    private String[] strArrKeuzeMuis = {"linkshandig", "rechtshandig"};
 
-    private JFrame spelFrame;
-    private JComboBox achtergrond_menu, achtergrond_spel, geluid_menu, geluid_spel, muis;
-    private JButton terug;
-    private JLabel background;
+    private JFrame jfSpelFrame;
+    private JComboBox jcAchtergrondMenu, jcAchtergrondSpel, jcGeluidMenu, jcGeluidSpel, jcMuis;
+    private JButton jbTerug;
+    private JLabel jlAchtergrond;
 
-    public Opties(JFrame spelFrame) {
+    public Opties(JFrame jfSpelFrame) {
 
-        this.spelFrame = spelFrame;
+        this.jfSpelFrame = jfSpelFrame;
 
         maakAchtergrond();
         maakCombo();
@@ -34,81 +34,102 @@ public class Opties extends JPanel implements ActionListener{
         maakButton();
 
         setLayout(null);
-        add(achtergrond_menu);
-        add(achtergrond_spel);
-        add(geluid_menu);
-        add(geluid_spel);
-        add(muis);
-        add(terug);
+        add(jcAchtergrondMenu);
+        add(jcAchtergrondSpel);
+        add(jcGeluidMenu);
+        add(jcGeluidSpel);
+        add(jcMuis);
+        add(jbTerug);
 
         setLayout(new BorderLayout());
-        add(background);
+        add(jlAchtergrond);
     }
 
     private void maakAchtergrond(){
-        background = new JLabel(new ImageIcon("src/resources/achtergrond/opties_bg.png"));
+        jlAchtergrond = new JLabel(new ImageIcon("src/resources/achtergrond/opties_bg.png"));
     }
 
     private void maakButton(){
 
-        terug = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
-        terug.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
-        terug.setBorder(null);
-        terug.setBounds(200, 420, 150, 51);
-        terug.addActionListener(this);
+        /*
+            Button wordt aangemaakt;
+            Deze krijgt een vaste X / Y as waarde mee.
+            Mouseover wordt toegevoegd.
+         */
+
+        jbTerug = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
+        jbTerug.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
+        jbTerug.setBorder(null);
+        jbTerug.setBounds(200, 420, 150, 51);
+        jbTerug.addActionListener(this);
     }
 
     private void maakCombo(){
 
-        achtergrond_menu = new JComboBox(jcbKeuzes);
-        achtergrond_menu.setBorder(null);
-        achtergrond_menu.setBounds(380, 130, 75, 25);
-        achtergrond_menu.setBackground(new Color(130,128,122));
-        achtergrond_menu.setForeground(new Color(107,54,31));
+        /*
+            RadioButtons worden aangemaakt.
+            Deze krijgen ook een vaste X / Y as waarde mee.
+         */
 
-        achtergrond_spel = new JComboBox(jcbKeuzes);
-        achtergrond_spel.setBorder(null);
-        achtergrond_spel.setBounds(380, 170, 75, 25);
-        achtergrond_spel.setBackground(new Color(130,128,122));
-        achtergrond_spel.setForeground(new Color(107,54,31));
+        jcAchtergrondMenu = new JComboBox(strArrKeuze);
+        jcAchtergrondMenu.setBorder(null);
+        jcAchtergrondMenu.setBounds(380, 130, 75, 25);
+        jcAchtergrondMenu.setBackground(new Color(130, 128, 122));
+        jcAchtergrondMenu.setForeground(new Color(107, 54, 31));
 
-        geluid_menu = new JComboBox(jcbKeuzes);
-        geluid_menu.setBorder(null);
-        geluid_menu.setBounds(380, 210, 75, 25);
-        geluid_menu.setBackground(new Color(130,128,122));
-        geluid_menu.setForeground(new Color(107,54,31));
+        jcAchtergrondSpel = new JComboBox(strArrKeuze);
+        jcAchtergrondSpel.setBorder(null);
+        jcAchtergrondSpel.setBounds(380, 170, 75, 25);
+        jcAchtergrondSpel.setBackground(new Color(130, 128, 122));
+        jcAchtergrondSpel.setForeground(new Color(107, 54, 31));
 
-        geluid_spel = new JComboBox(jcbKeuzes);
-        geluid_spel.setBorder(null);
-        geluid_spel.setBounds(380, 250, 75, 25);
-        geluid_spel.setBackground(new Color(130,128,122));
-        geluid_spel.setForeground(new Color(107,54,31));
+        jcGeluidMenu = new JComboBox(strArrKeuze);
+        jcGeluidMenu.setBorder(null);
+        jcGeluidMenu.setBounds(380, 210, 75, 25);
+        jcGeluidMenu.setBackground(new Color(130, 128, 122));
+        jcGeluidMenu.setForeground(new Color(107, 54, 31));
+
+        jcGeluidSpel = new JComboBox(strArrKeuze);
+        jcGeluidSpel.setBorder(null);
+        jcGeluidSpel.setBounds(380, 250, 75, 25);
+        jcGeluidSpel.setBackground(new Color(130, 128, 122));
+        jcGeluidSpel.setForeground(new Color(107, 54, 31));
     }
 
     private void maakComboMuis(){
 
-        muis = new JComboBox(jcbKeuzesMuis);
-        muis.setBorder(null);
-        muis.setBounds(340, 320, 115, 25);
-        muis.setBackground(new Color(130,128,122));
-        muis.setForeground(new Color(107,54,31));
+        /*
+            RadioButton wordt aangemaakt.
+            Deze krijgen ook een vaste X / Y as waarde mee.
+         */
+
+        jcMuis = new JComboBox(strArrKeuzeMuis);
+        jcMuis.setBorder(null);
+        jcMuis.setBounds(340, 320, 115, 25);
+        jcMuis.setBackground(new Color(130, 128, 122));
+        jcMuis.setForeground(new Color(107, 54, 31));
     }
 
     private void maakComboFile() {
 
+        //Filepath wordt opgehaald uit de Utils klasse.
         Computer c = new Computer();
         String filePath = c.getFILEPATH() + "opties.bin";
-
 
         File file = new File(filePath);
         Scanner input = null;
 
         try {
+
+            /*
+                Gegevens worden gelezen vanuit een bestand.
+             */
+
             input = new Scanner(file);
-            achtergrond_menu.setSelectedItem(input.next());
-            achtergrond_spel.setSelectedItem(input.next());
-            geluid_menu.setSelectedItem(input.next());
-            geluid_spel.setSelectedItem(input.next());
+            jcAchtergrondMenu.setSelectedItem(input.next());
+            jcAchtergrondSpel.setSelectedItem(input.next());
+            jcGeluidMenu.setSelectedItem(input.next());
+            jcGeluidSpel.setSelectedItem(input.next());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -117,12 +138,14 @@ public class Opties extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        String strGeluidAchtergrondMenu = (String) achtergrond_menu.getSelectedItem();
-        String strGeluidAchtergrondSpel = (String) achtergrond_spel.getSelectedItem();
-        String strGeluidMenu = (String) geluid_menu.getSelectedItem();
-        String strGeluidSpel = (String) geluid_spel.getSelectedItem();
+        //textield input wordt gecast naar een String en meegegeven aan de constructor.
+        String strGeluidAchtergrondMenu = (String) jcAchtergrondMenu.getSelectedItem();
+        String strGeluidAchtergrondSpel = (String) jcAchtergrondSpel.getSelectedItem();
+        String strGeluidMenu = (String) jcGeluidMenu.getSelectedItem();
+        String strGeluidSpel = (String) jcGeluidSpel.getSelectedItem();
 
-        OpslaanOpties opslaanOpties = new OpslaanOpties(spelFrame, strGeluidAchtergrondMenu, strGeluidAchtergrondSpel, strGeluidMenu, strGeluidSpel);
+        //Opslaan opties wordt aangeroepen.
+        OpslaanOpties opslaanOpties = new OpslaanOpties(jfSpelFrame, strGeluidAchtergrondMenu, strGeluidAchtergrondSpel, strGeluidMenu, strGeluidSpel);
         opslaanOpties.run();
     }
 }
