@@ -1,6 +1,5 @@
- package spel;
+package spel;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 public class BlokjeVerzetten {
 
     private ArrayList SteenRij;
-    private SteenRij[] schuifStenen = new SteenRij[5] ;        // ArrayList voor Steenrij (5 selecteren)
+    private int[] schuifStenen = new int[5];        // ArrayList voor Steenrij (5 selecteren)
     private Thread lijn;                                       // Lijn is het draadje
     private int richting;                                      // Richting variabel.
     private boolean verschuiven;                               // Gaan ze verschuiven? Ja of nee.
@@ -182,7 +181,7 @@ public class BlokjeVerzetten {
     {
         for( int i = 0; i < schuifStenen.length; i++ )
         {
-            schuifStenen[i] = null;
+            schuifStenen[i] = 0;
         }
         lijn = null;
         verschuiven = false;
