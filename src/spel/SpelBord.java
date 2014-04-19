@@ -206,40 +206,129 @@ public class SpelBord extends JPanel implements MouseListener {
             int rijNieuwe	= i / 5;                        //Nieuwe rij na het verzetten van blokje
             int kolomNieuwe = i % 5;                        //Nieuwe kolom na het verzetten van blokje
 
-
-            System.out.println("Geselecteerde cel: " + selected);
-            System.out.println("Rij oude: " + rijOude);
-            System.out.println("Komom oude: " + kolomOude);
-            System.out.println("Rij nieuwe: " + rijNieuwe);
-            System.out.println("Kolom nieuwe: " + kolomNieuwe);
-
             if ( rijOude == rijNieuwe ) {                   // VERSCHUIF HORIZONTAAL
 
                 if (kolomOude < kolomNieuwe) {              // LINKS...
 
-                    System.out.println("schuif links!");
-
-                    for(int m = 0; m < 4; m++){
-                        spelData[i+m] = spelData[i+m+1];
+                    if(i >= 0 && i <= 4){
+                        spelData[0] = spelData[1];
+                        spelData[1] = spelData[2];
+                        spelData[2] = spelData[3];
+                        spelData[3] = spelData[4];
+                    } else if(i >= 5 && i <= 9){
+                        spelData[5] = spelData[6];
+                        spelData[6] = spelData[7];
+                        spelData[7] = spelData[8];
+                        spelData[8] = spelData[9];
+                    } else if(i >= 10 && i <= 14){
+                        spelData[10] = spelData[11];
+                        spelData[11] = spelData[12];
+                        spelData[12] = spelData[13];
+                        spelData[13] = spelData[14];
+                    } else if(i >= 15 && i <= 19){
+                        spelData[15] = spelData[16];
+                        spelData[16] = spelData[17];
+                        spelData[17] = spelData[18];
+                        spelData[18] = spelData[19];
+                    } else {
+                        spelData[20] = spelData[21];
+                        spelData[21] = spelData[22];
+                        spelData[22] = spelData[23];
+                        spelData[23] = spelData[24];
                     }
+
                 } else if (kolomOude > kolomNieuwe) {       // RECHTS
 
-                    System.out.println("schuif rechts!");
-
-                    for(int m = 4; m > 0; m--){
-                        spelData[i+m] = spelData[i+m-1];
+                    if(i >= 0 && i <= 4){
+                        spelData[4] = spelData[3];
+                        spelData[3] = spelData[2];
+                        spelData[2] = spelData[1];
+                        spelData[1] = spelData[0];
+                    } else if(i >= 5 && i <= 9){
+                        spelData[9] = spelData[8];
+                        spelData[8] = spelData[7];
+                        spelData[7] = spelData[6];
+                        spelData[6] = spelData[5];
+                    } else if(i >= 10 && i <= 14){
+                        spelData[14] = spelData[13];
+                        spelData[13] = spelData[12];
+                        spelData[12] = spelData[11];
+                        spelData[11] = spelData[10];
+                    } else if(i >= 15 && i <= 19){
+                        spelData[19] = spelData[18];
+                        spelData[18] = spelData[17];
+                        spelData[17] = spelData[16];
+                        spelData[16] = spelData[15];
+                    } else {
+                        spelData[24] = spelData[23];
+                        spelData[23] = spelData[22];
+                        spelData[22] = spelData[21];
+                        spelData[21] = spelData[20];
                     }
+
                 } else {
                     /* GEEN BLOKJE GEKOZEN */
                 }
             } else if (kolomOude == kolomNieuwe ) {         // VERSCHUIF VERTIKAAL
 
-                if (rijOude < rijNieuwe) {                  // OMLAAG
+                if (rijOude < rijNieuwe) {                  // OMHOOG
 
-                    //
-                } else if (rijOude > rijNieuwe) {           // OMHOOG
+                    if(kolomNieuwe == 0){
+                        spelData[0] = spelData[5];
+                        spelData[5] = spelData[10];
+                        spelData[10] = spelData[15];
+                        spelData[15] = spelData[20];
+                    } else if(kolomNieuwe == 1){
+                        spelData[1] = spelData[6];
+                        spelData[6] = spelData[11];
+                        spelData[11] = spelData[16];
+                        spelData[16] = spelData[21];
+                    } else if(kolomNieuwe == 2){
+                        spelData[2] = spelData[7];
+                        spelData[7] = spelData[12];
+                        spelData[12] = spelData[17];
+                        spelData[17] = spelData[22];
+                    } else if(kolomNieuwe == 3){
+                        spelData[3] = spelData[8];
+                        spelData[8] = spelData[13];
+                        spelData[13] = spelData[18];
+                        spelData[18] = spelData[23];
+                    } else {
+                        spelData[4] = spelData[9];
+                        spelData[9] = spelData[14];
+                        spelData[14] = spelData[19];
+                        spelData[19] = spelData[24];
+                    }
 
-                    //
+                } else if (rijOude > rijNieuwe) {           // OMLAAG
+
+                    if(kolomNieuwe == 0){
+                        spelData[20] = spelData[15];
+                        spelData[15] = spelData[10];
+                        spelData[10] = spelData[5];
+                        spelData[5] = spelData[0];
+                    } else if(kolomNieuwe == 1){
+                        spelData[21] = spelData[16];
+                        spelData[16] = spelData[11];
+                        spelData[11] = spelData[6];
+                        spelData[6] = spelData[1];
+                    } else if(kolomNieuwe == 2){
+                        spelData[22] = spelData[17];
+                        spelData[17] = spelData[12];
+                        spelData[12] = spelData[7];
+                        spelData[7] = spelData[2];
+                    } else if(kolomNieuwe == 3){
+                        spelData[23] = spelData[18];
+                        spelData[18] = spelData[13];
+                        spelData[13] = spelData[8];
+                        spelData[8] = spelData[3];
+                    } else {
+                        spelData[24] = spelData[19];
+                        spelData[19] = spelData[14];
+                        spelData[14] = spelData[9];
+                        spelData[9] = spelData[4];
+                    }
+
                 } else {
                     /* GEEN BLOKJE GEKOZEN */
                 }

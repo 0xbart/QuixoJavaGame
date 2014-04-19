@@ -27,6 +27,7 @@ public class LaadProfiel extends JPanel implements ActionListener {
     private String strTypeSpeler2;
     private String strSpelerZet;
     private String strTypeSpelerZet;
+    private int selected;
     private int [] spelData = new int[25];
 
     public LaadProfiel(JFrame jfSpelFrame) {
@@ -116,6 +117,7 @@ public class LaadProfiel extends JPanel implements ActionListener {
             strTypeSpeler2 = input.next();
             strSpelerZet = input.next();
             strTypeSpelerZet = input.next();
+            selected = input.nextInt();
 
             /*
                 Deze loop is nodig om de speldata Array te vullen.
@@ -142,7 +144,7 @@ public class LaadProfiel extends JPanel implements ActionListener {
         } else if(e.getSource() == jlOK){
 
             //Het spel kan worden geladen. Het spelbord wordt aangeroepen met alle informatie erbij die nodig is.
-            ToonSpelbord toonSpelbord = new ToonSpelbord(jfSpelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpeler1, strTypeSpeler1, 0);
+            ToonSpelbord toonSpelbord = new ToonSpelbord(jfSpelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpeler1, strTypeSpeler1, selected);
             toonSpelbord.run();
         }
     }

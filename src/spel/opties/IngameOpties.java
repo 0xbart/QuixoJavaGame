@@ -100,6 +100,7 @@ public class IngameOpties extends JPanel implements ActionListener {
                 output.println(strTypeSpeler2);
                 output.println(strSpelerZet);
                 output.println(strTypeSpelerZet);
+                output.println(selected);
 
                 for(int i = 0; i < spelData.length; i++){
                     output.println(spelData[i]);
