@@ -142,7 +142,7 @@ public class LaadProfiel extends JPanel implements ActionListener {
         } else if(e.getSource() == jlOK){
 
             //Het spel kan worden geladen. Het spelbord wordt aangeroepen met alle informatie erbij die nodig is.
-            ToonSpelbord toonSpelbord = new ToonSpelbord(jfSpelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpeler1, strTypeSpeler1);
+            ToonSpelbord toonSpelbord = new ToonSpelbord(jfSpelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpeler1, strTypeSpeler1, 0);
             toonSpelbord.run();
         }
     }

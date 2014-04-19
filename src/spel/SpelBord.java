@@ -34,7 +34,7 @@ public class SpelBord extends JPanel implements MouseListener {
 
     private int selected;
 
-    public SpelBord (JFrame spelFrame, String strSpeler1, String strSpeler2, String strTypeSpeler1, String strTypeSpeler2, int[] spelData, String strSpelerZet, String strTypeSpelerZet) {
+    public SpelBord (JFrame spelFrame, String strSpeler1, String strSpeler2, String strTypeSpeler1, String strTypeSpeler2, int[] spelData, String strSpelerZet, String strTypeSpelerZet, int selected) {
 
         this.spelFrame = spelFrame;
         this.strSpeler1 = strSpeler1;
@@ -44,6 +44,7 @@ public class SpelBord extends JPanel implements MouseListener {
         this.spelData = spelData;
         this.strSpelerZet = strSpelerZet;
         this.strTypeSpelerZet = strTypeSpelerZet;
+        this.selected = selected;
 
         maakAchtergrond();
         maakButtons();
@@ -146,8 +147,6 @@ public class SpelBord extends JPanel implements MouseListener {
 
     public void berekenOptie(int i, int j) {
 
-        System.out.println(i);
-
         if(j == 0) {
             int[][] veldArrData = {
                     {0, 4, 20},
@@ -208,14 +207,28 @@ public class SpelBord extends JPanel implements MouseListener {
             int kolomNieuwe = i % 5;                        //Nieuwe kolom na het verzetten van blokje
 
 
+            System.out.println("Geselecteerde cel: " + selected);
+            System.out.println("Rij oude: " + rijOude);
+            System.out.println("Komom oude: " + kolomOude);
+            System.out.println("Rij nieuwe: " + rijNieuwe);
+            System.out.println("Kolom nieuwe: " + kolomNieuwe);
+
             if ( rijOude == rijNieuwe ) {                   // VERSCHUIF HORIZONTAAL
 
                 if (kolomOude < kolomNieuwe) {              // LINKS...
 
-                    //
+                    System.out.println("schuif links!");
+
+                    for(int m = 0; m < 4; m++){
+                        spelData[i+m] = spelData[i+m+1];
+                    }
                 } else if (kolomOude > kolomNieuwe) {       // RECHTS
 
-                    //
+                    System.out.println("schuif rechts!");
+
+                    for(int m = 4; m > 0; m--){
+                        spelData[i+m] = spelData[i+m-1];
+                    }
                 } else {
                     /* GEEN BLOKJE GEKOZEN */
                 }
@@ -251,12 +264,12 @@ public class SpelBord extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
         if(e.getSource() == help){
-            ToonIngameHelp toonIngameHelp = new ToonIngameHelp(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
+            ToonIngameHelp toonIngameHelp = new ToonIngameHelp(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet, selected);
             toonIngameHelp.run();
         }
 
         if(e.getSource() == menu){
-            ToonIngameOpties toonIngameOpties = new ToonIngameOpties(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
+            ToonIngameOpties toonIngameOpties = new ToonIngameOpties(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet, selected);
             toonIngameOpties.run();
         }
 
@@ -282,7 +295,7 @@ public class SpelBord extends JPanel implements MouseListener {
                         //selected wordt toegewezen aan de int.
                         selected = i;
 
-                        ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
+                        ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet, selected);
                         toonSpelbord.run();
 
                     }
@@ -311,21 +324,45 @@ public class SpelBord extends JPanel implements MouseListener {
                         strTypeSpelerZet = "kruis";
                     }
 
-                    ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
+                    ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet, selected);
                     toonSpelbord.run();
-                } else if(spelData[i] == 5) {
+                } else if(spelData[i] == 5 || spelData[i] == 6) {
+
+                    int temp;
+
+                    if (strTypeSpelerZet == "kruis") {
+                        temp = 1;
+                    } else {
+                        temp = 2;
+                    }
+
+                    schoonVelden();
+
+                    berekenOptie(i, 1);
+
+                    spelData[i] = temp;
+
+                    if (strSpelerZet.equals(strSpeler1)) {
+                        strSpelerZet = strSpeler2;
+                    } else {
+                        strSpelerZet = strSpeler1;
+                    }
+
+                    if (strTypeSpelerZet == "kruis") {
+                        strTypeSpelerZet = "rond";
+                    } else {
+                        strTypeSpelerZet = "kruis";
+                    }
+
+                    ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet, selected);
+                    toonSpelbord.run();
+
+                } /* else if(spelData[i] == 6) {
 
                     // verplaats blokje naar links of rechts en doe er nog 1 bij.
                     // of verplaats hem een verdieping lager
 
-
-
-                } else if(spelData[i] == 6) {
-
-                    // verplaats blokje naar links of rechts en doe er nog 1 bij.
-                    // of verplaats hem een verdieping lager
-
-                }
+                } */
             }
         }
     }

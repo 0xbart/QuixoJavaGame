@@ -68,7 +68,7 @@ public class ControleerNieuwProfiel extends Task {
     private void execute() {
 
         //De validate is goedgekeurd. Het spel kan worden geladen. De namen en de typen worden doorgegeven. De speldata is hier ook leeg.
-        ToonSpelbord toonSpelbord = new ToonSpelbord(jfSpelFrame, strSpelerNaam1, strSpelerNaam2, strTypeNaam1, strTypeNaam2, spelData, strSpelerNaam1, strTypeNaam1);
+        ToonSpelbord toonSpelbord = new ToonSpelbord(jfSpelFrame, strSpelerNaam1, strSpelerNaam2, strTypeNaam1, strTypeNaam2, spelData, strSpelerNaam1, strTypeNaam1, 0);
         toonSpelbord.run();
     }
 
