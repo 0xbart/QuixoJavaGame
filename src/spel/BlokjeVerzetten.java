@@ -1,5 +1,6 @@
-package spel;
+ package spel;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -19,19 +20,19 @@ import java.util.ArrayList;
 public class BlokjeVerzetten {
 
     private ArrayList SteenRij;
-    private int[] schuifStenen = new int[5];        // ArrayList voor Steenrij (5 selecteren)
-    private Thread lijn;                                       // Lijn is het draadje
-    private int richting;                                      // Richting variabel.
-    private boolean verschuiven;                               // Gaan ze verschuiven? Ja of nee.
+    private int[] schuifStenen = new int[5];           // ArrayList voor Steenrij (5 selecteren)
+    private Thread lijn;                               // Lijn is het draadje
+    private int richting;                              // Richting variabel.
+    private boolean verschuiven;                       // Gaan ze verschuiven? Ja of nee.
 
 
     public void ZetBlokje( int plaatsOude, int plaatsNieuwe ) {
     /* Plaats 12 wordt meegegeven. Plaats 12 wordt omgezet in rij 3, kolom 2.*/
 
-        int rijOude 	= plaatsOude / 5;                 //Oude rij van blokje.
-        int kolomOude 	= plaatsOude % 5;                 //Oude kolom van blokje.
-        int rijNieuwe	= plaatsNieuwe / 5;               //Nieuwe rij na het verzetten van blokje
-        int kolomNieuwe = plaatsNieuwe % 5;               //Nieuwe kolom na het verzetten van blokje
+        int rijOude 	= plaatsOude / 5;                 // Oude rij van blokje.
+        int kolomOude 	= plaatsOude % 5;                 // Oude kolom van blokje.
+        int rijNieuwe	= plaatsNieuwe / 5;               // Nieuwe rij na het verzetten van blokje
+        int kolomNieuwe = plaatsNieuwe % 5;               // Nieuwe kolom na het verzetten van blokje
 
 
         if ( rijOude == rijNieuwe ) // Check: Of oude rij gelijk is aan de nieuwe rij. (3 == 3) |
@@ -164,7 +165,7 @@ public class BlokjeVerzetten {
                     stop();
             }
             m++;
-            if( m >= 58 )   //Berekening. Dan hoort het schuiven te stoppen.
+            if( m >= 58 )   // Berekening. Dan hoort het schuiven te stoppen.
                 stop();
         }
    }
@@ -181,7 +182,7 @@ public class BlokjeVerzetten {
     {
         for( int i = 0; i < schuifStenen.length; i++ )
         {
-            schuifStenen[i] = 0;
+            schuifStenen[i] = null;
         }
         lijn = null;
         verschuiven = false;
