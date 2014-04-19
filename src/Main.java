@@ -1,11 +1,11 @@
-import spel.winnaar.ToonWinnaar;
-
 import javax.swing.*;
 
 /**
  * Created by Bart on 1-4-2014.
  */
 public class Main extends JFrame {
+
+    private static ImageIcon img = new ImageIcon("src/resources/logo.png");
 
     public static void main (String[] args) {
 
@@ -19,27 +19,27 @@ public class Main extends JFrame {
             Joey Rentenaar
             Youri Kool
 
+            © Alle rechten voorbehouden - HSLeiden - 2014
+
          */
 
-        ImageIcon img = new ImageIcon("src/resources/logo.png");
-        JFrame spelFrame = new JFrame();
+        //frame wordt aangemaakt en meegegeven aan alle klassen
+        JFrame jfSpelFrame = new JFrame();
 
-        spelFrame.setTitle("Quixo - IPSEN1 - INF1G Groep 4");
-        spelFrame.setSize(550, 550);
-        spelFrame.setIconImage(img.getImage());
-        spelFrame.setResizable(false);
-        spelFrame.setLocationRelativeTo(null);
-        spelFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        spelFrame.setLayout(null);
+        //frame instellingen aanmaken
+        jfSpelFrame.setTitle("Quixo - IPSEN1 - INF1G Groep 4");
+        jfSpelFrame.setSize(550, 550);
+        jfSpelFrame.setIconImage(img.getImage());
+        jfSpelFrame.setResizable(false);
+        jfSpelFrame.setLocationRelativeTo(null);
+        jfSpelFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jfSpelFrame.setLayout(null);
 
-
-        Start start = new Start(spelFrame);
+        //start het spel -> Task wordt aangeroepen
+        Start start = new Start(jfSpelFrame);
         start.run();
 
-
-
-
-        spelFrame.setVisible(true);
-
+        //frame zichtbaar maken
+        jfSpelFrame.setVisible(true);
     }
 }
