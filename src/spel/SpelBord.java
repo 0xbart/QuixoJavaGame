@@ -146,6 +146,8 @@ public class SpelBord extends JPanel implements MouseListener {
 
     public void berekenOptie(int i, int j) {
 
+        System.out.println(i);
+
         if(j == 0) {
             int[][] veldArrData = {
                     {0, 4, 20},
