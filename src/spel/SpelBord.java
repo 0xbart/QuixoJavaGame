@@ -286,7 +286,6 @@ public class SpelBord extends JPanel implements MouseListener {
         }
     }
 
-
     @Override
     public void mousePressed(MouseEvent e) {
 
