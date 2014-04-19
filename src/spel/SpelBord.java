@@ -2,6 +2,7 @@ package spel;
 
 import spel.ingamehelp.ToonIngameHelp;
 import spel.opties.ToonIngameOpties;
+import spel.winnaar.ToonWinnaar;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +25,7 @@ public class SpelBord extends JPanel implements MouseListener {
     private String strSpeler2;
     private String strTypeSpeler1;
     private String strTypeSpeler2;
+    private String strSpelerWinnaar;
     private int [] spelData = {
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
@@ -45,6 +47,11 @@ public class SpelBord extends JPanel implements MouseListener {
         this.strSpelerZet = strSpelerZet;
         this.strTypeSpelerZet = strTypeSpelerZet;
         this.selected = selected;
+
+        if(checkWinnaar() == true){
+            ToonWinnaar toonWinnaar = new ToonWinnaar(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, strSpelerWinnaar);
+            toonWinnaar.run();
+        }
 
         maakAchtergrond();
         maakButtons();
@@ -145,7 +152,7 @@ public class SpelBord extends JPanel implements MouseListener {
         }
     }
 
-    public void berekenOptie(int i, int j) {
+    private void berekenOptie(int i, int j) {
 
         if(j == 0) {
             int[][] veldArrData = {
@@ -336,6 +343,11 @@ public class SpelBord extends JPanel implements MouseListener {
         }
     }
 
+    private boolean checkWinnaar() {
+
+        return false;
+    }
+
     public void schoonVelden() {
 
         for(int k = 0; k < spelData.length; k++){
@@ -446,12 +458,7 @@ public class SpelBord extends JPanel implements MouseListener {
                     ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet, selected);
                     toonSpelbord.run();
 
-                } /* else if(spelData[i] == 6) {
-
-                    // verplaats blokje naar links of rechts en doe er nog 1 bij.
-                    // of verplaats hem een verdieping lager
-
-                } */
+                }
             }
         }
     }
