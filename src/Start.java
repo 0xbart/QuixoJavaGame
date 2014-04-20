@@ -1,5 +1,4 @@
 import splashscreen.ToonSplashscreen;
-import utils.Computer;
 import utils.Task;
 
 import javax.swing.*;
@@ -9,11 +8,11 @@ import javax.swing.*;
  */
 public class Start extends Task {
 
-    private JFrame spelFrame;
+    private JFrame jfSpelFrame;
 
-    public Start(JFrame spelFrame) {
+    public Start(JFrame jfSpelFrame) {
 
-        this.spelFrame = spelFrame;
+        this.jfSpelFrame = jfSpelFrame;
     }
 
     public void run() {
@@ -28,14 +27,13 @@ public class Start extends Task {
 
     private boolean validate() {
 
-        Computer c = new Computer();
-
         return true;
     }
 
     private void execute() {
 
-        ToonSplashscreen toonSplashscreen = new ToonSplashscreen(spelFrame);
+        //laat het splashscreen zien
+        ToonSplashscreen toonSplashscreen = new ToonSplashscreen(jfSpelFrame);
         toonSplashscreen.run();
     }
 }

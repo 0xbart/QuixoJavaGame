@@ -17,9 +17,9 @@ import java.util.Scanner;
  */
 public class LaadProfiel extends JPanel implements ActionListener {
 
-    private JFrame spelFrame;
-    private JButton ok, cancel;
-    private JLabel background, jlTitel, jlSpeler1, jlSpeler2, jlTypeSpeler1, jlTypeSpeler2, jlSpelerZet;
+    private JFrame jfSpelFrame;
+    private JButton jlOK, jlCancel;
+    private JLabel jlAchtergrond, jlTitel, jlSpeler1, jlSpeler2, jlTypeSpeler1, jlTypeSpeler2, jlSpelerZet;
 
     private String strSpeler1;
     private String strSpeler2;
@@ -27,11 +27,12 @@ public class LaadProfiel extends JPanel implements ActionListener {
     private String strTypeSpeler2;
     private String strSpelerZet;
     private String strTypeSpelerZet;
+    private int selected;
     private int [] spelData = new int[25];
 
-    public LaadProfiel(JFrame spelFrame) {
+    public LaadProfiel(JFrame jfSpelFrame) {
 
-        this.spelFrame = spelFrame;
+        this.jfSpelFrame = jfSpelFrame;
 
         maakAchtergrond();
         maakButtons();
@@ -44,30 +45,30 @@ public class LaadProfiel extends JPanel implements ActionListener {
         add(jlTypeSpeler1);
         add(jlTypeSpeler2);
 
-        add(ok);
-        add(cancel);
+        add(jlOK);
+        add(jlCancel);
 
         setLayout(new BorderLayout());
-        add(background);
+        add(jlAchtergrond);
     }
 
     private void maakAchtergrond() {
-        background = new JLabel(new ImageIcon("src/resources/achtergrond/profiel_bg.png"));
+        jlAchtergrond = new JLabel(new ImageIcon("src/resources/achtergrond/profiel_bg.png"));
     }
 
     private void maakButtons() {
 
-        cancel = new JButton(new ImageIcon("src/resources/buttons/cancel.png"));
-        cancel.setRolloverIcon(new ImageIcon("src/resources/buttons/cancel_h.png"));
-        cancel.setBorder(null);
-        cancel.setBounds(100, 415, 150, 51);
-        cancel.addActionListener(this);
+        jlCancel = new JButton(new ImageIcon("src/resources/buttons/cancel.png"));
+        jlCancel.setRolloverIcon(new ImageIcon("src/resources/buttons/cancel_h.png"));
+        jlCancel.setBorder(null);
+        jlCancel.setBounds(100, 415, 150, 51);
+        jlCancel.addActionListener(this);
 
-        ok = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
-        ok.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
-        ok.setBorder(null);
-        ok.setBounds(300, 415, 150, 51);
-        ok.addActionListener(this);
+        jlOK = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
+        jlOK.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
+        jlOK.setBorder(null);
+        jlOK.setBounds(300, 415, 150, 51);
+        jlOK.addActionListener(this);
     }
 
     private void maakLabels() {
@@ -94,12 +95,21 @@ public class LaadProfiel extends JPanel implements ActionListener {
     private void leesBestand() {
 
         Computer c = new Computer();
+
+        //De utils klassen is nodig om te kijken of het op een Linux of op een Windows computer draait.
         String filePath = c.getFILEPATH() + "profiel.bin";
 
+        //Het bestasnd wordt opgezocht.
         File file = new File(filePath);
         Scanner input = null;
 
         try {
+
+            /*
+                Gegevens worden uit het bestand gelezen.
+                Deze worden daarna opgeslagen in de variabelen.
+             */
+
             input = new Scanner(file);
             strSpeler1 = input.next();
             strSpeler2 = input.next();
@@ -107,6 +117,11 @@ public class LaadProfiel extends JPanel implements ActionListener {
             strTypeSpeler2 = input.next();
             strSpelerZet = input.next();
             strTypeSpelerZet = input.next();
+            selected = input.nextInt();
+
+            /*
+                Deze loop is nodig om de speldata Array te vullen.
+             */
 
             for(int i = 0; i < 25; i++){
                 spelData[i] = input.nextInt();
@@ -120,14 +135,16 @@ public class LaadProfiel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if(e.getSource() == cancel){
+        if(e.getSource() == jlCancel){
 
-            ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(spelFrame, true);
+            //Cancel gekozen. Terug naar het hoofdmenu
+            ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(jfSpelFrame, true);
             toonHoofdmenu.run();
 
-        } else if(e.getSource() == ok){
+        } else if(e.getSource() == jlOK){
 
-            ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpeler1, strTypeSpeler1);
+            //Het spel kan worden geladen. Het spelbord wordt aangeroepen met alle informatie erbij die nodig is.
+            ToonSpelbord toonSpelbord = new ToonSpelbord(jfSpelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpeler1, strTypeSpeler1, selected);
             toonSpelbord.run();
         }
     }

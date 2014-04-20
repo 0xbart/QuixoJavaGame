@@ -12,13 +12,13 @@ import java.awt.event.ActionListener;
  */
 public class ToonSplashscreen extends Task {
 
-    private JFrame spelFrame;
+    private JFrame jfSpelFrame;
     private Timer timer;
     private boolean validate = true;
 
-    public ToonSplashscreen(JFrame spelFrame){
+    public ToonSplashscreen(JFrame jfSpelFrame){
 
-        this.spelFrame = spelFrame;
+        this.jfSpelFrame = jfSpelFrame;
     }
 
     public void run() {
@@ -39,10 +39,15 @@ public class ToonSplashscreen extends Task {
 
     private void execute() {
 
-        spelFrame.setContentPane(new Splashscreen(spelFrame));
+        jfSpelFrame.setContentPane(new Splashscreen(jfSpelFrame));
 
-        TimeListener tm = new TimeListener();
-        timer = new Timer(300, tm);
+        /*
+            Maak een timer aan voor 3 seconde.
+            Deze wordt later opgevangen door de actionListener.
+            Die roept vervolgens het splaschscreen aan.
+         */
+        TimeListener tlTimer = new TimeListener();
+        timer = new Timer(3000, tlTimer);
         timer.start();
 
         validate = true;
@@ -53,7 +58,11 @@ public class ToonSplashscreen extends Task {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(spelFrame, validate);
+            /*
+                Het hoofdmenu wordt hier aangeroepen.
+                Dit is pas nadat het splashscreen 3 seconde is getoond.
+             */
+            ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(jfSpelFrame, validate);
             toonHoofdmenu.run();
             timer.stop();
         }

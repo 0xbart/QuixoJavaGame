@@ -20,13 +20,13 @@ import java.io.InputStream;
  */
 public class Hoofdmenu extends JPanel implements ActionListener{
 
-    private JFrame spelFrame;
-    private JButton jbtNieuwSpel, jbtSpelLaden, jbtOpties, jbtHelp, jbtExit;
-    private JLabel background;
+    private JFrame jfSpelFrame;
+    private JButton jbtNieuwSpel, jbtSpelLaden, jbtOpties, jbtHelp, jbtAfsluiten;
+    private JLabel jlAchtergrond;
 
-    public Hoofdmenu(JFrame spelFrame) {
+    public Hoofdmenu(JFrame jfSpelFrame) {
 
-        this.spelFrame = spelFrame;
+        this.jfSpelFrame = jfSpelFrame;
 
         setLayout(null);
 
@@ -36,15 +36,21 @@ public class Hoofdmenu extends JPanel implements ActionListener{
         add(jbtSpelLaden);
         add(jbtOpties);
         add(jbtHelp);
-        add(jbtExit);
+        add(jbtAfsluiten);
 
         maakAchtergrond();
 
         setLayout(new BorderLayout());
-        add(background);
+        add(jlAchtergrond);
     }
 
     private void maakJButtons(){
+
+        /*
+            Maak alle buttons aan en geef deze een afbeelding.
+            Geef ook alle buttons een vaste positie waarde.
+         */
+
         jbtNieuwSpel = new JButton(new ImageIcon("src/resources/hoofdmenu/nieuw_spel.png"));
         jbtNieuwSpel.setRolloverIcon(new ImageIcon("src/resources/hoofdmenu/nieuw_spel_h.png"));
         jbtNieuwSpel.setBorder(null);
@@ -69,19 +75,23 @@ public class Hoofdmenu extends JPanel implements ActionListener{
         jbtHelp.setBounds(125, 325, 300, 63);
         jbtHelp.addActionListener(this);
 
-        jbtExit = new JButton(new ImageIcon("src/resources/hoofdmenu/exit.png"));
-        jbtExit.setRolloverIcon(new ImageIcon("src/resources/hoofdmenu/exit_h.png"));
-        jbtExit.setBorder(null);
-        jbtExit.setBounds(125, 400, 300, 63);
-        jbtExit.addActionListener(this);
+        jbtAfsluiten = new JButton(new ImageIcon("src/resources/hoofdmenu/exit.png"));
+        jbtAfsluiten.setRolloverIcon(new ImageIcon("src/resources/hoofdmenu/exit_h.png"));
+        jbtAfsluiten.setBorder(null);
+        jbtAfsluiten.setBounds(125, 400, 300, 63);
+        jbtAfsluiten.addActionListener(this);
     }
 
     private void maakAchtergrond(){
-        background = new JLabel(new ImageIcon("src/resources/achtergrond/menu_bg.png"));
+        jlAchtergrond = new JLabel(new ImageIcon("src/resources/achtergrond/menu_bg.png"));
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        /*
+            probeer een geluidje af te spelen in het hoofdmenu.
+         */
 
         try
         {
@@ -96,27 +106,27 @@ public class Hoofdmenu extends JPanel implements ActionListener{
 
         if(e.getSource() == jbtNieuwSpel){
 
-            ToonNieuwProfiel toonNieuwProfiel = new ToonNieuwProfiel(spelFrame);
+            ToonNieuwProfiel toonNieuwProfiel = new ToonNieuwProfiel(jfSpelFrame);
             toonNieuwProfiel.run();
 
         } else if (e.getSource() == jbtSpelLaden){
 
-            ToonLaadProfiel toonLaadProfiel = new ToonLaadProfiel(spelFrame);
+            ToonLaadProfiel toonLaadProfiel = new ToonLaadProfiel(jfSpelFrame);
             toonLaadProfiel.run();
 
         } else if (e.getSource() == jbtOpties){
 
-            ToonOpties toonOpties = new ToonOpties(spelFrame);
+            ToonOpties toonOpties = new ToonOpties(jfSpelFrame);
             toonOpties.run();
 
         } else if (e.getSource() == jbtHelp) {
 
-            ToonHelp toonHelp = new ToonHelp(spelFrame);
+            ToonHelp toonHelp = new ToonHelp(jfSpelFrame);
             toonHelp.run();
 
-        } else if (e.getSource() == jbtExit) {
+        } else if (e.getSource() == jbtAfsluiten) {
 
-            SluitSpel sluitSpel = new SluitSpel(spelFrame);
+            SluitSpel sluitSpel = new SluitSpel(jfSpelFrame);
             sluitSpel.run();
         }
     }

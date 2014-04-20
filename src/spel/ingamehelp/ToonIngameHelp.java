@@ -17,9 +17,10 @@ public class ToonIngameHelp extends Task {
     private String strTypeSpeler2;
     private String strSpelerZet;
     private String strTypeSpelerZet;
+    private int selected;
     int[] spelData;
 
-    public ToonIngameHelp(JFrame spelFrame, String strSpeler1, String strSpeler2, String strTypeSpeler1, String strTypeSpeler2, int[] spelData, String strSpelerZet, String strTypeSpelerZet){
+    public ToonIngameHelp(JFrame spelFrame, String strSpeler1, String strSpeler2, String strTypeSpeler1, String strTypeSpeler2, int[] spelData, String strSpelerZet, String strTypeSpelerZet, int selected){
 
         this.spelFrame = spelFrame;
         this.strSpeler1 = strSpeler1;
@@ -29,6 +30,7 @@ public class ToonIngameHelp extends Task {
         this.spelData = spelData;
         this.strSpelerZet = strSpelerZet;
         this.strTypeSpelerZet = strTypeSpelerZet;
+        this.selected = selected;
     }
 
     public void run() {
@@ -48,7 +50,7 @@ public class ToonIngameHelp extends Task {
 
     private void execute() {
 
-        spelFrame.setContentPane(new IngameHelp(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet));
+        spelFrame.setContentPane(new IngameHelp(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet, selected));
         spelFrame.validate();
     }
 

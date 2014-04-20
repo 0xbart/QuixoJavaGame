@@ -2,6 +2,7 @@ package spel;
 
 import spel.ingamehelp.ToonIngameHelp;
 import spel.opties.ToonIngameOpties;
+import spel.winnaar.ToonWinnaar;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +25,7 @@ public class SpelBord extends JPanel implements MouseListener {
     private String strSpeler2;
     private String strTypeSpeler1;
     private String strTypeSpeler2;
+    private String strSpelerWinnaar;
     private int [] spelData = {
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
@@ -31,9 +33,10 @@ public class SpelBord extends JPanel implements MouseListener {
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
     };
+
     private int selected;
 
-    public SpelBord (JFrame spelFrame, String strSpeler1, String strSpeler2, String strTypeSpeler1, String strTypeSpeler2, int[] spelData, String strSpelerZet, String strTypeSpelerZet) {
+    public SpelBord (JFrame spelFrame, String strSpeler1, String strSpeler2, String strTypeSpeler1, String strTypeSpeler2, int[] spelData, String strSpelerZet, String strTypeSpelerZet, int selected) {
 
         this.spelFrame = spelFrame;
         this.strSpeler1 = strSpeler1;
@@ -43,6 +46,12 @@ public class SpelBord extends JPanel implements MouseListener {
         this.spelData = spelData;
         this.strSpelerZet = strSpelerZet;
         this.strTypeSpelerZet = strTypeSpelerZet;
+        this.selected = selected;
+
+        if(checkWinnaar() == true){
+            ToonWinnaar toonWinnaar = new ToonWinnaar(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, strSpelerWinnaar);
+            toonWinnaar.run();
+        }
 
         maakAchtergrond();
         maakButtons();
@@ -143,57 +152,200 @@ public class SpelBord extends JPanel implements MouseListener {
         }
     }
 
-    public void berekenOptie(int i) {
+    private void berekenOptie(int i, int j) {
 
-        int[][] veldArrData = {
-                {0, 4, 20},
-                {0, 4, 21},
-                {0, 4, 22},
-                {0, 4, 23},
-                {0, 4, 24},
-                {0, 9, 20},
-                {},
-                {},
-                {},
-                {4, 5, 24},
-                {0, 14, 20},
-                {},
-                {},
-                {},
-                {4, 10, 24},
-                {0, 19, 20},
-                {},
-                {},
-                {},
-                {4, 15, 24},
-                {0, 20, 24},
-                {1, 20, 24},
-                {2, 20, 24},
-                {3, 20, 24},
-                {4, 20, 24}
-        };
+        if(j == 0) {
+            int[][] veldArrData = {
+                    {0, 4, 20},
+                    {0, 4, 21},
+                    {0, 4, 22},
+                    {0, 4, 23},
+                    {0, 4, 24},
+                    {0, 9, 20},
+                    {},
+                    {},
+                    {},
+                    {4, 5, 24},
+                    {0, 14, 20},
+                    {},
+                    {},
+                    {},
+                    {4, 10, 24},
+                    {0, 19, 20},
+                    {},
+                    {},
+                    {},
+                    {4, 15, 24},
+                    {0, 20, 24},
+                    {1, 20, 24},
+                    {2, 20, 24},
+                    {3, 20, 24},
+                    {4, 20, 24}
+            };
 
-        for(int k = 0; k < veldArrData.length; k++){
+            for (int k = 0; k < veldArrData.length; k++) {
 
-            if(i == k) {
+                if (i == k) {
 
-                for (int l = 0; l < veldArrData[i].length; l++) {
-                    if (spelData[veldArrData[i][l]] == 0) {
+                    for (int l = 0; l < veldArrData[i].length; l++) {
+                        if (spelData[veldArrData[i][l]] == 0) {
 
-                        spelData[veldArrData[i][l]] = 3;
+                            spelData[veldArrData[i][l]] = 3;
 
-                    } else if (spelData[veldArrData[i][l]] == 1) {
+                        } else if (spelData[veldArrData[i][l]] == 1) {
 
-                        spelData[veldArrData[i][l]] = 5;
+                            spelData[veldArrData[i][l]] = 5;
 
-                    } else if (spelData[veldArrData[i][l]] == 2) {
+                        } else if (spelData[veldArrData[i][l]] == 2) {
 
-                        spelData[veldArrData[i][l]] = 6;
+                            spelData[veldArrData[i][l]] = 6;
 
+                        }
                     }
                 }
             }
         }
+
+        if(j == 1){
+
+            int rijOude 	= selected / 5;                 //Oude rij van blokje.
+            int kolomOude 	= selected % 5;                 //Oude kolom van blokje.
+            int rijNieuwe	= i / 5;                        //Nieuwe rij na het verzetten van blokje
+            int kolomNieuwe = i % 5;                        //Nieuwe kolom na het verzetten van blokje
+
+            if ( rijOude == rijNieuwe ) {                   // VERSCHUIF HORIZONTAAL
+
+                if (kolomOude < kolomNieuwe) {              // LINKS...
+
+                    if(i >= 0 && i <= 4){
+                        spelData[0] = spelData[1];
+                        spelData[1] = spelData[2];
+                        spelData[2] = spelData[3];
+                        spelData[3] = spelData[4];
+                    } else if(i >= 5 && i <= 9){
+                        spelData[5] = spelData[6];
+                        spelData[6] = spelData[7];
+                        spelData[7] = spelData[8];
+                        spelData[8] = spelData[9];
+                    } else if(i >= 10 && i <= 14){
+                        spelData[10] = spelData[11];
+                        spelData[11] = spelData[12];
+                        spelData[12] = spelData[13];
+                        spelData[13] = spelData[14];
+                    } else if(i >= 15 && i <= 19){
+                        spelData[15] = spelData[16];
+                        spelData[16] = spelData[17];
+                        spelData[17] = spelData[18];
+                        spelData[18] = spelData[19];
+                    } else {
+                        spelData[20] = spelData[21];
+                        spelData[21] = spelData[22];
+                        spelData[22] = spelData[23];
+                        spelData[23] = spelData[24];
+                    }
+
+                } else if (kolomOude > kolomNieuwe) {       // RECHTS
+
+                    if(i >= 0 && i <= 4){
+                        spelData[4] = spelData[3];
+                        spelData[3] = spelData[2];
+                        spelData[2] = spelData[1];
+                        spelData[1] = spelData[0];
+                    } else if(i >= 5 && i <= 9){
+                        spelData[9] = spelData[8];
+                        spelData[8] = spelData[7];
+                        spelData[7] = spelData[6];
+                        spelData[6] = spelData[5];
+                    } else if(i >= 10 && i <= 14){
+                        spelData[14] = spelData[13];
+                        spelData[13] = spelData[12];
+                        spelData[12] = spelData[11];
+                        spelData[11] = spelData[10];
+                    } else if(i >= 15 && i <= 19){
+                        spelData[19] = spelData[18];
+                        spelData[18] = spelData[17];
+                        spelData[17] = spelData[16];
+                        spelData[16] = spelData[15];
+                    } else {
+                        spelData[24] = spelData[23];
+                        spelData[23] = spelData[22];
+                        spelData[22] = spelData[21];
+                        spelData[21] = spelData[20];
+                    }
+
+                } else {
+                    /* GEEN BLOKJE GEKOZEN */
+                }
+            } else if (kolomOude == kolomNieuwe ) {         // VERSCHUIF VERTIKAAL
+
+                if (rijOude < rijNieuwe) {                  // OMHOOG
+
+                    if(kolomNieuwe == 0){
+                        spelData[0] = spelData[5];
+                        spelData[5] = spelData[10];
+                        spelData[10] = spelData[15];
+                        spelData[15] = spelData[20];
+                    } else if(kolomNieuwe == 1){
+                        spelData[1] = spelData[6];
+                        spelData[6] = spelData[11];
+                        spelData[11] = spelData[16];
+                        spelData[16] = spelData[21];
+                    } else if(kolomNieuwe == 2){
+                        spelData[2] = spelData[7];
+                        spelData[7] = spelData[12];
+                        spelData[12] = spelData[17];
+                        spelData[17] = spelData[22];
+                    } else if(kolomNieuwe == 3){
+                        spelData[3] = spelData[8];
+                        spelData[8] = spelData[13];
+                        spelData[13] = spelData[18];
+                        spelData[18] = spelData[23];
+                    } else {
+                        spelData[4] = spelData[9];
+                        spelData[9] = spelData[14];
+                        spelData[14] = spelData[19];
+                        spelData[19] = spelData[24];
+                    }
+
+                } else if (rijOude > rijNieuwe) {           // OMLAAG
+
+                    if(kolomNieuwe == 0){
+                        spelData[20] = spelData[15];
+                        spelData[15] = spelData[10];
+                        spelData[10] = spelData[5];
+                        spelData[5] = spelData[0];
+                    } else if(kolomNieuwe == 1){
+                        spelData[21] = spelData[16];
+                        spelData[16] = spelData[11];
+                        spelData[11] = spelData[6];
+                        spelData[6] = spelData[1];
+                    } else if(kolomNieuwe == 2){
+                        spelData[22] = spelData[17];
+                        spelData[17] = spelData[12];
+                        spelData[12] = spelData[7];
+                        spelData[7] = spelData[2];
+                    } else if(kolomNieuwe == 3){
+                        spelData[23] = spelData[18];
+                        spelData[18] = spelData[13];
+                        spelData[13] = spelData[8];
+                        spelData[8] = spelData[3];
+                    } else {
+                        spelData[24] = spelData[19];
+                        spelData[19] = spelData[14];
+                        spelData[14] = spelData[9];
+                        spelData[9] = spelData[4];
+                    }
+
+                } else {
+                    /* GEEN BLOKJE GEKOZEN */
+                }
+            }
+        }
+    }
+
+    private boolean checkWinnaar() {
+
+        return false;
     }
 
     public void schoonVelden() {
@@ -213,12 +365,12 @@ public class SpelBord extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
         if(e.getSource() == help){
-            ToonIngameHelp toonIngameHelp = new ToonIngameHelp(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
+            ToonIngameHelp toonIngameHelp = new ToonIngameHelp(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet, selected);
             toonIngameHelp.run();
         }
 
         if(e.getSource() == menu){
-            ToonIngameOpties toonIngameOpties = new ToonIngameOpties(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
+            ToonIngameOpties toonIngameOpties = new ToonIngameOpties(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet, selected);
             toonIngameOpties.run();
         }
 
@@ -236,11 +388,15 @@ public class SpelBord extends JPanel implements MouseListener {
 
                         schoonVelden();
 
-                        berekenOptie(i);
+                        berekenOptie(i, 0);
+
+                        //blauwe balk wordt aangemaakt.
                         spelData[i] = 4;
+
+                        //selected wordt toegewezen aan de int.
                         selected = i;
 
-                        ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
+                        ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet, selected);
                         toonSpelbord.run();
 
                     }
@@ -269,17 +425,38 @@ public class SpelBord extends JPanel implements MouseListener {
                         strTypeSpelerZet = "kruis";
                     }
 
-                    ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet);
+                    ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet, selected);
                     toonSpelbord.run();
-                } else if(spelData[i] == 5) {
+                } else if(spelData[i] == 5 || spelData[i] == 6) {
 
-                    // verplaats blokje naar links of rechts en doe er nog 1 bij.
-                    // of verplaats hem een verdieping lager
+                    int temp;
 
-                } else if(spelData[i] == 6) {
+                    if (strTypeSpelerZet == "kruis") {
+                        temp = 1;
+                    } else {
+                        temp = 2;
+                    }
 
-                    // verplaats blokje naar links of rechts en doe er nog 1 bij.
-                    // of verplaats hem een verdieping lager
+                    schoonVelden();
+
+                    berekenOptie(i, 1);
+
+                    spelData[i] = temp;
+
+                    if (strSpelerZet.equals(strSpeler1)) {
+                        strSpelerZet = strSpeler2;
+                    } else {
+                        strSpelerZet = strSpeler1;
+                    }
+
+                    if (strTypeSpelerZet == "kruis") {
+                        strTypeSpelerZet = "rond";
+                    } else {
+                        strTypeSpelerZet = "kruis";
+                    }
+
+                    ToonSpelbord toonSpelbord = new ToonSpelbord(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, spelData, strSpelerZet, strTypeSpelerZet, selected);
+                    toonSpelbord.run();
 
                 }
             }

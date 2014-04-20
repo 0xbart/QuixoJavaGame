@@ -9,11 +9,11 @@ import javax.swing.*;
  */
 public class ToonLaadProfiel extends Task {
 
-    private JFrame spelFrame;
+    private JFrame jfSpelFrame;
 
-    public ToonLaadProfiel(JFrame spelFrame) {
+    public ToonLaadProfiel(JFrame jfSpelFrame) {
 
-        this.spelFrame = spelFrame;
+        this.jfSpelFrame = jfSpelFrame;
     }
 
     public void run() {
@@ -33,8 +33,9 @@ public class ToonLaadProfiel extends Task {
 
     private void execute() {
 
-        spelFrame.setContentPane(new LaadProfiel(spelFrame));
-        spelFrame.validate();
+        //Laadprofiel klassen wordt aangeroepen.
+        jfSpelFrame.setContentPane(new LaadProfiel(jfSpelFrame));
+        jfSpelFrame.validate();
     }
 
 }
