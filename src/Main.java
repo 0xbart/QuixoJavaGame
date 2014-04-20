@@ -37,7 +37,7 @@ public class Main extends JFrame {
 
         //start het spel -> Task wordt aangeroepen
         Start start = new Start(jfSpelFrame);
-        start.run();
+        start.run(); 
 
         //frame zichtbaar maken
         jfSpelFrame.setVisible(true);

@@ -29,6 +29,7 @@ public class ToonWinnaar extends Task {
     }
 
     public void run() {
+        execute();
 
         boolean validate = validate();
 

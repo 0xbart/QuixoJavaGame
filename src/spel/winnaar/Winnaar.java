@@ -69,7 +69,7 @@ public class Winnaar extends JPanel implements ActionListener {
 
     private void maakLabels() {
                                     /*  Strspeler1 word vervangen met de winnaar  */
-        jlTitel = new JLabel("De winnaar is " + strSpeler1 + " Gefeliciteerd! met u overwinning");
+        jlTitel = new JLabel("De winnaar is " + strSpelerWinnaar + " Gefeliciteerd! met u overwinning");
         jlTitel.setBounds(200, 240, 400, 15);
 
         jlSpeler1 = new JLabel(strSpeler1 + " vs " + strSpeler2);

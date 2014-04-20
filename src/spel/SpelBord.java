@@ -22,6 +22,7 @@ public class SpelBord extends JPanel implements MouseListener {
     private String strTypeSpelerZet;
 
     private String strSpeler1;
+    private String winnaar = "Geen Winnaar";
     private String strSpeler2;
     private String strTypeSpeler1;
     private String strTypeSpeler2;
@@ -48,17 +49,21 @@ public class SpelBord extends JPanel implements MouseListener {
         this.strTypeSpelerZet = strTypeSpelerZet;
         this.selected = selected;
 
-        if(checkWinnaar() == true){
-            ToonWinnaar toonWinnaar = new ToonWinnaar(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, strSpelerWinnaar);
+        if(checkWinnaar()){
+            System.out.printf("winnaar: ");
+            System.out.printf(winnaar + "\n");
+            ToonWinnaar toonWinnaar = new ToonWinnaar(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2,  strSpelerWinnaar);
             toonWinnaar.run();
         }
 
+        System.out.printf(winnaar + "\n");
         maakAchtergrond();
         maakButtons();
         maakHelp();
         maakMenu();
         toevoegenButtons();
         maakLabels();
+        checkWinnaar();
 
 
         add(help);
@@ -346,27 +351,159 @@ public class SpelBord extends JPanel implements MouseListener {
         }
     }
 
+
+
     private boolean checkWinnaar() {
 
-            int winCount = 0, i, j;
+
+            int winCount = 0, i, j, k, l;
             int n = 5;
-            spelData = new int[n*n];
 
-            boolean win;
 
-            for (i = 1; i <= n; i = i + n) {
-                for (j = i; j < (n * n); j++) {
-                    if (spelData[j] == spelData[j + 1])
-                        winCount++;
-                }
-                if (winCount == (n - 1)) {
-                    win = true;
-                    break;
-                }
-
+            for (i = 0; i < (n * n) ; i = i + n) {          //checkt rijen
+                    for (j = i; j < (i + n -1); j++) {
+                        if (spelData[j] == spelData[j + 1]) {
+                            if(spelData[j] == 1)    {
+                                winCount++;
+                            }
+                        }
+                    }
+                    if (winCount == (n - 1)) {
+                        winnaar = "kruis";
+                        return true;
+                    }
+                winCount = 0;
             }
 
-        return checkWinnaar();
+        for (i = 0; i < (n * n) ; i = i + n) {          //checkt rijen
+            for (j = i; j < (i + n -1); j++) {
+                if (spelData[j] == spelData[j + 1]) {
+                    if(spelData[j] == 2)    {
+                        winCount++;
+                    }
+                }
+            }
+            if (winCount == (n - 1)) {
+                winnaar = "rond";
+                return true;
+            }
+            winCount = 0;
+        }
+
+            for(k = 0; k < n; k++)  {                       //Checkt kolommen
+            for(l = k; l < (n * (n-1)); l = l + n) {
+                if(spelData[l] == spelData[l + 5]) {
+                    if(spelData[l] == 1)    {
+                        winCount++;
+                    }
+                }
+            }
+            if(winCount == (n-1))   {
+                winnaar = "kruis";
+                return true;
+            }
+            winCount = 0;
+        }
+
+        for(k = 0; k < n; k++)  {                       //Checkt kolommen
+            for(l = k; l < (n * (n-1)); l = l + n) {
+                if(spelData[l] == spelData[l + 5]) {
+                    if(spelData[l] == 2)    {
+                        winCount++;
+                    }
+                }
+            }
+            if(winCount == (n-1))   {
+                winnaar = "rond";
+                return true;
+            }
+            winCount = 0;
+        }
+
+        if(     (spelData[0] == spelData[6]) &&
+                    (spelData[0] == spelData[12]) &&
+                    (spelData[0] == spelData[18]) &&
+                    (spelData[0] == spelData[24]) &&
+                (spelData[0] == 1 || spelData[0] == 2)){               //checkt voor diagonaal van linksboven naar rechtsonder
+            if(spelData[12] == 3)   {
+                winnaar = "kruis";
+            }
+            if(spelData[12] == 4)   {
+                winnaar = "rond";
+            }
+            return true;
+        }
+
+        if(     (spelData[20] == spelData[16]) &&
+                (spelData[20] == spelData[12]) &&
+                (spelData[20] == spelData[8]) &&
+                (spelData[20] == spelData[4]) &&
+                (spelData[20] == 1 || spelData[20] == 2)){               //checkt voor diagonaal van linksonder naar rechtsboven
+            if(spelData[12] == 3)   {
+                winnaar = "kruis";
+            }
+            if(spelData[12] == 4)   {
+                winnaar = "rond";
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private String bepaalWinnaar() {
+
+
+        int winCount = 0, i, j, k, l;
+        int n = 5;
+
+
+        for (i = 0; i < (n * n) ; i = i + n) {          //checkt rijen
+            for (j = i; j < (i + n -1); j++) {
+                if (spelData[j] == spelData[j + 1]) {
+                    if(spelData[j] == 3 || spelData[j] == 4)    {
+                        winCount++;
+                    }
+                }
+            }
+            if (winCount == (n - 1)) {
+
+                return strSpeler1;
+
+            }
+            winCount = 0;
+        }
+
+        for(k = 0; k < n; k++)  {                       //Checkt kolommen
+            for(l = k; l < (n * (n-1)); l = l + n) {
+                if(spelData[l] == spelData[l + 5]) {
+                    if(spelData[l] == 3 || spelData[l] == 4)    {
+                        winCount++;
+                    }
+                }
+            }
+            if(winCount == (n-1))   {
+                return strSpeler1;
+            }
+            winCount = 0;
+        }
+
+        if(     (spelData[0] == spelData[6]) &&
+                (spelData[0] == spelData[12]) &&
+                (spelData[0] == spelData[18]) &&
+                (spelData[0] == spelData[24]) &&
+                (spelData[0] == 3 || spelData[0] == 4)){               //checkt voor diagonaal van linksboven naar rechtsonder
+            return strSpeler1;
+        }
+
+        if(     (spelData[20] == spelData[16]) &&
+                (spelData[20] == spelData[12]) &&
+                (spelData[20] == spelData[8]) &&
+                (spelData[20] == spelData[4]) &&
+                (spelData[20] == 3 || spelData[20] == 4)){               //checkt voor diagonaal van linksonder naar rechtsboven
+            return strSpeler1;
+        }
+
+        return strSpeler2;
     }
 
     public void schoonVelden() {
