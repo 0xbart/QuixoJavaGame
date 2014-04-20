@@ -60,6 +60,7 @@ public class SpelBord extends JPanel implements MouseListener {
         toevoegenButtons();
         maakLabels();
 
+
         add(help);
         add(menu);
         add(jlSpeler1);
@@ -71,6 +72,8 @@ public class SpelBord extends JPanel implements MouseListener {
         setLayout(new BorderLayout());
         add(background);
     }
+
+
 
     private void maakAchtergrond(){
         background = new JLabel(new ImageIcon("src/resources/achtergrond/spelveld_bg.png"));
@@ -345,7 +348,25 @@ public class SpelBord extends JPanel implements MouseListener {
 
     private boolean checkWinnaar() {
 
-        return false;
+            int winCount = 0, i, j;
+            int n = 5;
+            spelData = new int[n*n];
+
+            boolean win;
+
+            for (i = 1; i <= n; i = i + n) {
+                for (j = i; j < (n * n); j++) {
+                    if (spelData[j] == spelData[j + 1])
+                        winCount++;
+                }
+                if (winCount == (n - 1)) {
+                    win = true;
+                    break;
+                }
+
+            }
+
+        return checkWinnaar();
     }
 
     public void schoonVelden() {
