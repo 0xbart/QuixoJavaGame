@@ -93,7 +93,7 @@ public class Winnaar extends JPanel implements ActionListener {
     }
 
     private void maakLabels() {
-                                    /*  Strspeler1 word vervangen met de winnaar  */
+                                    /*  Met deze strings komen de namen van de spelers en winnaar op het scherm */
         jlTitel = new JLabel("De winnaar is " + strSpelerWinnaar + "! Gefeliciteerd met de overwinning.");
         jlTitel.setBounds(100, 240, 400, 15);
 
@@ -113,7 +113,7 @@ public class Winnaar extends JPanel implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if(e.getSource() == jlOpnieuw){
+            if(e.getSource() == jlOpnieuw){                                                               //bij opnieuw ga terug naar profiel
 
                 String message = "Wilt u uw profiel instellingen wijzigen?";
                 String title = "Opnieuw spelen Quixo - Wijzigen instellingen?";
@@ -130,7 +130,7 @@ public class Winnaar extends JPanel implements ActionListener {
             }
 
             if(e.getSource() == jlOK){
-                ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(jfSpelFrame, true);
+                ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(jfSpelFrame, true);                                         // bij ok keert terug
                 toonHoofdmenu.run();
             }
         }

@@ -361,7 +361,7 @@ public class SpelBord extends JPanel implements MouseListener {
             int n = 5;
 
 
-            for (i = 0; i < (n * n) ; i = i + n) {          //checkt rijen
+            for (i = 0; i < (n * n) ; i = i + n) {          //checkt rijen of er 5 op een rij liggen (kruisje)
                     for (j = i; j < (i + n -1); j++) {
                         if (spelData[j] == spelData[j + 1]) {
                             if(spelData[j] == 1)    {
@@ -383,7 +383,7 @@ public class SpelBord extends JPanel implements MouseListener {
                 winCount = 0;
             }
 
-        for (i = 0; i < (n * n) ; i = i + n) {          //checkt rijen
+        for (i = 0; i < (n * n) ; i = i + n) {          //checkt rijen of er 5 op een rij liggen (rondje))
             for (j = i; j < (i + n -1); j++) {
                 if (spelData[j] == spelData[j + 1]) {
                     if(spelData[j] == 2)    {
@@ -405,7 +405,7 @@ public class SpelBord extends JPanel implements MouseListener {
             winCount = 0;
         }
 
-            for(k = 0; k < n; k++)  {                       //Checkt kolommen
+            for(k = 0; k < n; k++)  {                       //Checkt kolommen of er 5 op een rij liggen (kruisje))
             for(l = k; l < (n * (n-1)); l = l + n) {
                 if(spelData[l] == spelData[l + 5]) {
                     if(spelData[l] == 1)    {
@@ -427,7 +427,7 @@ public class SpelBord extends JPanel implements MouseListener {
             winCount = 0;
         }
 
-        for(k = 0; k < n; k++)  {                       //Checkt kolommen
+        for(k = 0; k < n; k++)  {                       //Checkt kolommen of er 5 op een rij liggen (rondje))
             for(l = k; l < (n * (n-1)); l = l + n) {
                 if(spelData[l] == spelData[l + 5]) {
                     if(spelData[l] == 2)    {
@@ -489,8 +489,8 @@ public class SpelBord extends JPanel implements MouseListener {
                     strSpelerWinnaar = strSpeler2;
                 }
             }
-            if(spelData[12] == 4)   {
-                winnaar = "rond";
+            if(spelData[12] == 4)   {                                  // deze checkt alleen blokje 12 dit is de middelste
+                winnaar = "rond";                                     // want alleen deze verandert bij diagnaal
 
                 if(strTypeSpeler1 == winnaar){
                     strSpelerWinnaar = strSpeler1;
