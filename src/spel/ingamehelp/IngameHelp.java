@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Bart on 17-4-2014.
+ * Created by Bart on 17-4-2014 .
  */
 public class IngameHelp extends JPanel implements ActionListener {
 
