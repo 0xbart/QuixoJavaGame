@@ -79,12 +79,12 @@ public class SpelBord extends JPanel implements MouseListener {
         add(background);
     }
 
-
-
+    //Achtergrond wordt hiermee aangemaakt.
     private void maakAchtergrond(){
         background = new JLabel(new ImageIcon("src/resources/achtergrond/spelveld_bg.png"));
     }
 
+    //Ingame helpknop wordt hiermee aangemaakt.
     private void maakHelp() {
         help = new JLabel(new ImageIcon("src/resources/buttons/help.png"));
         help.setBounds(495, 10, 40, 40);
@@ -92,6 +92,7 @@ public class SpelBord extends JPanel implements MouseListener {
         help.addMouseListener(this);
     }
 
+    //Ingame menuknop wordt hiermee aangemaakt.
     private void maakMenu() {
         menu = new JLabel(new ImageIcon("src/resources/buttons/menu.png"));
         menu.setBounds(15, 468, 121, 48);
@@ -100,6 +101,7 @@ public class SpelBord extends JPanel implements MouseListener {
 
     }
 
+    //Labels worden aangemaakt met de naam van de spelers, het type blokje waar ze mee spelen en wie er aan zet is.
     private void maakLabels() {
 
         jlSpeler1 = new JLabel("Naam 1: " + strSpeler1);
@@ -118,7 +120,7 @@ public class SpelBord extends JPanel implements MouseListener {
         jlSpelerZet.setBounds(15, 95, 400, 15);
     }
 
-    //Voorzien van JToggleButton zodat er geen aparte listeners gebruikt hoeven te worden.
+    //Blokjes worden aangemaakt met bijbehorende afbeeldingen.
     private void maakButtons() {
 
         int c = 0;
@@ -154,6 +156,7 @@ public class SpelBord extends JPanel implements MouseListener {
         }
     }
 
+    //Blokjes worden toegevoegd aan het spelbord.
     private void toevoegenButtons() {
 
         for(int i = 0; i < 25; i++){
@@ -161,6 +164,7 @@ public class SpelBord extends JPanel implements MouseListener {
         }
     }
 
+    //Hiermee wordt berekent waar een blokje mag worden neergezet.
     private void berekenOptie(int i, int j) {
 
         if(j == 0) {
@@ -352,8 +356,7 @@ public class SpelBord extends JPanel implements MouseListener {
         }
     }
 
-
-
+    //Hiermee wordt de winnaar berekent.
     private boolean checkWinnaar() {
 
 
@@ -516,6 +519,7 @@ public class SpelBord extends JPanel implements MouseListener {
         }
     }
 
+    //Acties die ondernomen moeten worden als er wordt geklikt op de ingame help- of menuknop, wie er aan de beurt is en waar het blokje mag worden neergezet.
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -628,6 +632,7 @@ public class SpelBord extends JPanel implements MouseListener {
 
     }
 
+    //Hier worden de acties beschreven die ondernomen moeten worden als de muis over het spelbord beweegt.
     @Override
     public void mouseEntered(MouseEvent e) {
 

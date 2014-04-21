@@ -21,6 +21,7 @@ public class ToonSplashscreen extends Task {
         this.jfSpelFrame = jfSpelFrame;
     }
 
+    //Code die uitgevoerd wordt als aan de voorwaarden is voldaan
     public void run() {
 
         boolean validate = validate();

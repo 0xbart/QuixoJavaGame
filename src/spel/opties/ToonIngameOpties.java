@@ -33,6 +33,7 @@ public class ToonIngameOpties extends Task {
         this.selected = selected;
     }
 
+    //Deze code wordt uitgevoerd als in het SpelBord.java gevalideert is dat er een true uitkomt.
     public void run() {
 
         boolean validate = validate();

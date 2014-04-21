@@ -59,10 +59,12 @@ public class IngameOpties extends JPanel implements ActionListener {
         add(background);
     }
 
+    //Hiermee wordt de achtergrond toegevoegd
     private void maakAchtergrond(){
         background = new JLabel(new ImageIcon("src/resources/achtergrond/ingame_opties_bg.png"));
     }
 
+    //Hiermee worden de knoppen gemaakt voor de ingame opties.
     public void maakButtons() {
 
         opslaan = new JButton(new ImageIcon("src/resources/buttons/opslaan.png"));
@@ -84,6 +86,7 @@ public class IngameOpties extends JPanel implements ActionListener {
         cancel.addActionListener(this);
     }
 
+    //Deze code beschrijft de acties die worden uitgevoerd bij het opslaan, afsluiten en annuleren in het menu.
     @Override
     public void actionPerformed(ActionEvent e) {
 

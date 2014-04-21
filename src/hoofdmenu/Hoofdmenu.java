@@ -44,6 +44,7 @@ public class Hoofdmenu extends JPanel implements ActionListener{
         add(jlAchtergrond);
     }
 
+    //Knoppen die worden aangemaakt voor het bedienen van het hoofdmenu
     private void maakJButtons(){
 
         /*
@@ -82,6 +83,7 @@ public class Hoofdmenu extends JPanel implements ActionListener{
         jbtAfsluiten.addActionListener(this);
     }
 
+    //Hiermee wordt de spelachtergrond toegevoegd.
     private void maakAchtergrond(){
         jlAchtergrond = new JLabel(new ImageIcon("src/resources/achtergrond/menu_bg.png"));
     }
