@@ -39,6 +39,7 @@ public class ToonSpelbord extends Task {
         this.selected = selected;
     }
 
+    //Deze code wordt uitgevoerd zodra de code van SpelBord.java gevalideert is.
     public void run() {
 
         boolean validate = validate();

@@ -60,10 +60,12 @@ public class Winnaar extends JPanel implements ActionListener {
         add(background);
     }
 
+    //Hiermee wordt de achtergrond toegevoegd.
     private void maakAchtergrond(){
         background = new JLabel(new ImageIcon("src/resources/achtergrond/Winnaar.png"));
     }
 
+    //Deze code laad het geluid in als er een winnaar is.
     private void runGeluid() {
         try
         {
@@ -77,6 +79,7 @@ public class Winnaar extends JPanel implements ActionListener {
         }
     }
 
+    //De knoppen die worden aangemaakt nadat het spel afgelopen is.
     private void maakButton(){
 
         jlOK = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
@@ -92,6 +95,7 @@ public class Winnaar extends JPanel implements ActionListener {
         jlOpnieuw.addActionListener(this);
     }
 
+    //De labels met tekst die worden getoond als er een winnaar is.
     private void maakLabels() {
                                     /*  Met deze strings komen de namen van de spelers en winnaar op het scherm */
         jlTitel = new JLabel("De winnaar is " + strSpelerWinnaar + "! Gefeliciteerd met de overwinning.");

@@ -28,6 +28,7 @@ public class ToonWinnaar extends Task {
         this.strSpelerWinnaar = strSpelerWinnaar;
     }
 
+    //Deze code wordt uitgevoerd als er via SpelBord.java een winnaar is.
     public void run() {
         execute();
 

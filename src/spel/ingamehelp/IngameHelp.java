@@ -53,10 +53,12 @@ public class IngameHelp extends JPanel implements ActionListener {
         add(background);
     }
 
+    //Hiermee wordt de achtergrond toegevoegd.
     private void maakAchtergrond(){
         background = new JLabel(new ImageIcon("src/resources/achtergrond/help_bg.png"));
     }
 
+    //Hiermee worden de knoppen in het ingame helpmenu aangemaakt.
     private void maakButton(){
 
         terug = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
@@ -66,6 +68,7 @@ public class IngameHelp extends JPanel implements ActionListener {
         terug.addActionListener(this);
     }
 
+    //Actie die ondernomen wordt, toonSpelBord.java wordt hiermee uitgevoerd
     @Override
     public void actionPerformed(ActionEvent e) {
 
