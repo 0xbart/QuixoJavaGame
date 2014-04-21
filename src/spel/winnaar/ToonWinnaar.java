@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class ToonWinnaar extends Task {
 
-    private JFrame spelFrame;
+    private JFrame spelFrame;                                                       //De variable die op de pagina komen
 
     private String strSpeler1;
     private String strSpeler2;
@@ -31,7 +31,7 @@ public class ToonWinnaar extends Task {
     public void run() {
         execute();
 
-        boolean validate = validate();
+        boolean validate = validate();                              // kijkt of het klopt
 
         if(validate == true)
         {
@@ -44,7 +44,7 @@ public class ToonWinnaar extends Task {
         return true;
     }
 
-    private void execute() {
+    private void execute() {                                                                                            //Nieuw winnaar word geopend met deze waardes
 
         spelFrame.setContentPane(new Winnaar(spelFrame, strSpeler1, strSpeler2, strTypeSpeler1, strTypeSpeler2, strSpelerWinnaar));
         spelFrame.validate();

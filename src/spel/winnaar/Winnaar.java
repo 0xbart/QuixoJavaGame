@@ -28,7 +28,7 @@ public class Winnaar extends JPanel implements ActionListener {
     private String strTypeNaam2;
     private String strSpelerWinnaar;
     private int [] spelData = {
-            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,                   //het speelveld
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
@@ -61,10 +61,10 @@ public class Winnaar extends JPanel implements ActionListener {
     }
 
     private void maakAchtergrond(){
-        background = new JLabel(new ImageIcon("src/resources/achtergrond/Winnaar.png"));
+        background = new JLabel(new ImageIcon("src/resources/achtergrond/Winnaar.png"));                                //achtergrond van de frame
     }
 
-    private void runGeluid() {
+    private void runGeluid() {                                                                                          //geluid word afgespeeld als iemand heb gewonnen
         try
         {
             InputStream in = new FileInputStream("src/resources/geluiden/winnaar.wav" );
@@ -77,8 +77,8 @@ public class Winnaar extends JPanel implements ActionListener {
         }
     }
 
-    private void maakButton(){
-
+    private void maakButton(){                                                                                          //maak de buttons om terug te gaan
+                                                                                                                        //en om op nieuw een spel te starten
         jlOK = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
         jlOK.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
         jlOK.setBorder(null);
@@ -93,7 +93,7 @@ public class Winnaar extends JPanel implements ActionListener {
     }
 
     private void maakLabels() {
-                                    /*  Met deze strings komen de namen van de spelers en winnaar op het scherm */
+                                                                                        /*  Met deze strings komen de namen van de spelers en winnaar op het scherm */
         jlTitel = new JLabel("De winnaar is " + strSpelerWinnaar + "! Gefeliciteerd met de overwinning.");
         jlTitel.setBounds(100, 240, 400, 15);
 
@@ -114,7 +114,7 @@ public class Winnaar extends JPanel implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
             if(e.getSource() == jlOpnieuw){                                                               //bij opnieuw ga terug naar profiel
-
+                                                                                                           //Keuzen om met leeg profiel te spelen of de zelfde gegeens
                 String message = "Wilt u uw profiel instellingen wijzigen?";
                 String title = "Opnieuw spelen Quixo - Wijzigen instellingen?";
 
