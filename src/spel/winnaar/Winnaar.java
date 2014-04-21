@@ -1,44 +1,56 @@
 package spel.winnaar;
 
 import hoofdmenu.ToonHoofdmenu;
-import hoofdmenu.laadprofiel.ToonLaadProfiel;
 import hoofdmenu.nieuwprofiel.ToonNieuwProfiel;
+import spel.ToonSpelbord;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 /**
  * Created by joey on 19-4-2014.
  */
 public class Winnaar extends JPanel implements ActionListener {
 
-    private JFrame spelFrame;
-    private JButton ok, opnieuw;
-    private JLabel background, jlTitel, jlSpeler1, jlSpeler2, jlTypeSpeler1, jlTypeSpeler2, jlSpelerZet;
+    private JFrame jfSpelFrame;
+    private JButton jlOK, jlOpnieuw;
+    private JLabel background, jlTitel, jlSpeler1, jlTypeSpeler1, jlTypeSpeler2;
 
-    private String strSpeler1;
-    private String strSpeler2;
-    private String strTypeSpeler1;
-    private String strTypeSpeler2;
+    private String strSpelerNaam1;
+    private String strSpelerNaam2;
+    private String strTypeNaam1;
+    private String strTypeNaam2;
     private String strSpelerWinnaar;
+    private int [] spelData = {
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+    };
 
-    public Winnaar(JFrame spelFrame, String strSpeler1, String strSpeler2, String strTypeSpeler1, String strTypeSpeler2, String strSpelerWinnaar){
+    public Winnaar(JFrame jfSpelFrame, String strSpelerNaam1, String strSpelerNaam2, String strTypeNaam1, String strTypeNaam2, String strSpelerWinnaar){
 
-        this.spelFrame = spelFrame;
-        this.strSpeler1 = strSpeler1;
-        this.strSpeler2 = strSpeler2;
-        this.strTypeSpeler1 = strTypeSpeler1;
-        this.strTypeSpeler2 = strTypeSpeler2;
+        this.jfSpelFrame = jfSpelFrame;
+        this.strSpelerNaam1 = strSpelerNaam1;
+        this.strSpelerNaam2 = strSpelerNaam2;
+        this.strTypeNaam1 = strTypeNaam1;
+        this.strTypeNaam2 = strTypeNaam2;
         this.strSpelerWinnaar = strSpelerWinnaar;
 
         maakAchtergrond();
         maakButton();
         maakLabels();
+        runGeluid();
 
-        add(ok);
-        add(opnieuw);
+        add(jlOK);
+        add(jlOpnieuw);
         add(jlTitel);
         add(jlSpeler1);
         add(jlTypeSpeler1);
@@ -52,35 +64,48 @@ public class Winnaar extends JPanel implements ActionListener {
         background = new JLabel(new ImageIcon("src/resources/achtergrond/Winnaar.png"));
     }
 
+    private void runGeluid() {
+        try
+        {
+            InputStream in = new FileInputStream("src/resources/geluiden/winnaar.wav" );
+            AudioStream as = new AudioStream(in);
+            AudioPlayer.player.start(as);
+        }
+        catch ( Exception b )
+        {
+            b.printStackTrace();
+        }
+    }
+
     private void maakButton(){
 
-        ok = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
-        ok.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
-        ok.setBorder(null);
-        ok.setBounds(300, 415, 150, 51);
-        ok.addActionListener(this);
+        jlOK = new JButton(new ImageIcon("src/resources/buttons/ok.png"));
+        jlOK.setRolloverIcon(new ImageIcon("src/resources/buttons/ok_h.png"));
+        jlOK.setBorder(null);
+        jlOK.setBounds(300, 415, 150, 51);
+        jlOK.addActionListener(this);
 
-        opnieuw = new JButton(new ImageIcon("src/resources/buttons/speelopnieuw.png"));
-        opnieuw.setRolloverIcon(new ImageIcon("src/resources/buttons/speelopnieuw_h.png"));
-        opnieuw.setBorder(null);
-        opnieuw.setBounds(100, 415, 150, 51);
-        opnieuw.addActionListener(this);
+        jlOpnieuw = new JButton(new ImageIcon("src/resources/buttons/speelopnieuw.png"));
+        jlOpnieuw.setRolloverIcon(new ImageIcon("src/resources/buttons/speelopnieuw_h.png"));
+        jlOpnieuw.setBorder(null);
+        jlOpnieuw.setBounds(100, 415, 150, 51);
+        jlOpnieuw.addActionListener(this);
     }
 
     private void maakLabels() {
                                     /*  Strspeler1 word vervangen met de winnaar  */
-        jlTitel = new JLabel("De winnaar is " + strSpelerWinnaar + " Gefeliciteerd! met u overwinning");
-        jlTitel.setBounds(200, 240, 400, 15);
+        jlTitel = new JLabel("De winnaar is " + strSpelerWinnaar + "! Gefeliciteerd met de overwinning.");
+        jlTitel.setBounds(100, 240, 400, 15);
 
-        jlSpeler1 = new JLabel(strSpeler1 + " vs " + strSpeler2);
-        jlSpeler1.setBounds(200, 255, 400, 15);
+        jlSpeler1 = new JLabel("De strijd ging tussen: " + strSpelerNaam1 + " vs " + strSpelerNaam2 + ".");
+        jlSpeler1.setBounds(100, 255, 400, 15);
 
 
-        jlTypeSpeler1 = new JLabel(strSpeler1 + " speelde met: " + strTypeSpeler1);
-        jlTypeSpeler1.setBounds(200, 270, 400, 15);
+        jlTypeSpeler1 = new JLabel(strSpelerNaam1 + " speelde met: " + strTypeNaam1 + ".");
+        jlTypeSpeler1.setBounds(100, 270, 400, 15);
 
-        jlTypeSpeler2 = new JLabel(strSpeler2 + " speelde met: " + strTypeSpeler2);
-        jlTypeSpeler2.setBounds(200, 285, 400, 15);
+        jlTypeSpeler2 = new JLabel(strSpelerNaam2 + " speelde met: " + strTypeNaam2 + ".");
+        jlTypeSpeler2.setBounds(100, 285, 400, 15);
 
 
         }
@@ -88,16 +113,27 @@ public class Winnaar extends JPanel implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if(e.getSource() == opnieuw){
-                ToonNieuwProfiel toonNieuwProfiel = new ToonNieuwProfiel(spelFrame);
-                toonNieuwProfiel.run();
+            if(e.getSource() == jlOpnieuw){
+
+                String message = "Wilt u uw profiel instellingen wijzigen?";
+                String title = "Opnieuw spelen Quixo - Wijzigen instellingen?";
+
+                int bevestiging = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+
+                if(bevestiging == JOptionPane.YES_OPTION) {
+                    ToonNieuwProfiel toonNieuwProfiel = new ToonNieuwProfiel(jfSpelFrame);
+                    toonNieuwProfiel.run();
+                } else {
+                    ToonSpelbord toonSpelbord = new ToonSpelbord(jfSpelFrame, strSpelerNaam1, strSpelerNaam2, strTypeNaam1, strTypeNaam2, spelData, strSpelerNaam1, strTypeNaam1, 0);
+                    toonSpelbord.run();
+                }
             }
 
-            if(e.getSource() == ok){
-          ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(spelFrame, true);
-           toonHoofdmenu.run();
+            if(e.getSource() == jlOK){
+                ToonHoofdmenu toonHoofdmenu = new ToonHoofdmenu(jfSpelFrame, true);
+                toonHoofdmenu.run();
+            }
         }
-    }
 
 }
 

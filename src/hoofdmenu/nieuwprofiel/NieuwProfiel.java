@@ -107,10 +107,10 @@ public class NieuwProfiel extends JPanel implements ActionListener {
             Deze hebben ook beide vaste waarden.
          */
 
-        jtxNaamEen = new JTextField("Axel");
+        jtxNaamEen = new JTextField();
         jtxNaamEen.setBounds(75, 170, 150, 25);
 
-        jtxNaamTwee = new JTextField("Bart");
+        jtxNaamTwee = new JTextField();
         jtxNaamTwee.setBounds(330, 170, 150, 25);
     }
 
@@ -154,7 +154,6 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         jrbKruisjeEen.setText("Kruisje");
         jrbKruisjeEen.setBackground(new Color(166, 166, 166));
         jrbKruisjeEen.setBounds(75, 200, 65, 35);
-        jrbKruisjeEen.setSelected(true);
 
         jrbRondjeEen = new JRadioButton();
         jrbRondjeEen.setText("Rondje");
@@ -170,7 +169,6 @@ public class NieuwProfiel extends JPanel implements ActionListener {
         jrbRondjeTwee.setText("Rondje");
         jrbRondjeTwee.setBackground(new Color(166, 166, 166));
         jrbRondjeTwee.setBounds(410, 200, 65, 35);
-        jrbRondjeTwee.setSelected(true);
 
         bgGroepEen = new ButtonGroup();
         bgGroepEen.add(jrbKruisjeEen);
