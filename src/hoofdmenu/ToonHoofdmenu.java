@@ -18,6 +18,7 @@ public class ToonHoofdmenu extends Task {
         this.blValidate = blValidate;
     }
 
+    //Code die wordt uitgevoerd als er is voldaan aan de validate voorwaarden
     public void run() {
 
         boolean validate = validate();

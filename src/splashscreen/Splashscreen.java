@@ -20,6 +20,7 @@ public class Splashscreen extends JPanel {
         add(jlAchtergrond);
     }
 
+    //Hiermee wordt de spelachtergrond toegevoegd.
     private void maakAchtergrond(){
         jlAchtergrond = new JLabel(new ImageIcon("src/resources/achtergrond/splashscreen_bg.png"));
     }
